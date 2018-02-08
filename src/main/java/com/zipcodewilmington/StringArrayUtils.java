@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -40,7 +41,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
 
-        int secondLast = array.length -2;
+        int secondLast = array.length - 2;
         return array[secondLast];
     }
 
@@ -80,6 +81,17 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+
+        String[] reversedArray = new String[array.length];
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            reversedArray[array.length - 1 - i] = array[i];
+        }
+
+        if (Arrays.toString(reversedArray).equals(Arrays.toString(array))) {
+            return true;
+        }
+
         return false;
     }
 
