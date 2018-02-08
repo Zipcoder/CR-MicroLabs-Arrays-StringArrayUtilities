@@ -140,6 +140,7 @@ public class StringArrayUtils {
             }
         }
         return answer;
+
     }
 
     /**
@@ -147,7 +148,25 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String lastString = "\\";
+        boolean keepChecking = true;
+        int counter = 0;
+        while (keepChecking == true){
+
+            if (array[counter].equals(lastString)){
+
+                array = StringArrayUtils.removeValue(array, lastString);
+                //lastString = array[counter];
+                counter = 0;
+            }
+            lastString = array[counter];
+            counter++;
+            if(counter == array.length-1){
+                keepChecking = false;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+        return array;
     }
 
     /**
