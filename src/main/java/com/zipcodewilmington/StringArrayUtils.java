@@ -9,7 +9,9 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+
+        String[] parameter = array;
+        return parameter[0];
     }
 
     /**
@@ -17,7 +19,10 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+
+       String[] parameter = array;
+       return parameter[1];
+
     }
 
     /**
@@ -25,7 +30,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length-1];
+
     }
 
     /**
@@ -33,7 +39,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
@@ -42,7 +48,18 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+
+        boolean valueIsThere = false;
+
+        for ( String arrayElement : array) {
+
+            if (arrayElement.equalsIgnoreCase(value)){
+
+                valueIsThere = true;
+            }
+        }
+
+        return valueIsThere;
     }
 
     /**
@@ -50,15 +67,39 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
-    }
+
+            String[] reverse = new String[array.length];
+
+            int counter = 0;
+            for (int i = array.length -1; i >= 0; i--){
+
+            reverse[counter] = array[i];
+
+            counter++;
+        }
+
+        return reverse;
+
+        }
+
+
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+        String[] reversePalindrome = new String[array.length];
+
+        int counter = 0;
+        for (int i = array.length -1; i >= 0; i--){
+
+            reversePalindrome[counter] = array[i];
+
+            counter++;
+        }
+        return null;
     }
 
     /**
