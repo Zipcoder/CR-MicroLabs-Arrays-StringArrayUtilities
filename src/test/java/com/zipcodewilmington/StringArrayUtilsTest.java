@@ -233,7 +233,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testIsPalindromic2() {
-        String[] array = {"Is this a plaindrome?", "This is a plaindrome", "Is this a palindrome?"};
+        String[] array = {"Is this a palindrome?", "This is a plaindrome", "Is this a palindrome?"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
@@ -243,7 +243,7 @@ public class StringArrayUtilsTest {
     public void testIsPalindromic3() {
         String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertTrue(outcome);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -401,7 +401,7 @@ public class StringArrayUtilsTest {
     public void testRemoveValue() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] actual = StringArrayUtils.removeValue(array, "The");
+        String[] actual = StringArrayUtils.removeValue(array, "the");
         Assert.assertEquals(expected, actual);
     }
 

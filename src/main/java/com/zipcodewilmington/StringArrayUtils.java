@@ -1,5 +1,9 @@
 package com.zipcodewilmington;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,7 +13,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,7 +21,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
@@ -25,7 +29,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length-1];
     }
 
     /**
@@ -33,7 +37,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
@@ -42,6 +46,12 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,7 +60,20 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+
+        String [] reversedArray = new String [array.length];
+
+
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[array.length-1-i] = array[i];
+            //if array.length is 10
+            // reversedArray[array[10-1*accounts for the 0 index* -0 ]
+            // reversedArray[array[10-1*accounts for the 0 index* -1 ]
+            // reversedArray[array[10-1*accounts for the 0 index* -2 ]
+            // reversedArray[array[10-1*accounts for the 0 index* -3 ]...etc
+
+        }
+        return reversedArray;
     }
 
     /**
@@ -58,6 +81,16 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+        String [] reversedArray = new String [array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[array.length - 1 - i] = array[i];
+        }
+        for (int k =0; k < reversedArray.length; k++) {
+            if (reversedArray[k].equals(array[k])) {
+            return true;
+            }
+        }
         return false;
     }
 
@@ -66,6 +99,17 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+        String changedArrayToString = Arrays.toString(array);
+        changedArrayToString.toLowerCase();
+        char [] changedArrayToChar = changedArrayToString.toCharArray();
+        char [] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
+        for (int i = 0; i < changedArrayToChar.length; i++) {
+            if (alphabet[i] == changedArrayToChar[i]){
+                return true;
+
+            }
+        }
         return false;
     }
 
@@ -75,7 +119,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+       int count = 0;
+        for (int i = 0; i < array.length ; i++) {
+            if (value.equals(array[i])){
+                count++;
+
+            }
+        }
+        return count;
     }
 
     /**
@@ -84,6 +135,13 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+//        String changedArrayToString = Arrays.toString(array);
+//        for (int i = 0; i < changedArrayToString.length(); i++) {
+//            if (valueToRemove.equals(changedArrayToString[i])) {
+//                changedAr
+//
+//            }
+//        }
         return null;
     }
 
