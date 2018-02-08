@@ -1,5 +1,5 @@
 package com.zipcodewilmington;
-
+import java.util.Arrays;
 /**
  * Created by leon on 1/29/18.
  */
@@ -90,16 +90,8 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
 
-        String[] reversePalindrome = new String[array.length];
+             return Arrays.equals((StringArrayUtils.reverse(array)), array);
 
-        int counter = 0;
-        for (int i = array.length -1; i >= 0; i--){
-
-            reversePalindrome[counter] = array[i];
-
-            counter++;
-        }
-        return null;
     }
 
     /**
@@ -107,6 +99,21 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+
+        String alphabet = "";
+        for (char letter = 'A'; letter <= 'Z'; letter++) {
+            alphabet += letter;
+        }
+
+        boolean valuesAreThere = false;
+
+            for( String arrayElement : array){
+
+                for
+
+                arrayElement.equalsIgnoreCase();
+            }
+
         return false;
     }
 
