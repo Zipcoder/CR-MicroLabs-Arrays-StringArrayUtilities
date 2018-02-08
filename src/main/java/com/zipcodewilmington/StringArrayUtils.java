@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -45,15 +47,40 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+
+
+        for (int x = 0; x < array.length; x++) {
+            String next = array[x];
+            if (next == value) {
+                return true;
+            }
+        }
+
         return false;
     }
+        /*for (String thing : array) {
+            if (thing == value) {
+                word = true;
+            }
+        }
+    }
+
+
 
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+
+        String[] newString = new String[array.length];
+
+        for (int x = 0; x < array.length; x++){
+            newString[array.length -1 -x] = array[x];
+
+        }
+
+        return newString;
     }
 
     /**
@@ -61,16 +88,50 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        String[] newString = new String[array.length];
+
+        for (int x = 0; x < array.length; x++) {
+            newString[array.length - 1 - x] = array[x];
+
+        }
+        if (Arrays.toString(newString).equals(Arrays.toString(array))) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
+        //System.out.println(Arrays.toString(newString));
+
+
+
 
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
-    }
+
+        String alpha = Arrays.toString(array);
+
+        for (char i = 'a'; i <= 'z'; i++) {
+            for (int x = 0; x <= alpha.length(); x++) {
+                char place = alpha.charAt(x);
+                if (i == place) {
+                    break;
+                } else {
+
+                    return false;
+                }
+            }
+
+
+            return true;
+                //if (i.equals(alpha.toLowerCase()) {
+            }
+
+
+
 
     /**
      * @param array array of String objects
@@ -78,7 +139,7 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        return null;
     }
 
     /**
