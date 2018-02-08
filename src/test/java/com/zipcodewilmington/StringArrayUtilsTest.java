@@ -233,7 +233,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testIsPalindromic2() {
-        String[] array = {"Is this a plaindrome?", "This is a plaindrome", "Is this a palindrome?"};
+        String[] array = {"Is this a palindrome?", "This is a palindrome", "Is this a palindrome?"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
@@ -243,7 +243,7 @@ public class StringArrayUtilsTest {
     public void testIsPalindromic3() {
         String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertTrue(outcome);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -273,6 +273,14 @@ public class StringArrayUtilsTest {
         String[] array = {"Five quacking", "zephyrs", "jolt my", "wax bed"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
+    }
+
+    //i wrote this test, i wanted to see if it would return false when it needed to
+    @Test
+    public void testIsPangramic4() {
+        String[] array = {"a", "b", "c", "d"};
+        boolean outcome = StringArrayUtils.isPangramic(array);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -343,10 +351,10 @@ public class StringArrayUtilsTest {
     }
 
 
-
+    //removed last instance of '"bbb", "bbb"' so array and expected maintain consistent relation
     @Test
     public void testRemoveConsecutiveDuplicates3() {
-        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "aba", "bbb"};
+        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "aba", "bbb"};
         Assert.assertEquals(actual, expected);
@@ -361,21 +369,21 @@ public class StringArrayUtilsTest {
 
 
 
-
+    //dude there's no letter e's in there and it tests for one extra a gosh dang
     @Test
     public void testRemovePackDuplicates1() {
-        String[] array = {"a", "a", "a", "a", "b", "c", "c", "a", "a", "d"};
-        String[] expected = {"aaa", "b", "cc", "aa", "d", "eee"};
+        String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
+        String[] expected = {"aaa", "b", "cc", "aa", "d"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
 
 
-
+    //test missing one b
     @Test
     public void testRemovePackDuplicates2() {
         String[] array = {"t", "t", "q", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e"};
-        String[] expected = {"tt", "q", "aaa", "cc", "aa", "d", "eee"};
+        String[] expected = {"tt", "q", "aaa", "b", "cc", "aa", "d", "eee"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
@@ -399,7 +407,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testRemoveValue() {
-        String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] array = {"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "The");
         Assert.assertEquals(expected, actual);
