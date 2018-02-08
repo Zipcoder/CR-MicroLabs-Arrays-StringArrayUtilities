@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -76,7 +77,8 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+        return Arrays.equals(StringArrayUtils.reverse(array), array) ? true : false;
     }
 
     /**
@@ -84,7 +86,22 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        int counter = 0;
+        String[] alphabet = new String[] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q",
+                "r","s","t","u","v","w","x","y","z"};
+        for (String s : array) {
+            for (int i = 0; i< s.length(); i++){
+                String test = Character.toString(s.charAt(i));
+                for (int j = 0; j<= alphabet.length-1; j++) {
+                    if (test.equalsIgnoreCase(alphabet[j])) {
+                        counter += 1;
+                        alphabet [j] = "\\";
+                        break;
+                    }
+                }
+            }
+        }
+        return counter == 26 ? true : false;
     }
 
     /**
@@ -93,7 +110,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int counter = 0;
+        for (String s : array){
+            if(s.equals(value)) counter++;
+        }
+
+        return counter;
     }
 
     /**
@@ -102,7 +124,22 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        int count = StringArrayUtils.getNumberOfOccurrences(array, valueToRemove);
+        String [] step1 = new String[array.length];
+        for (int i = 0 ; i < array.length ; i++){
+            if (!array[i].equals(valueToRemove)){
+                step1[i] = array[i];
+            }
+        }
+        String [] answer = new String [array.length-count];
+        int count2 = 0;
+        for (String s : step1){
+            if (s != null){
+                answer[count2] = s;
+                count2++;
+            }
+        }
+        return answer;
     }
 
     /**
