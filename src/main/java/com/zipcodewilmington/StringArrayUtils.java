@@ -88,32 +88,16 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-        String[] alphabetArr = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-
         String combinedArr = "";
-
-
-        for (int i = 0; i < array.length; i++) {
-
-            combinedArr += array[i];
+        for ( String letter : array) {
+            combinedArr += letter;
         }
 
         String[] strArr = combinedArr.toLowerCase().replaceAll("\\s+", "").split("");
         Arrays.sort(strArr);
-        String answer = "";
-        for (String letter : alphabetArr) {
-            for (int i = 0; i < combinedArr.length(); i++) {
-                if (letter.equals(combinedArr.charAt(i))) {
-                    answer = "true";
-                } else {
-                    answer = "false";
-                }
-            }
-        }
 
-
-        return answer.equals("true");
-
+       String[] sortedArr = removeConsecutiveDuplicates(strArr);
+       return sortedArr.length == 26;
     }
 
 
@@ -178,7 +162,17 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-        return null;
+        StringBuilder builder = new StringBuilder(array[0]);
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i].equals(array[i + 1])) {
+                builder.append(array[i]);
+            }
+            else {
+                builder.append(" ");
+                builder.append(array[i + 1]);
+            }
+        }
+        return builder.toString().split(" ");
     }
 
 
