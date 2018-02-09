@@ -106,13 +106,17 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-      String alphabet = "";
-      for (char letter = 'A'; letter <= 'Z'; letter++){
-          alphabet += letter;
-      }
-         if ()
-return true;
+        StringBuilder originalArray = new StringBuilder();
+    for (int i = 0; i < array.length; i++){
+        originalArray.append(array[i]);
+    }
+for (char letter = 'a'; letter <= 'z'; letter++){
+        if (originalArray.toString().toLowerCase().indexOf(letter)<0){ //if the letter is part of the index it will be <0
+            return false;
+        }
 
+}
+        return true;
     }
 
 
@@ -126,7 +130,13 @@ return true;
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+int numOccurences = 0;
+for (int i = 0; i < array.length; i++){
+    if (array[i].equals(value)){
+        numOccurences++;
+    }
+}
+return numOccurences;
     }
 
     /**
