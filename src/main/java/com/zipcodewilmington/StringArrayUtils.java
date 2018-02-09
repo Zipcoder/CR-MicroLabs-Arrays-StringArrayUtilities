@@ -139,7 +139,29 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+
+        int matchCount = 0;
+        int cleanIndex = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(valueToRemove)) {
+                matchCount += 1;
+            }
+        }
+
+        String[] clean = new String[array.length - matchCount];
+
+        for (int i = 0; i < array.length; i++) {
+
+            if (!array[i].equals(valueToRemove)) {
+                clean[cleanIndex] = (array[i]);
+                cleanIndex++;
+            }
+        }
+
+        System.out.println(Arrays.toString(clean));
+
+        return clean;
     }
 
     /**
@@ -147,7 +169,30 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        int matchCount = 0;
+        int cleanIndex = 0;
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i].equals(array[i + 1])) {
+                matchCount += 1;
+            }
+        }
+
+        String[] clean = new String[array.length - matchCount];
+
+        for (int i = 0; i < array.length - 1; i++) {
+
+            if (!array[i].equals(array[i + 1])) {
+                clean[cleanIndex] = array[i];
+                cleanIndex++;
+            }
+        }
+
+        System.out.println(Arrays.toString(clean));
+
+        return clean;
+
     }
 
     /**
