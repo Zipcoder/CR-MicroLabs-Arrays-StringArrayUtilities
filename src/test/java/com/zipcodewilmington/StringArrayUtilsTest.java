@@ -364,8 +364,8 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testRemovePackDuplicates1() {
-        String[] array = {"a", "a", "a", "a", "b", "c", "c", "a", "a", "d"};
-        String[] expected = {"aaaa", "b", "cc", "aa", "d"};
+        String[] array = {"a", "a", "a",  "b", "c", "c", "a", "a", "d"};
+        String[] expected = {"aaa", "b", "cc", "aa", "d"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
