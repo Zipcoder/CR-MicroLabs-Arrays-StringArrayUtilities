@@ -169,37 +169,40 @@ public class StringArrayUtils {
         int remove = 0;
 
         for (int x = 0; x < array.length; x++) {
-            if (array[x].equals(valueToRemove)) {
+            if (array[x].equalsIgnoreCase(valueToRemove)) {
                 total++;
+            }
+        }
+        String[] newString = new String[array.length - total];
 
-         String[] newString = new String[array.length-total];
-
-            for (int y = 0; y <array.length; y++) {
-                if(valueToRemove.equals(array[y])) {
+        for (int y = 0; y < array.length; y++) {
+            if (!valueToRemove.equalsIgnoreCase(array[y])) {
                 newString[remove] = array[y];
                 remove++;
             }
-                }
-                return newString;
 
-
-    }
-
-    /**
-     * @param array array of chars
-     * @return array of Strings with consecutive duplicates removes
-     */ // TODO
-    public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
-    }
-
-    /**
-     * @param array array of chars
-     * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
-    public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+            System.out.println(Arrays.toString(newString));
+        }
+        return newString;
     }
 
 
-}
+
+        /**
+         * @param array array of chars
+         * @return array of Strings with consecutive duplicates removes
+         */ // TODO
+        public static String[] removeConsecutiveDuplicates (String[]array){
+            return null;
+        }
+
+        /**
+         * @param array array of chars
+         * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
+         */ // TODO
+        public static String[] packConsecutiveDuplicates (String[]array){
+            return null;
+        }
+
+
+    }
