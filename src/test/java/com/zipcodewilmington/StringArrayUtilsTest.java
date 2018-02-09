@@ -233,7 +233,8 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testIsPalindromic2() {
-        String[] array = {"Is this a plaindrome?", "This is a plaindrome", "Is this a plaindrome?"};
+        String[] array = {"Is this a palindrome?", "This is a palindrome", "Is this a palindrome?"};
+
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
@@ -273,6 +274,14 @@ public class StringArrayUtilsTest {
         String[] array = {"Five quacking", "zephyrs", "jolt my", "wax bed"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
+    }
+
+
+    @Test
+    public void testIsPangramic4() {
+        String[] array = {"a", "b", "c", "d"};
+        boolean outcome = StringArrayUtils.isPangramic(array);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -343,10 +352,9 @@ public class StringArrayUtilsTest {
     }
 
 
-
     @Test
     public void testRemoveConsecutiveDuplicates3() {
-        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "aba", "bbb"};
+        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb", "aba", "bbb"};
         Assert.assertEquals(actual, expected);
@@ -369,7 +377,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
-
 
 
     @Test
@@ -399,9 +406,10 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testRemoveValue() {
-        String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] expected = {"quick", "brown", "fox", "jumps", "over", "lazy", "dog"};
-        String[] actual = StringArrayUtils.removeValue(array, "the");
+        String[] array = {"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] actual = StringArrayUtils.removeValue(array, "The");
+
         Assert.assertEquals(expected, actual);
     }
 
