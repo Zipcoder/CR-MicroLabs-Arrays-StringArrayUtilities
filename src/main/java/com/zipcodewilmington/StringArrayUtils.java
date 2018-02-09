@@ -144,18 +144,18 @@ public class StringArrayUtils {
     public static String[] removeValue(String[] array, String valueToRemove) {
         String s = valueToRemove.toLowerCase();
         String value;
-        int j =0;
-        String [] smallerArray = new String [0];
-        for(int i =0; i < array.length ; i++){
-            if(!s.equals(array[i])){
+        int j = 0;
+        String[] smallerArray = new String[0];
+        for (int i = 0; i < array.length; i++) {
+            if (!s.equals(array[i])) {
 
                 // increase the size the array dynamically
                 //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
-                 smallerArray = Arrays.copyOf(smallerArray, j +1);
-                 value = array[i];
-                 smallerArray[j] = value;
+                smallerArray = Arrays.copyOf(smallerArray, j + 1);
+                value = array[i];
+                smallerArray[j] = value;
                 //smallerArray [j] = array[i];
-                 //System.out.println(smallerArray.toString());
+                //System.out.println(smallerArray.toString());
                 j++;
             }
         }
@@ -169,19 +169,19 @@ public class StringArrayUtils {
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
         String value;
-        int prev = 0;
-        int j =0;
+        int prev = 1;
+        int j = 0;
 
-        String [] smallerArray = new String [0];
-        for(int i =1; i < array.length ; i++){
-            if(!array[prev].equals(array[i])){
+        String[] smallerArray = new String[0];
+        for (int i = 1; i < array.length; i++) {
+            if (!array[i - prev].equals(array[i])) {
 
                 // increase the size the array dynamically
                 //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
-                smallerArray = Arrays.copyOf(smallerArray, j +1);
-                value = array[i];
-                smallerArray[j] = value;
-                prev = i;
+                smallerArray = Arrays.copyOf(smallerArray, j + 1);
+
+                smallerArray[j] = array[i - prev];
+                //prev = i;
                 //smallerArray [j] = array[i];
                 //System.out.println(smallerArray.toString());
                 j++;
@@ -196,8 +196,38 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
-    }
+        StringBuilder s = new StringBuilder();
+
+        String cow;
+        String[] consecutiveStrings = new String[0];
+        int count = 0;
+        for (String a : array) {
+            s.append(a);
+        }
+
+        cow = s.toString();
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < cow.length(); i++) {
+
+            if (cow.valueOf(i).equals(cow.valueOf(i + 1))){
+            b.append(cow.valueOf(i));
+             continue;
+            }
+            if(!cow.valueOf(i).equals(cow.valueOf(i + 1))){
+            }
+
+            b.setLength(0);
+        }
+
+
+
+
+
+            System.out.println(s);
+
+
+        return consecutiveStrings;
+}
 
 
 }
