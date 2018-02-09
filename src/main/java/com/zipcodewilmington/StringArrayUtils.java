@@ -4,7 +4,7 @@ package com.zipcodewilmington;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.*;
 /**
  * Created by leon on 1/29/18.
  */
@@ -86,19 +86,45 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
 
-        int reference = 0;
-        int halvedLength = Math.floorDiv(array.length, 2);
-        String[] arrayPalindrome = new String[halvedLength];
 
-        for (int i = array.length -1; i<=(array.length - halvedLength); i--) {
-            arrayPalindrome[reference] = array[i];
-            reference 
+        boolean originalEqualsReversed = true;
+
+        String[] reversedArray =reverse(array);
+
+        for (int i =0; i <= array.length -1; i++) {
+            if (reversedArray[i].equals(array[i])) {
+                originalEqualsReversed = true;
+            } else {
+                originalEqualsReversed = false;
+            }
         }
 
 
+ /*
+        int reference = 0;
+        int halvedLength = (int)Math.floor((array.length)/2);
+
+        String[] arrayPalindrome = new String[halvedLength];
+        String[] arrayHalfOriginal = new String[halvedLength];
+
+        for (int i = array.length; i<=(halvedLength); i--) {
+            arrayPalindrome[reference] = array[i];
+            reference += 1;
+        }
+       /* for (int i = 0; i <= halvedLength -1; i++) {
+            arrayHalfOriginal[reference] = array[i];
+            reference += 1;
+        }
+
+        if (arrayHalfOriginal.equals(arrayPalindrome)) {
+            originalEqualsReversed = true;
+        }
+        return originalEqualsReversed;
+        */
 
 
-        return ;
+        return originalEqualsReversed;
+
     }
 
     /**
