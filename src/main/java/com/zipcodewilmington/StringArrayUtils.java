@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,7 +11,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,7 +19,8 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+
+        return array[1];
     }
 
     /**
@@ -25,7 +28,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+            String lastArray = array[array.length-1];
+        return lastArray;
     }
 
     /**
@@ -33,7 +37,9 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        String secondtoLast = array[array.length-2];
+
+        return secondtoLast;
     }
 
     /**
@@ -42,7 +48,16 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+
+        boolean answer = false;
+
+        for (int i = 0; i <array.length; i++){
+            if (array[i].equals(value)) {
+                answer = true;
+            }
+        }
+
+        return answer;
     }
 
     /**
@@ -50,7 +65,13 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+
+        String [] myReversed = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            myReversed[array.length - 1 - i] = array[i];
+        }
+        return myReversed;
+
     }
 
     /**
@@ -58,7 +79,25 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+        boolean isPali= false;
+
+        String[] checkReversed = reverse(array);
+
+        /*for (int i =0; i > array.length; i--){
+
+            checkReversed[array.length-1 -i] = array[i];
+
+        }
+
+        */
+        if (Arrays.equals(array, checkReversed)) {
+
+            isPali = true;
+
+        }
+
+        return isPali;
     }
 
     /**
