@@ -212,7 +212,19 @@ public class StringArrayUtils {
          * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
          */ // TODO
         public static String[] packConsecutiveDuplicates (String[]array){
-            return null;
+
+            String pack = array[0];
+
+            for (int x = 1; x < array.length; x++) {
+                if (array[x].equals(array[x-1])) {
+                    pack += array[x];
+                } else {
+                    pack += "," + array[x];
+                }
+            }
+            String[] answer = pack.split(",");
+            System.out.println(answer);
+            return answer;
         }
 
 
