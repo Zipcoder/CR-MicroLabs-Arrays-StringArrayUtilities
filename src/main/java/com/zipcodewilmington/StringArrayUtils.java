@@ -2,9 +2,7 @@ package com.zipcodewilmington;
 
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.*;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -91,7 +89,7 @@ public class StringArrayUtils {
 
         String[] reversedArray =reverse(array);
 
-        for (int i =0; i <= array.length -1; i++) {
+        for (int i =0; i < array.length; i++) {
             if (reversedArray[i].equals(array[i])) {
                 originalEqualsReversed = true;
             } else {
@@ -132,7 +130,18 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        StringBuilder stringFromArray = new StringBuilder();
+            for (int i =0; i < array.length; i++) {
+                stringFromArray.append(array[i]);
+
+            }
+            for (char ch = 'a';  ch <= 'z'; ch++) {
+
+                if (stringFromArray.toString().toLowerCase().indexOf(ch) < 0) {
+                    return false;
+                }
+            }
+            return true;
     }
 
     /**
@@ -141,7 +150,17 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+
+
+            if (value.equals(array[i])) {
+                count++;
+            }
+
+
+        } return count;
     }
 
     /**
