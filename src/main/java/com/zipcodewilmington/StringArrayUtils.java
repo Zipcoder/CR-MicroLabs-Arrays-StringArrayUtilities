@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -63,7 +66,7 @@ public class StringArrayUtils {
         String[] esrever = new String[array.length];
 
         for (int i = 0; i < array.length; i++) {
-            esrever[array.length - 1 -i] = array[i];
+            esrever[array.length - 1 - i] = array[i];
         }
         return esrever;
     }
@@ -74,6 +77,16 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+
+        String[] reversePalid = new String[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            reversePalid[array.length - 1 - i] = array[i];
+            if (reversePalid[i] == array[i]) {
+
+                return true;
+            }
+        }
         return false;
     }
 
@@ -82,7 +95,22 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+
+        StringBuilder pangram = new StringBuilder();
+
+        for (int i = 0; i < array.length; i++) {
+
+            pangram.append(array[i]);
+
+        }
+        for (char alp = 'a'; alp <= 'z'; alp++) {
+
+            if (pangram.toString().toLowerCase().indexOf(alp) < 0) {
+
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -91,7 +119,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value)
+                count++;
+        }
+
+        return count;
     }
 
     /**
@@ -100,15 +135,48 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        int count = 0;
+        int indexToRemove = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals(valueToRemove)) {
+                count++;
+            }
+        }
+        String[] removeString = new String[count];
+
+        for (int j = 0; j < array.length; j++) {
+            if (!array[j].equals(valueToRemove)) {
+                removeString[indexToRemove] = array[j];
+
+                indexToRemove++;
+            }
+        }
+        return removeString;
     }
+
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        StringBuilder thisIsString = new StringBuilder();
+
+        for (int i = 1; i < array.length; i++) {
+            if (i == 1) thisIsString.append(array[i - 1] + " ");
+
+            if (array[i] != array[i - 1]) {
+                thisIsString.append(array[i]);
+                thisIsString.append(" ");
+            }
+        }
+        String completedString = thisIsString.toString();
+        String[] lastArray = completedString.split(" ");
+
+        System.out.println(Arrays.toString(lastArray));
+        return lastArray;
+
     }
 
     /**
@@ -116,8 +184,27 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+        StringBuilder dupString = new StringBuilder();
+
+        for (int i = 1; i < array.length; i++) {
+            if (i == 1) dupString.append(array[i - 1]);
+
+            if (array[i] == array[i - 1]) {
+                dupString.append(array[i]);
+            } else {
+                dupString.append(" " + array[i]);
+            }
+        }
+        System.out.println(dupString);
+
+        String taco = dupString.toString();
+
+        String[] thisArray = taco.split(" ");
+
+        return thisArray;
     }
 
 
 }
+
