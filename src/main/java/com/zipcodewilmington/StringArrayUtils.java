@@ -181,8 +181,9 @@ public class StringArrayUtils {
                 remove++;
             }
 
-            System.out.println(Arrays.toString(newString));
+
         }
+        System.out.println(Arrays.toString(newString));
         return newString;
     }
 
@@ -193,7 +194,17 @@ public class StringArrayUtils {
          * @return array of Strings with consecutive duplicates removes
          */ // TODO
         public static String[] removeConsecutiveDuplicates (String[]array){
-            return null;
+            String begin = array[0] + ",";
+
+            for (int x = 1; x < array.length; x++) {
+                if (!array[x].equals(array[x-1])) {
+                    begin += array[x] + ",";
+                }
+            }
+
+            String[] answer = begin.split(",");
+
+            return answer;
         }
 
         /**
