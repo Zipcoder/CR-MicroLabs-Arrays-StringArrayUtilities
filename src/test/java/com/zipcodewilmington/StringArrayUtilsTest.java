@@ -238,12 +238,11 @@ public class StringArrayUtilsTest {
         Assert.assertTrue(outcome);
     }
 
-
     @Test
     public void testIsPalindromic3() {
         String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertTrue(outcome);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -358,10 +357,6 @@ public class StringArrayUtilsTest {
 
 
 
-
-
-
-
     @Test
     public void testRemovePackDuplicates1() {
         String[] array = {"a", "a", "a", "a", "b", "c", "c", "a", "a", "d"};
@@ -423,13 +418,51 @@ public class StringArrayUtilsTest {
 
 
 
+    @Test
+    public void getFirstElement() {
+    }
 
+    @Test
+    public void getSecondElement() {
+    }
 
+    @Test
+    public void getLastElement() {
+    }
 
+    @Test
+    public void getSecondToLastElement() {
+    }
 
+    @Test
+    public void contains() {
+    }
 
+    @Test
+    public void reverse() {
+    }
 
+    @Test
+    public void isPalindromic() {
+    }
 
+    @Test
+    public void isPangramic() {
+    }
 
+    @Test
+    public void getNumberOfOccurrences() {
+    }
 
+    @Test
+    public void removeValue() {
+    }
+
+    @Test
+    public void removeConsecutiveDuplicates() {
+    }
+
+    @Test
+    public void packConsecutiveDuplicates() {
+    }
 }
