@@ -2,6 +2,7 @@ package com.zipcodewilmington;
 
 import com.sun.tools.javac.util.ArrayUtils;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
@@ -141,8 +142,24 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        
-        return null;
+        String s = valueToRemove.toLowerCase();
+        String value;
+        int j =0;
+        String [] smallerArray = new String [0];
+        for(int i =0; i < array.length ; i++){
+            if(!s.equals(array[i])){
+
+                // increase the size the array dynamically
+                //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
+                 smallerArray = Arrays.copyOf(smallerArray, j +1);
+                 value = array[i];
+                 smallerArray[j] = value;
+                //smallerArray [j] = array[i];
+                 //System.out.println(smallerArray.toString());
+                j++;
+            }
+        }
+        return smallerArray;
     }
 
     /**
@@ -150,8 +167,29 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        String value;
+        int prev = 0;
+        int j =0;
+
+        String [] smallerArray = new String [0];
+        for(int i =1; i < array.length ; i++){
+            if(!array[prev].equals(array[i])){
+
+                // increase the size the array dynamically
+                //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
+                smallerArray = Arrays.copyOf(smallerArray, j +1);
+                value = array[i];
+                smallerArray[j] = value;
+                prev = i;
+                //smallerArray [j] = array[i];
+                //System.out.println(smallerArray.toString());
+                j++;
+            }
+        }
+        return smallerArray;
     }
+
 
     /**
      * @param array array of chars
