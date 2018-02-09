@@ -100,21 +100,22 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-        String alphabet = "";
-        for (char letter = 'A'; letter <= 'Z'; letter++) {
-            alphabet += letter;
-        }
+        StringBuilder stringFromOrignalArray = new StringBuilder();
 
-        boolean valuesAreThere = false;
+        for(int i = 0; i < array.length; i++){
 
-            for( String arrayElement : array){
+            stringFromOrignalArray.append(array[i]);
 
-                for
-
-                arrayElement.equalsIgnoreCase();
             }
 
-        return false;
+        for (char letter = 'a'; letter <= 'z'; letter++) {
+
+            if (stringFromOrignalArray.toString().toLowerCase().indexOf(letter) < 0){
+
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
