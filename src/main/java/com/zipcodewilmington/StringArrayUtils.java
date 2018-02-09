@@ -148,15 +148,28 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
 
-        ArrayList<String> list = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < array.length; i++) {
-            if (valueToRemove != (array[i])) {
-                list.add(array[i]);
+        for (int i = 0; i < array.length; i++){
+            if (!(array[i].equals(valueToRemove))){
+                sb.append(array[i] + ",");
             }
         }
-        String[] stringArray = list.toArray(new String[list.size()]);
-        return stringArray;
+
+        //        ArrayList<String> list = new ArrayList<String>();
+//
+//        for (int i = 0; i < array.length; i++) {
+//            if (valueToRemove != (array[i])) {
+//                list.add(array[i]);
+//            }
+//        }
+//        String[] stringArray = list.toArray(new String[list.size()]);
+//        return stringArray;
+        String out = sb.toString();
+        String[] destIndexArray = out.split(",");
+
+        System.out.println(sb);
+        return destIndexArray;
     }
 
     /**
