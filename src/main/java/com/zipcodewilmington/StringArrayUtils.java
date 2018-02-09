@@ -1,6 +1,5 @@
 package com.zipcodewilmington;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -100,7 +99,21 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+
+        String lower = "";
+
+        for (int i = 0; i < array.length; i++) {
+            lower += array[i].toLowerCase();
+        }
+
+        //System.out.println(lower);
+
+        for (char letter = 'a'; letter <= 'z'; letter++) {
+            if (lower.indexOf(letter) < 0) {
+                return false;
+            }
+
+        } return true;
     }
 
     /**
