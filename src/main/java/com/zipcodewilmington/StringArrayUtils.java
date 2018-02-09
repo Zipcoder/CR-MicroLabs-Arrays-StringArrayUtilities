@@ -122,12 +122,8 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        int occurances = 0;
-        for (int j = 0; j < array.length; j++){
-            if (array[j].equals(valueToRemove)){
-                occurances++;
-            }
-        }
+        int occurances = getNumberOfOccurrences(array, valueToRemove);
+
         String[] revisedArray = new String[array.length-occurances];
         int counter = 0;
         for (int i = 0; i < array.length; i++){
@@ -144,7 +140,26 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-    return null;
+        ArrayList<String> revArray = new ArrayList<String>();
+
+        for (int i = 0; i < array.length-1; i++){
+            if (array[i].equals(array[i+1])) {
+                if ((array[i].equals(array[i + 1]) && i == array.length - 2)){
+                    revArray.add(array[i]);
+                    break;
+                }
+                continue;
+            }
+            else if (!(array[i].equals(array[i + 1]))) {
+                revArray.add(array[i]);
+                if (i == array.length - 2) {
+                    revArray.add(array[i + 1]);
+                }
+            }
+
+        }
+        String[] strArray =  revArray.toArray(new String[revArray.size()]);
+        return strArray;
     }
 
     /**
@@ -152,7 +167,31 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> revArray = new ArrayList<String>();
+        String placeHolderStr = "";
+        for (int i = 0; i < array.length -1 ; i++){
+
+            if (array[i].equals(array[i+1]) && !(i == array.length -2)) {
+                placeHolderStr += array[i];
+            }
+            if (array[i].equals(array[i+1]) && (i == array.length -2)) {
+                placeHolderStr += array[i];
+                placeHolderStr += array[i+1];
+                revArray.add(placeHolderStr);
+                placeHolderStr = "";
+            }
+            else if (!(array[i].equals(array[i + 1])) || i == array.length -2) {
+                placeHolderStr += array[i];
+                revArray.add(placeHolderStr);
+                placeHolderStr = "";
+                if (!(array[i].equals(array[i + 1])) && i == array.length -2){
+                    revArray.add(array[array.length-1]);
+                }
+            }
+
+        }
+        String[] strArray =  revArray.toArray(new String[revArray.size()]);
+        return strArray;
     }
 
 
