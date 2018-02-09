@@ -3,6 +3,9 @@ package com.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -401,7 +404,7 @@ public class StringArrayUtilsTest {
     public void testRemoveValue() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] actual = StringArrayUtils.removeValue(array, "The");
+        String[] actual = StringArrayUtils.removeValue(array, "the");
         Assert.assertEquals(expected, actual);
     }
 
@@ -410,6 +413,7 @@ public class StringArrayUtilsTest {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"the", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "quick");
+        System.out.println(Arrays.toString(actual));
         Assert.assertEquals(expected, actual);
     }
 
@@ -418,6 +422,7 @@ public class StringArrayUtilsTest {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"the", "quick", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "brown");
+        System.out.println(Arrays.toString(actual));
         Assert.assertEquals(expected, actual);
     }
 

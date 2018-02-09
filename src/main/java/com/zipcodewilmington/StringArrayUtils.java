@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -7,9 +9,9 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return first element of specified array
-     */ // TODO
+     */
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,48 +19,61 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
      * @param array array of String objects
      * @return last element in specified array
-     */ // TODO
+     */
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length-1];
     }
 
     /**
      * @param array array of String objects
      * @return second to last element in specified array
-     */ // TODO
+     */
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
      * @param array array of String objects
      * @param value value to check array for
      * @return true if the array contains the specified `value`
-     */ // TODO
-    public static boolean contains(String[] array, String value) {
-        return false;
+     */
+    public static boolean contains(String[] array, String value) { // TODO: maybe good chance to practice lambdas
+        boolean res = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value))
+                res = true;
+        }
+        return res;
     }
 
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
-     */ // TODO
+     */
     public static String[] reverse(String[] array) {
-        return null;
+        String tmp;
+        int n;
+        for (int i=0; i <= Math.floor((array.length - 2)/2); i++) { // only have to move through half the string
+            n = array.length - i - 1; // n tracks the current index's "mirror"
+            tmp = array[i]; // save this String
+            array[i] = array[n]; // copy 'mirror' to this index
+            array[n] = tmp; // write the saved String to the 'mirror's place
+        }
+        return array;
     }
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
-     */ // TODO
+     */
     public static boolean isPalindromic(String[] array) {
-        return false;
+        return array.equals(reverse(array));
     }
 
     /**
@@ -66,7 +81,11 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String[] alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        for (int i = 0;i<array.length;i++) {
+            alphabet = removeValue(alphabet, array[i]); // this feels like a leak
+        }
+        return (alphabet.length == 1);
     }
 
     /**
@@ -75,17 +94,49 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int total = 0;
+        for (int i=0;i<array.length;i++) {
+            if (array[i].equals(value))
+                total++;
+        }
+        return total;
     }
 
+    /**
+     * @param array array of String objects
+     * @param value value stored at the desired index
+     * @return the first index of specified 'value' if it exists in 'array'
+     */
+    public static int getIndexOfValue(String[] array, String value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value))
+                return i;
+        }
+        return -1;
+    }
+
+    /**
+     * handoff to removeValue(String[] array, int index)
+     * @param array
+     * @param valueToRemove
+     * @return
+     */
+    public static String[] removeValue(String[] array, String valueToRemove) {
+        return removeValue(array, getIndexOfValue(array, valueToRemove));
+    }
     /**
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
      * @return array with identical contents excluding values of `value`
      */ // TODO
-    public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
-    }
+      public static String[] removeValue(String[] array, int index) {
+          String[] result = new String[array.length - 1];
+          System.arraycopy(array, 0, result, 0, index); // copy the objects before the removed item
+          if (index < array.length - 1) // if last/only item, don't need a second copy
+              System.arraycopy(array, index + 1, result, index, array.length - index - 1); // copy the objects after the removed index
+
+          return result;
+      }
 
     /**
      * @param array array of chars
