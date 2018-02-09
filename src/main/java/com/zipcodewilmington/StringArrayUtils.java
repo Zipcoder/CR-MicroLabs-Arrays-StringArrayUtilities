@@ -180,7 +180,7 @@ public class StringArrayUtils {
             }
         }
 
-        String [] clean = cleaner.split(" ");
+        String[] clean = cleaner.split(" ");
 
         System.out.println(cleaner);
 
@@ -193,8 +193,24 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+        String packer = array[0];
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(array[i - 1])) {
+                packer += array[i];
+            } else {
+                packer += " " + array[i];
+            }
+        }
+
+
+        String[] packed = packer.split(" ");
+
+        return packed;
     }
-
-
 }
+
+
+
+
