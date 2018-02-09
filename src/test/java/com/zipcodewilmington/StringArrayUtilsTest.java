@@ -370,6 +370,7 @@ public class StringArrayUtilsTest {
         String[] array = {"a", "a", "a", "a", "b", "c", "c", "a", "a", "d"};
         String[] expected = {"aaa", "b", "cc", "aa", "d", "eee"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
+        System.out.println(Arrays.toString(actual));
         Assert.assertEquals(expected, actual);
     }
 
