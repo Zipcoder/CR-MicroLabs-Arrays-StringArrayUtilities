@@ -113,7 +113,8 @@ public class StringArrayUtils {
                 return false;
             }
 
-        } return true;
+        }
+        return true;
     }
 
     /**
@@ -127,7 +128,7 @@ public class StringArrayUtils {
 
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(value)) {
-            counter++;
+                counter++;
             }
         }
         return counter;
@@ -170,26 +171,18 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
-        int matchCount = 0;
-        int cleanIndex = 0;
+        String cleaner = array[0] + " ";
 
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i].equals(array[i + 1])) {
-                matchCount += 1;
+        for (int i = 1; i < array.length; i++) {
+
+            if (!array[i].equals(array[i - 1])) {
+                cleaner += array[i] + " ";
             }
         }
 
-        String[] clean = new String[array.length - matchCount];
+        String [] clean = cleaner.split(" ");
 
-        for (int i = 0; i < array.length - 1; i++) {
-
-            if (!array[i].equals(array[i + 1])) {
-                clean[cleanIndex] = array[i];
-                cleanIndex++;
-            }
-        }
-
-        System.out.println(Arrays.toString(clean));
+        System.out.println(cleaner);
 
         return clean;
 
