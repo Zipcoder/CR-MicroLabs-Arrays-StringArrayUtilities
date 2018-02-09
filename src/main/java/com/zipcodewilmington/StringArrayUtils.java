@@ -31,7 +31,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return array[array.length -1];
+        return array[array.length - 1];
     }
 
     /**
@@ -89,29 +89,31 @@ public class StringArrayUtils {
     public static boolean isPangramic(String[] array) {
 
         String[] alphabetArr = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
         String combinedArr = "";
 
 
-        for (int i=0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
+
             combinedArr += array[i];
         }
 
-        boolean tf = true;
-        System.out.println(combinedArr);
-//        System.out.println(Arrays.toString(combinedArr.toLowerCase().replaceAll("\\s+","").split("")));
-
-        for( String letter : alphabetArr) {
-//            System.out.println("This is the letter:  " + letter);
-            for( int i = 0; i < combinedArr.length(); i++) {
-                if ( letter.equals(combinedArr.charAt(i)))
-                    tf = true;
+        String[] strArr = combinedArr.toLowerCase().replaceAll("\\s+", "").split("");
+        Arrays.sort(strArr);
+        String answer = "";
+        for (String letter : alphabetArr) {
+            for (int i = 0; i < combinedArr.length(); i++) {
+                if (letter.equals(combinedArr.charAt(i))) {
+                    answer = "true";
+                } else {
+                    answer = "false";
+                }
             }
         }
 
 
+        return answer.equals("true");
 
-
-        return tf;
     }
 
 
@@ -139,23 +141,17 @@ public class StringArrayUtils {
     public static String[] removeValue(String[] array, String valueToRemove) {
 
         int count = getNumberOfOccurrences(array, valueToRemove);
-        String[] newArray = new String[array.length];
+        String[] newArray = new String[array.length - count];
 
-            for (int i = 0; i < array.length; i++) {
-                if (!array[i].equals(valueToRemove)) {
-                    newArray[i] = array[i];
-                }
+        int indx = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals(valueToRemove)) {
+                newArray[indx] = array[i];
+                indx++;
+            }
+        }
 
-            }
-            int ticker = 0;
-            String[] finalArray = new String[newArray.length - count];
-            for (int i = 0; i < newArray.length; i++) {
-                if (newArray[i] != null) {
-                    finalArray[ticker] = newArray[i];
-                    ticker++;
-                }
-            }
-        return finalArray;
+        return newArray;
     }
 
     /**
@@ -164,14 +160,16 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
-        String[] noDuplicates = new String[4];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(array[i + 1])) {
-                noDuplicates[i] = array[i];
+        String[] noDuplicates = new String[0];
+        for (int i = 0; i < array.length -1; i++) {
+            if (!array[i].equals(array[i + 1])) {
+                noDuplicates = Arrays.copyOf(noDuplicates, noDuplicates.length + 1);
+                noDuplicates[noDuplicates.length - 1] = array[i];
             }
         }
-        System.out.println(Arrays.toString(noDuplicates));
-        return null;
+        noDuplicates = Arrays.copyOf(noDuplicates, noDuplicates.length + 1);
+        noDuplicates[noDuplicates.length - 1] = array[array.length - 1];
+        return noDuplicates;
     }
 
     /**
