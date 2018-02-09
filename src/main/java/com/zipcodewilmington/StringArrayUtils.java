@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+
 import java.util.Arrays;
 
 /**
@@ -20,7 +21,7 @@ public class StringArrayUtils {
      */
     public static String getSecondElement(String[] array) {
 
-        return array [1] ;
+        return array[1];
     }
 
     /**
@@ -29,7 +30,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getLastElement(String[] array) {
 
-        return array [array.length-1];
+        return array[array.length - 1];
     }
 
     /**
@@ -38,7 +39,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
 
-        return array [array.length-2];
+        return array[array.length - 2];
     }
 
     /**
@@ -50,9 +51,9 @@ public class StringArrayUtils {
         boolean answer = false;
 
         for (String s : array) {
-             if(s.equals(value)) {
-                 answer = true;
-             }
+            if (s.equals(value)) {
+                answer = true;
+            }
         }
         return answer;
     }
@@ -64,7 +65,7 @@ public class StringArrayUtils {
     public static String[] reverse(String[] array) {
         String[] reverse = new String[array.length];
         int index = 0;
-        for (int i = array.length-1; i>=0; i--){
+        for (int i = array.length - 1; i >= 0; i--) {
             reverse[index] = array[i];
             index++;
         }
@@ -87,15 +88,15 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         int counter = 0;
-        String[] alphabet = new String[] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q",
-                "r","s","t","u","v","w","x","y","z"};
+        String[] alphabet = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+                "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         for (String s : array) {
-            for (int i = 0; i< s.length(); i++){
+            for (int i = 0; i < s.length(); i++) {
                 String test = Character.toString(s.charAt(i));
-                for (int j = 0; j<= alphabet.length-1; j++) {
+                for (int j = 0; j <= alphabet.length - 1; j++) {
                     if (test.equalsIgnoreCase(alphabet[j])) {
                         counter += 1;
-                        alphabet [j] = "\\";
+                        alphabet[j] = "\\";
                         break;
                     }
                 }
@@ -111,8 +112,8 @@ public class StringArrayUtils {
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
         int counter = 0;
-        for (String s : array){
-            if(s.equals(value)) counter++;
+        for (String s : array) {
+            if (s.equals(value)) counter++;
         }
 
         return counter;
@@ -125,21 +126,23 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
         int count = StringArrayUtils.getNumberOfOccurrences(array, valueToRemove);
-        String [] step1 = new String[array.length];
-        for (int i = 0 ; i < array.length ; i++){
-            if (!array[i].equals(valueToRemove)){
+        String[] step1 = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals(valueToRemove)) {
                 step1[i] = array[i];
             }
         }
-        String [] answer = new String [array.length-count];
+        String[] answer = new String[array.length - count];
         int count2 = 0;
-        for (String s : step1){
-            if (s != null){
+        for (String s : step1) {
+            if (s != null) {
                 answer[count2] = s;
                 count2++;
             }
         }
+        System.out.println(Arrays.toString(answer));
         return answer;
+
 
     }
 
@@ -148,25 +151,18 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        String lastString = "\\";
-        boolean keepChecking = true;
-        int counter = 0;
-        while (keepChecking == true){
-
-            if (array[counter].equals(lastString)){
-
-                array = StringArrayUtils.removeValue(array, lastString);
-                //lastString = array[counter];
-                counter = 0;
-            }
-            lastString = array[counter];
-            counter++;
-            if(counter == array.length-1){
-                keepChecking = false;
+        int count = 0;
+        String prev = "\\";
+        String[] answer = new String[0];
+        for (int i = 0; i <= array.length - 1; i++) {
+            if (!prev.equals(array[i])) {
+                answer = Arrays.copyOf(answer, answer.length + 1);
+                answer[count] = array[i];
+                count++;
+                prev = array[i];
             }
         }
-        System.out.println(Arrays.toString(array));
-        return array;
+        return answer;
     }
 
     /**
@@ -174,8 +170,33 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        int count = 0;
+        String prev = array[0];
+        String[] answer = new String[0];
+        StringBuilder builder = new StringBuilder();
+        builder.append(array[0]);
+        for (int i = 1; i <= array.length -1 ; i++) {
+            if (prev.equals(array[i])) {
+                builder.append(prev);
+                if(i == array.length-1){
+                    answer = Arrays.copyOf(answer, answer.length + 1);
+                    answer[count] = builder.toString();
+                }
+            }
+
+            else{
+                answer = Arrays.copyOf(answer, answer.length + 1);
+                answer[count] = builder.toString();
+                count++;
+                builder.delete(0, builder.length());
+                builder.append(array[i]);
+                if(i == array.length-1){
+                    answer = Arrays.copyOf(answer, answer.length + 1);
+                    answer[count] = builder.toString();
+                }
+            }
+            prev = array[i];
+        }
+        return answer;
     }
-
-
 }
