@@ -112,25 +112,34 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-        String alpha = Arrays.toString(array);
+        String lower = "";
+
+        for(int x = 0; x < array.length; x++) {
+            lower += array[x].toLowerCase();
+        }
+
+        for(char letter = 'a'; letter <= 'z'; letter++) {
+            if(lower.indexOf(letter) < 0) {
+                return false;
+            }
+        } return true;
+
+    }
+
+        /*String alpha = Arrays.toString(array);
 
         for (char i = 'a'; i <= 'z'; i++) {
             for (int x = 0; x <= alpha.length(); x++) {
                 char place = alpha.charAt(x);
                 if (i == place) {
-                    break;
-                } else {
-
-                    return false;
+                    return true;
+                }
                 }
             }
 
-
-            return true;
+            return false;
                 //if (i.equals(alpha.toLowerCase()) {
-            }
-
-
+            }*/
 
 
     /**
@@ -139,7 +148,7 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return null;
+        return 0;
     }
 
     /**
