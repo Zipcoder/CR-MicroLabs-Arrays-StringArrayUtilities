@@ -1,6 +1,6 @@
 package com.zipcodewilmington;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -79,13 +79,15 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
+     */
     public static boolean isPangramic(String[] array) {
-        String[] alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-        for (int i = 0;i<array.length;i++) {
-            alphabet = removeValue(alphabet, array[i]); // this feels like a leak
+        //TODO i want my regex to remove spaces with or without a preceding comma. i feel like ',? ' should work but nope
+        String pile = Arrays.toString(array).replace(", ", "").trim().toLowerCase();
+        for (char letter = 'a'; letter <= 'z'; letter++) { // 97 - 122
+            if (pile.indexOf(letter) < 0) // as soon as a letter isn't found we're done
+                return false;
         }
-        return (alphabet.length == 1);
+        return true;
     }
 
     /**
@@ -117,21 +119,23 @@ public class StringArrayUtils {
 
     /**
      * handoff to removeValue(String[] array, int index)
-     * @param array
-     * @param valueToRemove
-     * @return
+     * @param array array of String objects
+     * @param valueToRemove value to remove from array
+     * @return array with identical contents excluding first occurrence of 'value'
      */
     public static String[] removeValue(String[] array, String valueToRemove) {
         return removeValue(array, getIndexOfValue(array, valueToRemove));
     }
+
     /**
-     * @param array         array of String objects
-     * @param valueToRemove value to remove from array
-     * @return array with identical contents excluding values of `value`
+     * @param array array of String objects
+     * @param index index of the value to remove
+     * @return array with identical contents excluding first occurrence of `value`
      */ // TODO
       public static String[] removeValue(String[] array, int index) {
           String[] result = new String[array.length - 1];
           System.arraycopy(array, 0, result, 0, index); // copy the objects before the removed item
+
           if (index < array.length - 1) // if last/only item, don't need a second copy
               System.arraycopy(array, index + 1, result, index, array.length - index - 1); // copy the objects after the removed index
 
@@ -153,6 +157,4 @@ public class StringArrayUtils {
     public static String[] packConsecutiveDuplicates(String[] array) {
         return null;
     }
-
-
 }
