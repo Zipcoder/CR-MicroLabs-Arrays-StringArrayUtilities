@@ -14,8 +14,8 @@ public class StringArrayUtils {
      */ //
     public static String getFirstElement(String[] array) {
 
-        String firstElement = array[0];
-        return firstElement;
+
+        return array[0];
     }
 
     /**
@@ -69,13 +69,12 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] reverse(String[] array) {
 
-        String[] newArray = new String[array.length];
-            int reference = 0;
-            for (int i = array.length -1; i >= 0; i--) {
-                newArray[reference] = array[i];
-                reference += 1;
-            }
-        return newArray;
+        String[] reversedArray = new String[array.length];
+
+        for (int i = 0; i < (array.length); i++) {
+            reversedArray[array.length - 1 - i] = array[i];
+        }
+        return reversedArray;
     }
 
 
