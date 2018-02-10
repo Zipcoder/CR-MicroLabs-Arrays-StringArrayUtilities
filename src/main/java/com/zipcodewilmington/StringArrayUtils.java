@@ -231,7 +231,8 @@ public class StringArrayUtils {
 
             if (isNextCharSame(currChar, nextChar)) {
                 sameChars.append(currChar);
-            } else {
+            }
+            else {
                 sameChars.append(currChar);
                 arrayList.add(sameChars.toString());
                 sameChars = new StringBuilder();
