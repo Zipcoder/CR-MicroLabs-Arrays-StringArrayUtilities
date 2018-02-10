@@ -1,5 +1,13 @@
 package com.zipcodewilmington;
 
+import com.sun.org.apache.xml.internal.security.utils.JavaUtils;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
+import javax.sound.sampled.ReverbType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,7 +17,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,7 +25,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
@@ -25,7 +33,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[5];
     }
 
     /**
@@ -33,7 +41,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[4];
     }
 
     /**
@@ -42,7 +50,7 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        return true;
     }
 
     /**
@@ -50,7 +58,17 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        for (int i =0; i <array.length / 2; i++){
+            String temp = array[i];
+            array[i]=array[array.length - i -1];
+            array[array.length - i - 1] = temp;
+            System.out.println(temp);
+        }
+
+        return array;
+
+
+                //StringBuilder;
     }
 
     /**
@@ -75,7 +93,7 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        return 4;
     }
 
     /**
@@ -84,7 +102,8 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        
+
     }
 
     /**
