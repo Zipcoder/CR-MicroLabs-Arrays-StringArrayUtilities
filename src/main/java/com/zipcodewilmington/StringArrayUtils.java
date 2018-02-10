@@ -33,7 +33,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getLastElement(String[] array) {
 
-      // you don't need a loop for everything dude. KEEP IT SIMPLE!!!
+        // you don't need a loop for everything dude. KEEP IT SIMPLE!!!
 
 
         return array[array.length - 1];
@@ -55,6 +55,15 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+
+        for (int i = 0; i <= array.length; i++) {
+
+            if (array[i].equals(value)) {
+                return true;
+            }
+
+        }
+
         return false;
     }
 
@@ -63,7 +72,16 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+
+        String[] myString = new String[array.length];
+
+        for (int i = array.length - 1; i >= 0; i--) {
+
+            myString[array.length - 1 - i] = array[i];
+        }
+
+
+        return myString;
     }
 
     /**
