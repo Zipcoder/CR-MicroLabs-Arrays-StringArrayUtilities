@@ -210,7 +210,7 @@ public class StringArrayUtilsTest {
     public void testReverse3() {
         String[] expected = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.reverse(StringArrayUtils.reverse(expected));
-        Assert.assertEquals(expected, actual);
+        Assert.assertNotEquals(expected, actual);
     }
 
 

@@ -1,5 +1,11 @@
 package com.zipcodewilmington;
 
+import com.sun.xml.internal.xsom.impl.scd.Iterators;
+
+import javax.management.openmbean.ArrayType;
+import java.lang.reflect.Array;
+import java.util.*;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,7 +15,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,7 +23,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
@@ -25,7 +31,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length -1];
     }
 
     /**
@@ -33,7 +39,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length -2];
     }
 
     /**
@@ -42,7 +48,7 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        return Arrays.asList(array).contains(value);
     }
 
     /**
@@ -50,15 +56,19 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
-    }
+        List<String> targetList = Arrays.asList(array);
+        Collections.reverse(targetList);
+        String[] stringS = targetList.toArray(new String[targetList.size()]);
+        return stringS;
+        }
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        return reverse(array).equals(array);
+
     }
 
     /**
@@ -66,7 +76,8 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        return isPangramic(array);
+
     }
 
     /**
@@ -75,7 +86,11 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        for(String string : array){
+            map.put(string, map.get(string == null ? 1: map.get(string) + 1));
+        }
+        return map.get(value);
     }
 
     /**
@@ -84,7 +99,10 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        List<String> newString = Arrays.asList(array);
+        newString.remove(valueToRemove);
+
+        return newString.toArray(new String[newString.size()]);
     }
 
     /**
@@ -92,7 +110,21 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String junkFile = " ";
+        String finalString = " ";
+        LinkedList<String> newAL = new LinkedList<String>();
+
+            for(String newSt : array) {
+                if(!newSt.equals(finalString)){
+                    finalString.concat(newSt);
+                    finalString = newSt;
+                    newAL.add(newSt);
+                }else if(newSt.equals(finalString)){
+                    junkFile.concat(newSt);
+                    junkFile = newSt;
+                }
+            }
+        return newAL.toArray(new String[newAL.size()]);
     }
 
     /**
@@ -100,8 +132,15 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+            String previous = "";
+            LinkedList<String> newL = new LinkedList<String>();
+            for (String v: array){
+                newL.add(v.equals( previous )? newL.pollLast() + v : v);
+                previous = v;
+            }
+            return newL.toArray(new String[newL.size()]);
+        }
     }
 
 
-}
+
