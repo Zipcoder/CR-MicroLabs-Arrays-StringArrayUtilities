@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
+
 import java.util.Arrays;
+
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -124,7 +127,19 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+
+        int valueCounter = 0;
+
+        for (String arrayElement : array){
+
+            if (arrayElement.equalsIgnoreCase(value)){
+
+                valueCounter++;
+            }
+
+        }
+
+        return valueCounter;
     }
 
     /**
@@ -133,7 +148,22 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+
+        int removeValue = getNumberOfOccurrences(array, valueToRemove);
+
+        String[] newArray = new String[array.length - removeValue];
+        int counter = 0;
+
+        for (int i = 0; i < array.length; i++){
+
+            if (!array[i].equalsIgnoreCase(valueToRemove)){
+
+                newArray[counter] = array[i];
+                counter++;
+            }
+        }
+
+        return newArray;
     }
 
     /**
@@ -141,7 +171,30 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        int dupCount = 0;
+
+        for (int i = 1; i<array.length; i++){
+
+            if (array[i].equals(array[i-1])){
+                dupCount++;
+            }
+        }
+
+        String [] noDupes = new String[array.length-dupCount];
+        noDupes[0] = array[0];
+        int nonDups = 1;
+
+        for (int i = 1; i < array.length; i++) {
+            if (!array[i].equals(array[i - 1])) {
+              noDupes[nonDups] = array[i];
+              nonDups++;
+
+            }
+
+        }
+
+       return noDupes;
     }
 
     /**
@@ -149,7 +202,24 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+            StringBuilder packedDupes = new StringBuilder();
+
+            packedDupes.append(array[0]);
+
+            for (int i = 1; i < array.length; i++){
+
+                if (!array[i].equals(array[i-1])){
+
+                    packedDupes.append(" ");
+
+                }
+
+                packedDupes.append(array[i]);
+
+            }
+
+        return packedDupes.toString().split(" ");
     }
 
 
