@@ -1,7 +1,8 @@
 package com.zipcodewilmington;
 
 
-
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by leon on 1/29/18.
@@ -159,9 +160,12 @@ public class StringArrayUtils {
                 count++;
             }
 
+        }
 
-        } return count;
+        return count;
+
     }
+
 
     /**
      * @param array         array of String objects
@@ -169,15 +173,44 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+
+            int countTrue = 0;
+            int  countOccurences = getNumberOfOccurrences(array, valueToRemove);
+            String[] arrayWithoutRemoved = new String[array.length - countOccurences];
+
+            for (int p = 0; p < array.length; p++) {
+
+                if (!array[p].equals(valueToRemove)) {
+                    arrayWithoutRemoved[countTrue] = array[p];
+                    countTrue++;
+                }
+            }
+            return arrayWithoutRemoved;
     }
+
+
+
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        StringBuilder cDRemoved = new StringBuilder();
+        cDRemoved.append(array[0] + " ");
+        String newString;
+        for (int i = 1; i < array.length; i++) {
+
+            if (!array[i].equals(array[i - 1])) {
+                cDRemoved.append(array[i] + " ");
+
+            }
+
+        } newString = cDRemoved.toString();
+        String[] newArray = newString.split(" ");
+               return newArray;
+
     }
 
     /**
@@ -185,8 +218,56 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+        StringBuilder packagedString = new StringBuilder();
+        StringBuilder sameChars= new StringBuilder();
+        StringBuilder completelyPackagedStrings = new StringBuilder();
+        ArrayList<String> arrayList = new ArrayList<String>();
+
+        for (int i = 0; i < array.length-1; i++) {
+
+            String currChar = array[i];
+            String nextChar = array[i + 1];
+
+            if (isNextCharSame(currChar, nextChar)) {
+                sameChars.append(currChar);
+            } else {
+                sameChars.append(currChar);
+                arrayList.add(sameChars.toString());
+                sameChars = new StringBuilder();
+
+            }
+        }
+
+        String lastChar = array[array.length-1];
+        String secondLastChar = array[array.length-2];
+
+        if(lastChar.equals(secondLastChar)) {
+            sameChars.append(lastChar);
+            arrayList.add(sameChars.toString());
+        } else {
+            arrayList.add(lastChar);
+        }
+        System.out.println(arrayList);
+
+
+        String[] finalList = new String[ arrayList.size() ];
+
+        for(int i =0; i<arrayList.size(); i++){
+            finalList[i] = arrayList.get(i);
+        }
+
+        return finalList;
     }
+
+    public static boolean isNextCharSame(String currentChar , String nextChar) {
+        if (currentChar.equals(nextChar) ){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 }
