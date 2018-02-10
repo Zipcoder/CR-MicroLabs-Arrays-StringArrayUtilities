@@ -1,6 +1,8 @@
 package com.zipcodewilmington;
 
-import java.util.Arrays;
+//import java.util.Arrays;
+
+import java.util.LinkedList;
 
 /**
  * Created by leon on 1/29/18.
@@ -50,7 +52,20 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return true;
+        //use for each loop
+
+         for (String theWord : array)
+        {
+            if (theWord.equals(value))
+
+            {
+                return true;
+            }
+
+        }
+
+
+        return false;
 
 
 
@@ -279,14 +294,34 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-        /*
-            -We are to take any consecutive duplicates and append them together
-            -
+        // Create an empty string
+        // Create a new LinkList<String> LinklistName
+        // Create a for:each loop
 
-         */
+        //Return Linked List, but you have to convert .toArray(new String[theValues.size()]);
+
+        String currentValue = " ";
+        LinkedList<String> theValues = new LinkedList<String>();
+
+        for (String value: array)
+        {
+
+            //condition goes here
+            theValues.add(value.equals(currentValue) ? theValues.pollLast() + value : value);
+            currentValue = value;
+
+        }
+
+        // return LinkList, but turn it to an array then to an array string
+        return theValues.toArray(new String[theValues.size()]);
 
 
-        return null;
+
+
+
+
+
+
     }
 
 
