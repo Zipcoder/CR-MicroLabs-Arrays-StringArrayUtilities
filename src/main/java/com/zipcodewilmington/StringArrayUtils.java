@@ -248,7 +248,29 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(array[0] + ",");
+
+        for (int i = 1; i < array.length; i++)
+        {
+            if (!array[i].equals(array[i - 1]))
+            {
+                sb.append(array[i] + ",");
+            }
+
+
+        }
+
+        String arrayToString = sb.toString();
+
+        String [] comma = arrayToString.split(",");
+
+        System.out.println(sb);
+
+        return comma;
+
     }
 
     /**
@@ -256,6 +278,14 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+
+        /*
+            -We are to take any consecutive duplicates and append them together
+            -
+
+         */
+
+
         return null;
     }
 
