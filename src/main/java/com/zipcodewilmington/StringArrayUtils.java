@@ -94,7 +94,7 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
-     */ // TODO
+     */
     public static int getNumberOfOccurrences(String[] array, String value) {
         int total = 0;
         for (int i=0;i<array.length;i++) {
@@ -109,7 +109,7 @@ public class StringArrayUtils {
      * @param value value stored at the desired index
      * @return the first index of specified 'value' if it exists in 'array'
      */
-    public static int getIndexOfValue(String[] array, String value) {
+    private static int getIndexOfValue(String[] array, String value) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(value))
                 return i;
@@ -131,8 +131,8 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param index index of the value to remove
      * @return array with identical contents excluding first occurrence of `value`
-     */ // TODO
-      public static String[] removeValue(String[] array, int index) {
+     */
+      private static String[] removeValue(String[] array, int index) {
           String[] result = new String[array.length - 1];
           System.arraycopy(array, 0, result, 0, index); // copy the objects before the removed item
 
@@ -142,18 +142,32 @@ public class StringArrayUtils {
           return result;
       }
 
+      private static String[] batchRemove(String[] array, int start, int offset) {
+          String[] result = new String[0];
+          System.arraycopy(array, 0, result, 0, start);
+          System.arraycopy(array, start + offset, result, start, array.length - 1 - offset);
+          return result;
+      }
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
-     */ // TODO
+     */
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> list = new ArrayList<>();
+        String last = "";
+        for (String s : array) {
+            if (!s.equals(last))
+                list.add(s);
+            last = s;
+        }
+        array = list.toArray(new String[0]);
+        return array;
     }
 
     /**
-     * @param array array of chars
+     * @param array array of char
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
+     */
     public static String[] packConsecutiveDuplicates(String[] array) {
         return null;
     }
