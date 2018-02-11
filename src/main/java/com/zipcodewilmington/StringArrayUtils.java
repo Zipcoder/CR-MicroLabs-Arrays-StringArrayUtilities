@@ -142,12 +142,6 @@ public class StringArrayUtils {
           return result;
       }
 
-      private static String[] batchRemove(String[] array, int start, int offset) {
-          String[] result = new String[0];
-          System.arraycopy(array, 0, result, 0, start);
-          System.arraycopy(array, start + offset, result, start, array.length - 1 - offset);
-          return result;
-      }
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
@@ -165,10 +159,28 @@ public class StringArrayUtils {
     }
 
     /**
+     * What a wonderful way to spend every day, you should thank your lucky stars
      * @param array array of char
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> jars = new ArrayList<>();
+        String last = "";
+        StringBuilder jar = new StringBuilder();
+        for (String pickle : array) {
+            if (pickle.equals(last)) {
+                jar.append(pickle); // pull on the pull'em
+            } else {
+                if (jar.length() > 0) {
+                    jars.add(jar.toString()); // pickles go into the jar
+                    jar.setLength(0);
+                }
+                jar.append(pickle); // push on the push'em
+            }
+            last = pickle;
+        }
+        jars.add(jar.toString()); // no troll left behind
+        array = jars.toArray(new String[0]);
+        return array;
     }
 }
