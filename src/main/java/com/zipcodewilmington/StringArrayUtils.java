@@ -10,8 +10,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        String first = "";
-        return first = array[0];
+        return array[0];
     }
 
     /**
@@ -45,12 +44,14 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
         boolean includes = false;
+
         for(String isIn: array) {
             if(value.equals(isIn)) {
                 includes = true;
                 break;
-                }
+            }
         }
+
         return includes;
     }
 
@@ -60,9 +61,11 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] reverse(String[] array) {
         String[] reverseOrder = new String[array.length];
+
         for(int i = 0; i < array.length; i++) {
             reverseOrder[i] = array[array.length-1-i];
         }
+
         return reverseOrder;
     }
 
@@ -73,11 +76,13 @@ public class StringArrayUtils {
     public static boolean isPalindromic(String[] array) {
         boolean backAndForward = false;
         String[] backwards = new String[array.length];
+
         for(int i = 0; i < array.length; i++) {
             backwards[i] = array[array.length-1-i];
         }
+
         for(int i = 0; i < array.length; i++) {
-            if(backwards[i].equals(array[i]) == true) {
+            if(backwards[i].equals(array[i])) {
                 backAndForward = true;
                 break;
             }
@@ -90,16 +95,19 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+
         StringBuilder alpha = new StringBuilder();
 
         for(int i = 0; i < array.length; i++) {
             alpha.append(array[i]);
         }
+
         for(char ch = 'a'; ch <= 'z'; ch++) {
             if(alpha.toString().toLowerCase().indexOf(ch)<0) {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -109,12 +117,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
+
         int counter = 0;
         for(int i = 0; i < array.length; i++) {
             if(value.equals(array[i])) {
                 counter++;
             }
         }
+
         return counter;
     }
 
@@ -124,21 +134,16 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-       int count = 0;
-       for(int i = 0; i < array.length; i++) {
-           if(array[i].equals(valueToRemove)) {
-               count+=1;
-           }
-       }
-        String[] removed = new String[array.length-count];
-        int j = 0;
-        for(int i = 0; i<array.length; i++) {
+       String rem = "";
+
+       for(int i = 0; i<array.length; i++) {
            if(!array[i].equals(valueToRemove)) {
-            removed[j]= array[i];
-            j++;
+            rem += array[i] + "/";
+            ;
            }
        }
-       return removed;
+
+       return rem.split("/");
     }
 
 
@@ -148,18 +153,19 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
         String removed = "";
+
         for(int i = 1; i<array.length; i++) {
             if (!array[i].equals(array[i - 1])) {
                 removed += array[i - 1] + "/";
             }
         }
+
         if(!array[array.length-1].equals(array[array.length-2])) {
             removed += array[array.length-1];
         } else {
             removed += array[array.length-2];
         }
 
-        System.out.println(removed);
         return removed.split("/");
     }
 
@@ -171,6 +177,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
        String pack = "";
+
        for(int i = 1; i<array.length; i++) {
            if(array[i].equals(array[i-1])) {
                pack += array[i-1];
@@ -179,13 +186,15 @@ public class StringArrayUtils {
                pack += array[i-1] + "/";
            }
        }
+
         if(array[array.length-1].equals(array[array.length-2])) {
             pack += array[array.length-1];
         }
         if(!array[array.length-1].equals(array[array.length-2])) {
             pack += array[array.length-1] + "/";
         }
-       return pack.split("/");
+
+        return pack.split("/");
     }
 
 
