@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -153,7 +154,7 @@ public class StringArrayUtils {
         6. the next line basically swaps the array i for the other & we add to the counter
         7. printing the new results */
        int newSize = array.length - getNumberOfOccurrences(array, valueToRemove);
-       String [] outputArray = new String[newSize];
+       String[] outputArray = new String[newSize];
        int indexNotDuplicates = 0;
 
         for (int i =0; i <array.length; i++){
@@ -170,8 +171,27 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+        //created an arraylist because i dont know the size my ending array will be
+        ArrayList<String> counting = new ArrayList<String>();
+        //this is to collect the first item, the other if statment wasn't printing it.
+        if(array[0].equals(array[1])){
+            counting.add(array[0]);
+        }
 
-        return null;
+        for (int i = 1; i<array.length; i++){
+            /*katrice, remember [i -1] means its equal to index zero, so we are comparing index 1 to index 0 and
+            everytime we go back through the for loop we add indexes and compare those*/
+            if(!array[i].equals(array[i-1])){
+                counting.add(array[i]);
+            }
+        }
+
+        String[] duplicates = new String[counting.size()];
+        duplicates = counting.toArray(duplicates);
+
+        String str = Arrays.toString(duplicates);
+        System.out.println(str);
+        return duplicates;
     }
 
     /**
@@ -180,8 +200,9 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-
         return null;
+
+
     }
 
 
