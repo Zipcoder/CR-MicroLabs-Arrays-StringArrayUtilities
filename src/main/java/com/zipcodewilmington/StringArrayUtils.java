@@ -79,15 +79,15 @@ public class StringArrayUtils {
     public static boolean isPalindromic(String[] array) {
 
         String[] reversePalid = new String[array.length];
-
+        String[] reversedAlready = reverse(array);
         for (int i = 0; i < array.length; i++) {
-            reversePalid[array.length - 1 - i] = array[i];
-            if (reversePalid[i] == array[i]) {
+            if (reversedAlready[i] == array[i]) {
 
                 return true;
             }
         }
         return false;
+
     }
 
     /**
@@ -122,7 +122,7 @@ public class StringArrayUtils {
         int count = 0;
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == value)
+            if (array[i].equalsIgnoreCase(value))
                 count++;
         }
 
@@ -135,16 +135,11 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        int count = 0;
         int indexToRemove = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            if (!array[i].equals(valueToRemove)) {
-                count++;
-            }
-        }
-        String[] removeString = new String[count];
+        int size = array.length - getNumberOfOccurrences(array, valueToRemove);
 
+        String[] removeString = new String[size];
         for (int j = 0; j < array.length; j++) {
             if (!array[j].equals(valueToRemove)) {
                 removeString[indexToRemove] = array[j];
