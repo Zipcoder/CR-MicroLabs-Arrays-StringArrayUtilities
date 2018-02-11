@@ -436,6 +436,14 @@ public class StringArrayUtilsTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testRemoveValue3() {
+        String[] array = {"the", "brown", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] expected = {"the", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] actual = StringArrayUtils.removeValue(array, "brown");
+        Assert.assertEquals(expected, actual);
+    }
+
 
 
 

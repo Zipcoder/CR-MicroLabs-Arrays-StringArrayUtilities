@@ -48,11 +48,7 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
 
-        for (String myString : array) {
-            if (myString.equals(value))
-                return true;
-        }
-        return false;
+        return getNumberOfOccurrences(array, value) > 0;
     }
 
     /**
@@ -62,10 +58,10 @@ public class StringArrayUtils {
     public static String[] reverse(String[] array) {
 
         String[] result = new String[array.length];
-        int count = 0;
+        int resultIndex = 0;
         for (int i = array.length - 1; i >= 0; i--) {
-            result[count] = array[i];
-            count += 1;
+            result[resultIndex] = array[i];
+            resultIndex += 1;
         }
         return result;
     }
@@ -88,7 +84,7 @@ public class StringArrayUtils {
 
         boolean[] switches = new boolean[26];
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0 ; i < array.length; i++) {
             String elementOfArray = array[i];
             elementOfArray = elementOfArray.toUpperCase();
             for (int j = 0; j < elementOfArray.length(); j++) {
@@ -133,14 +129,14 @@ public class StringArrayUtils {
 
         int newArraySize = array.length - getNumberOfOccurrences(array, valueToRemove);
         String[] resultArray = new String[newArraySize];
-        int shift = 0;
+        int newArrayIndex = 0;
 
         for (int i = 0; i < array.length; i++) {
 
             if (array[i].equals(valueToRemove)) {
-                shift++;
+                newArrayIndex++;
             } else {
-                resultArray[i - shift] = array[i];
+                resultArray[i - newArrayIndex] = array[i];
             }
         }
         return resultArray;
