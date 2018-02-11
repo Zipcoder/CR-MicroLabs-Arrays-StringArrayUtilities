@@ -34,18 +34,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -70,15 +58,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
 
 
     @Test
@@ -107,25 +86,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondToLastElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -152,21 +112,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testContains() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -175,6 +120,7 @@ public class StringArrayUtilsTest {
             Assert.assertTrue(outcome);
         }
     }
+
 
 
 

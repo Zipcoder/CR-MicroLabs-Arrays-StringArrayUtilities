@@ -1,39 +1,40 @@
 package com.zipcodewilmington;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 /**
  * Created by leon on 1/29/18.
  */
 public class StringArrayUtils {
-    /**
-     * @param array array of String objects
-     * @return first element of specified array
-     */ // TODO
+
     public static String getFirstElement(String[] array) {
-        return null;
+
+        String first = array[0];
+
+        return first;
     }
 
-    /**
-     * @param array array of String objects
-     * @return second element in specified array
-     */
     public static String getSecondElement(String[] array) {
-        return null;
+
+        String second = array[1];
+
+        return second;
     }
 
-    /**
-     * @param array array of String objects
-     * @return last element in specified array
-     */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+
+        int result = array.length-1;
+        String finalResult = array[result];
+
+        return finalResult;
     }
 
-    /**
-     * @param array array of String objects
-     * @return second to last element in specified array
-     */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+
+        int result = array.length-2;
+        String finalResult = array[result];
+
+        return finalResult;
     }
 
     /**
@@ -42,15 +43,30 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
-    }
 
+        //  boolean check = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                return true;
+            }
+            return false;
+        }
+    }
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+
+        String[] newReverse = new String[array.length];
+
+        for (int i = array.length; i > -1; i--) {
+            for(String : array){
+
+            }
+            }
+
+        return newReverse;
     }
 
     /**
