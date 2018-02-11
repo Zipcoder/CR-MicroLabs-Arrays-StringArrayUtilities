@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -56,6 +57,9 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
 
+        return getNumberOfOccurrences(array, value) > 0;
+
+        /* Keeping as back-up
         boolean answer = false;
 
         for (int i = 0; i < array.length; i++) {
@@ -66,6 +70,7 @@ public class StringArrayUtils {
         }
 
         return answer;
+        */
     }
 
 
@@ -93,6 +98,9 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
 
+        return Arrays.equals(reverse(array), array);
+
+        /* Keeping as back-up
         boolean answer = true;
 
         int headIndex = 0;
@@ -108,6 +116,7 @@ public class StringArrayUtils {
         }
 
         return answer;
+        */
     }
 
 
