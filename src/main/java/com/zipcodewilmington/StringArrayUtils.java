@@ -102,7 +102,22 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        //created a placeholder
+        String letterHolder = " ";
+        //created a for loop to go through the length of the array
+        for(int i =0; i< array.length; i++){
+            //now we are places the indexes from array and placing them into placeholder
+            letterHolder += array[i];
+        }
+        //this loop goes through characters
+        for (char ch = 'a'; ch <= 'z'; ch++){
+            /*this is saying if the lower case letterholder value is less than zero than it cant be
+             apart of the alphabet*/
+            if(letterHolder.toLowerCase().indexOf(ch)<0){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -130,11 +145,24 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        //we create this 'newSize' to hold the size of the array
+        /*1.we create this 'newSize' to hold the size of the array
+        2.now we have to create the array, with the new array size.
+        3.created a placeholder for things that were not duplicates
+        4.looping through the array
+        5. if the array indexes are not equal to valueToRemove
+        6. the next line basically swaps the array i for the other & we add to the counter
+        7. printing the new results */
        int newSize = array.length - getNumberOfOccurrences(array, valueToRemove);
-       //now we have to create the array, with the new array size.
-        String [] outputArray = new String[newSize];
+       String [] outputArray = new String[newSize];
+       int indexNotDuplicates = 0;
 
+        for (int i =0; i <array.length; i++){
+            if(!array[i].equalsIgnoreCase(valueToRemove)){
+                outputArray[indexNotDuplicates] = array[i];
+                indexNotDuplicates++;
+            }
+        }
+        return outputArray;
     }
 
     /**
@@ -142,6 +170,7 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+
         return null;
     }
 
@@ -150,6 +179,8 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+
+
         return null;
     }
 
