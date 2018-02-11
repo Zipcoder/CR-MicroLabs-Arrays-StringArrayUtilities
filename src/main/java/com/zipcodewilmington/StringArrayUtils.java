@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -200,9 +202,28 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-        return null;
+        String holder = "";
+        //if second item is equal to the first item add the first item
 
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(array[i - 1])) {
+                holder += array[i -1];
+                //if not equal, add a space
+            } else if (!array[i].equals(array[i-1])){
+                holder += array[i -1] + " ";
+            }
 
+        }
+        //this accounts for the last item, remember in the problem above it was the opposite
+        if(array[array.length-1].equals(array[array.length-2])){
+            holder += array[array.length-1];
+        } else if (!array[array.length-1].equals(array[array.length-2])){
+            holder += array[array.length-1] + " ";
+        }
+        //printing to check,and splitting and returning.
+        System.out.println(holder);
+        String[] values = holder.split(" ");
+        return values;
     }
 
 
