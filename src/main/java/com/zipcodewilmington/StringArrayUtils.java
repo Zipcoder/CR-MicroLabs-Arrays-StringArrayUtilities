@@ -98,17 +98,19 @@ public class StringArrayUtils {
 
         StringBuilder alpha = new StringBuilder();
 
+        boolean it = true;
+
         for(int i = 0; i < array.length; i++) {
             alpha.append(array[i]);
         }
 
         for(char ch = 'a'; ch <= 'z'; ch++) {
             if(alpha.toString().toLowerCase().indexOf(ch)<0) {
-                return false;
+                it = false;
             }
         }
 
-        return true;
+        return it;
     }
 
     /**
@@ -137,7 +139,7 @@ public class StringArrayUtils {
        String rem = "";
 
        for(int i = 0; i<array.length; i++) {
-           if(!array[i].equals(valueToRemove)) {
+           if(!array[i].equalsIgnoreCase(valueToRemove)) {
             rem += array[i] + "/";
             ;
            }
@@ -176,25 +178,24 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-       String pack = "";
+       StringBuilder pack = new StringBuilder();
 
        for(int i = 1; i<array.length; i++) {
            if(array[i].equals(array[i-1])) {
-               pack += array[i-1];
+               pack.append(array[i-1]);
            }
            if(!array[i].equals(array[i-1])) {
-               pack += array[i-1] + "/";
+               pack.append(array[i-1] + "/");
            }
        }
 
         if(array[array.length-1].equals(array[array.length-2])) {
-            pack += array[array.length-1];
+            pack.append(array[array.length-1]);
         }
         if(!array[array.length-1].equals(array[array.length-2])) {
-            pack += array[array.length-1] + "/";
+            pack.append(array[array.length-1] + "/");
         }
-
-        return pack.split("/");
+        return pack.toString().split("/");
     }
 
 
