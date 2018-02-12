@@ -236,6 +236,7 @@ public class StringArrayUtilsTest {
         String[] array = {"Is this a palindrome?", "This is a palindrome", "Is this a palindrome?"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
+
     }
 
 
@@ -394,6 +395,13 @@ public class StringArrayUtilsTest {
         String[] expected = {"m", "oo", "n", "m", "a", "n"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testRemovePackDuplicates4(){
+        String[] array = {"t", "t", "q"};
+        String[] expected = {"tt", "q"};
+        String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
     }
 
 
