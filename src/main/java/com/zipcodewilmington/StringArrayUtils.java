@@ -136,16 +136,16 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-       String rem = "";
+       StringBuilder rem = new StringBuilder();
 
        for(int i = 0; i<array.length; i++) {
            if(!array[i].equalsIgnoreCase(valueToRemove)) {
-            rem += array[i] + "/";
+            rem.append(array[i]).append("/");
             ;
            }
        }
 
-       return rem.split("/");
+       return rem.toString().split("/");
     }
 
 
@@ -154,21 +154,21 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        String removed = "";
+        StringBuilder removed = new StringBuilder();
 
         for(int i = 1; i<array.length; i++) {
-            if (!array[i].equals(array[i - 1])) {
-                removed += array[i - 1] + "/";
+            if (!array[i].equalsIgnoreCase(array[i - 1])) {
+                removed.append(array[i-1]).append("/");
             }
         }
 
-        if(!array[array.length-1].equals(array[array.length-2])) {
-            removed += array[array.length-1];
+        if(!array[array.length-1].equalsIgnoreCase(array[array.length-2])) {
+            removed.append(array[array.length-1]);
         } else {
-            removed += array[array.length-2];
+            removed.append(array[array.length-2]);
         }
 
-        return removed.split("/");
+        return removed.toString().split("/");
     }
 
 
