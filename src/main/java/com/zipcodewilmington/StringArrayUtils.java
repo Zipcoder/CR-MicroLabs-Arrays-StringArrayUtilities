@@ -81,6 +81,7 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
 
+        /*
         String[] reversedArray = new String[array.length];
 
         for (int i = array.length - 1; i >= 0; i--) {
@@ -92,7 +93,11 @@ public class StringArrayUtils {
         }
 
         return false;
+        */
+
+        return Arrays.equals(reverse(array), array);
     }
+
 
     /**
      * @param array array of String objects
