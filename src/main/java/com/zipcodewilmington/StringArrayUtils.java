@@ -131,9 +131,9 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         StringBuilder stringFromArray = new StringBuilder();
+
             for (int i =0; i < array.length; i++) {
                 stringFromArray.append(array[i]);
-
             }
             for (char ch = 'a';  ch <= 'z'; ch++) {
 
@@ -218,56 +218,42 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-        StringBuilder packagedString = new StringBuilder();
-        StringBuilder sameChars= new StringBuilder();
-        StringBuilder completelyPackagedStrings = new StringBuilder();
-        ArrayList<String> arrayList = new ArrayList<String>();
+    int var =0;
+    StringBuilder consPack = new StringBuilder();
 
-        for (int i = 0; i < array.length-1; i++) {
-
-            String currChar = array[i];
-            String nextChar = array[i + 1];
-
-            if (isNextCharSame(currChar, nextChar)) {
-                sameChars.append(currChar);
+        if (arrayLengthCheck(array)){
+            for (int i = var; i <array.length -1; i++) {
+                var = loopingAppender(array, var, consPack);
             }
-            else {
-                sameChars.append(currChar);
-                arrayList.add(sameChars.toString());
-                sameChars = new StringBuilder();
-
-            }
-        }
-
-        String lastChar = array[array.length-1];
-        String secondLastChar = array[array.length-2];
-
-        if(lastChar.equals(secondLastChar)) {
-            sameChars.append(lastChar);
-            arrayList.add(sameChars.toString());
         } else {
-            arrayList.add(lastChar);
-        }
-        System.out.println(arrayList);
-
-
-        String[] finalList = new String[ arrayList.size() ];
-
-        for(int i =0; i<arrayList.size(); i++){
-            finalList[i] = arrayList.get(i);
-        }
-
-        return finalList;
+         return array;
+        } String[] packedConsecArr = consPack.toString().split(",");
+        return packedConsecArr;
     }
 
-    public static boolean isNextCharSame(String currentChar , String nextChar) {
-        if (currentChar.equals(nextChar) ){
+    private static int loopingAppender(String[] array, int var, StringBuilder consPack) {
+        if(var == array.length -2 && array[var].equals(array[var+1])) {
+            consPack.append(array[var] + array[var + 1]);
+            var++;
+        } else if(var == array.length -2 && !array[var].equals(array[var+1])){
+                consPack.append(array[var] + "," + array[var + 1]);
+                var++;
+        } else if(array[var].equals(array[var+1])) {
+            consPack.append(array[var]);
+            var++;
+        } else {
+            consPack.append(array[var] + ",");
+            var++;
+        }
+        return var;
+    }
+
+    private static boolean arrayLengthCheck(String[] array){
+        if (array.length > 1) {
             return true;
         } else {
             return false;
         }
     }
-
-
 
 }
