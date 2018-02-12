@@ -89,14 +89,39 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+        return true;
+
     }
+
 
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+
+        String littleCase = "";
+
+        for (int i = 0; i < array.length; i++) {
+
+            littleCase = littleCase + array[i].toLowerCase();
+        }
+
+        int totalLetters = 0;
+
+        for (char j = 'a'; j <= 'z'; j++) {
+
+            if (littleCase.indexOf(j) >= 0)
+
+                totalLetters++;
+        }
+
+        if (totalLetters == 26) {
+
+            return true;
+        }
+
         return false;
     }
 
@@ -106,7 +131,22 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+
+        int occurences = 0;
+
+        for (int i = 0; i < array.length; i++) {
+
+            if (array[i].equals(value)) {
+
+                occurences++;
+            }
+
+
+
+        }
+
+        return occurences;
+
     }
 
     /**
@@ -115,7 +155,30 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+
+        int characters = 0;
+        int removals = 0;
+
+        for (int i = 0; i < array.length; i++) {
+
+            if (array[i].equals(valueToRemove)) {
+
+                characters++;
+            }
+
+
+        }
+
+        String[] array2 = new String[array.length - characters];
+
+        for (int j = 0; j < array.length; j++) {
+
+            //stumped here
+
+            }
+
+
+            return null;
     }
 
     /**
