@@ -142,6 +142,8 @@ public class StringArrayUtils {
         return countOccurence;
     }
 
+
+
     /**
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
@@ -187,10 +189,10 @@ public class StringArrayUtils {
                 counting.add(array[i]);
             }
         }
-
+        //turns it into an array
         String[] duplicates = new String[counting.size()];
         duplicates = counting.toArray(duplicates);
-
+        //turns it into a string
         String str = Arrays.toString(duplicates);
         System.out.println(str);
         return duplicates;
