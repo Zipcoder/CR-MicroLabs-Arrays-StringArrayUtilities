@@ -63,12 +63,12 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-           StringBuilder sb =  new StringBuilder();
-              for(String s: array){
-                  sb.append(s + " ");
-              }
-          //      String []  reversedArray =  sb.reverse().toString().trim().split(" ");
-                   for (int i = 0; i < array.length / 2; i++) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : array) {
+            sb.append(s + " ");
+        }
+        //      String []  reversedArray =  sb.reverse().toString().trim().split(" ");
+        for (int i = 0; i < array.length / 2; i++) {
 
             String temp = array[i];
             array[i] = array[array.length - i - 1];
@@ -76,7 +76,7 @@ public class StringArrayUtils {
         }
 
 
-        return  array;
+        return array;
     }
 
     /**
@@ -131,7 +131,7 @@ public class StringArrayUtils {
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
         int count = 0;
-        for (int i = 0; i < array.length -1; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
 
             if (contains(array, value)) {
                 count++;
@@ -171,22 +171,20 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+        String previousValue = array[0];
+        String[] resultArray = new String[1];
+        resultArray[0] = array[0];
+        int indexOfResult = 0;
 
-
-        int prev = 1;
-        int j = 0;
-
-        String[] resultArray = new String[0];
         for (int i = 1; i < array.length; i++) {
-            if (!array[i - prev].equals(array[i] )) {
 
-                // increase the size the array dynamically
-                //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
-                resultArray = Arrays.copyOf(resultArray, j + 1);
+            if (!array[i].equals(previousValue)) {
 
-                resultArray[j] = array[i - prev];
+                resultArray = Arrays.copyOf(resultArray, indexOfResult + 2);
+                indexOfResult++;
 
-                j++;
+                resultArray[indexOfResult] = array[i];
+                previousValue = array[i];
             }
         }
         return resultArray;
@@ -198,22 +196,22 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        String [] temp = new String[1];
-        String[] result = new String[0];
-        int sum =0;
-       // int prev = -1;
-        for (int i = 0; i < array.length  -1; i++) {
-
-            if (array[i].equals(array[i + 1])) {
-               result = Arrays.copyOf(result,sum  +1);
-
-               result[sum] += array[i];
+        String previousValue = array[0];
+        String[] result = new String[1];
+        result[0] = array[0];
+        int indexOfResult = 0;
+        // int prev = -1;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(previousValue)) {
+                result[indexOfResult] += previousValue;
             } else {
-                result = Arrays.copyOf(result, sum + 1);
-                    result [sum] += array[i];
-                    sum++;
-                }
+                previousValue = array[i];
+                result = Arrays.copyOf(result, indexOfResult + 2); // index = size - 1. We want to get size +1,
+                // so we use index+1 to get size, then size+1 to get the new size.
+                indexOfResult++;
+                result[indexOfResult] = array[i];
             }
+        }
 
         return result;
     }
