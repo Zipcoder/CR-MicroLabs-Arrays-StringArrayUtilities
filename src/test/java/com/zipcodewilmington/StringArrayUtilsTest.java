@@ -235,7 +235,7 @@ public class StringArrayUtilsTest {
     public void testIsPalindromic2() {
         String[] array = {"Is this a palindrome?", "This is a palindrome", "Is this a palindrome?"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertTrue(outcome);
+        Assert.assertFalse(outcome);
     }
 
 
@@ -355,7 +355,7 @@ public class StringArrayUtilsTest {
     public void testRemoveConsecutiveDuplicates3() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
-        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "aba", "bbb"};
+        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb", "aba", "bbb"};
         Assert.assertEquals(actual, expected);
     }
 
