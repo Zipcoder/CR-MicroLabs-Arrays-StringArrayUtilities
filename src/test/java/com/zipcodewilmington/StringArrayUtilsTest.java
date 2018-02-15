@@ -2,6 +2,7 @@ package com.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -374,6 +375,7 @@ public class StringArrayUtilsTest {
         String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
         String[] expected = {"aaa", "b", "cc", "aa", "d"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
+        System.out.println(Arrays.toString(actual));
         Assert.assertEquals(expected, actual);
     }
 
@@ -422,8 +424,8 @@ public class StringArrayUtilsTest {
     @Test
     public void testRemoveValue2() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] expected = {"the", "quick", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] actual = StringArrayUtils.removeValue(array, "brown");
+        String[] expected = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy"};
+        String[] actual = StringArrayUtils.removeValue(array, "dog");
         Assert.assertEquals(expected, actual);
     }
 
