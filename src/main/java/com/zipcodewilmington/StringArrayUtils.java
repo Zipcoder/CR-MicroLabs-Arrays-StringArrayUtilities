@@ -125,22 +125,13 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        int count = StringArrayUtils.getNumberOfOccurrences(array, valueToRemove);
-        String[] step1 = new String[array.length];
-        for (int i = 0; i < array.length; i++) {
-            if (!array[i].equals(valueToRemove)) {
-                step1[i] = array[i];
+        String[] answer = new String[0];
+        for(String s : array){
+            if(!s.equals(valueToRemove)){
+                answer = Arrays.copyOf(answer, answer.length+1);
+                answer[answer.length-1] = s;
             }
         }
-        String[] answer = new String[array.length - count];
-        int count2 = 0;
-        for (String s : step1) {
-            if (s != null) {
-                answer[count2] = s;
-                count2++;
-            }
-        }
-        System.out.println(Arrays.toString(answer));
         return answer;
 
 
@@ -151,14 +142,12 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        int count = 0;
         String prev = "\\";
         String[] answer = new String[0];
-        for (int i = 0; i <= array.length - 1; i++) {
+        for (int i = 1; i <= array.length - 1; i++) {
             if (!prev.equals(array[i])) {
                 answer = Arrays.copyOf(answer, answer.length + 1);
-                answer[count] = array[i];
-                count++;
+                answer[answer.length-1] = array[i];
                 prev = array[i];
             }
         }
@@ -170,33 +159,18 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        int count = 0;
-        String prev = array[0];
-        String[] answer = new String[0];
-        StringBuilder builder = new StringBuilder();
-        builder.append(array[0]);
-        for (int i = 1; i <= array.length -1 ; i++) {
-            if (prev.equals(array[i])) {
-                builder.append(prev);
-                if(i == array.length-1){
-                    answer = Arrays.copyOf(answer, answer.length + 1);
-                    answer[count] = builder.toString();
-                }
+        StringBuilder packer = new StringBuilder();
+        for (int i = 0; i < array.length-1; i++){
+            if(array[i] == array[i+1]){
+                packer.append(array[i]);
             }
-
             else{
-                answer = Arrays.copyOf(answer, answer.length + 1);
-                answer[count] = builder.toString();
-                count++;
-                builder.delete(0, builder.length());
-                builder.append(array[i]);
-                if(i == array.length-1){
-                    answer = Arrays.copyOf(answer, answer.length + 1);
-                    answer[count] = builder.toString();
-                }
+                packer.append(array[i]).append(" ");
             }
-            prev = array[i];
         }
-        return answer;
+        packer.append(array[array.length-1]);
+        String answer = packer.toString();
+        String[] realAnswer = answer.split(" ");
+        return realAnswer;
     }
 }
