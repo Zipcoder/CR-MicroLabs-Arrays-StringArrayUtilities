@@ -226,7 +226,7 @@ public class StringArrayUtilsTest {
     public void testIsPalindromic1() {
         String[] array = {"a", "b", "c", "b", "a"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertTrue(outcome);
+        Assert.assertTrue(outcome); 
     }
 
 

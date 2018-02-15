@@ -5,6 +5,7 @@ import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import javax.management.openmbean.ArrayType;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.HashMap;
 
 /**
  * Created by leon on 1/29/18.
@@ -60,6 +61,8 @@ public class StringArrayUtils {
         Collections.reverse(targetList);
         String[] stringS = targetList.toArray(new String[targetList.size()]);
         return stringS;
+
+
         }
 
     /**
@@ -67,7 +70,7 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return reverse(array).equals(array);
+        return Arrays.equals(reverse(array), array);
 
     }
 
@@ -76,9 +79,14 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return isPangramic(array);
+        List<String> alphabet = Arrays.asList("abcdefghijklmnopqrstuvwxyz".split(""));
+        List<String> inputStringAsList = Arrays.asList(array);
+        return inputStringAsList.spliterator().equals(alphabet);
+
+
 
     }
+
 
     /**
      * @param array array of String objects
@@ -86,11 +94,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        int count = 0;
+        List<String> list = new ArrayList<String>();
         for(String string : array){
-            map.put(string, map.get(string == null ? 1: map.get(string) + 1));
+            if(string.equals(value))count++;
         }
-        return map.get(value);
+        return count;
     }
 
     /**
@@ -99,10 +108,11 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        List<String> newString = Arrays.asList(array);
-        newString.remove(valueToRemove);
+        List<String> list = new ArrayList<String>();
+        Collections.addAll(list, array);
+        list.remove(valueToRemove);
+        return list.toArray(new String[list.size()]);
 
-        return newString.toArray(new String[newString.size()]);
     }
 
     /**
