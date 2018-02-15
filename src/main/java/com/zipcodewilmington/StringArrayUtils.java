@@ -1,15 +1,10 @@
 package com.zipcodewilmington;
 
-import org.junit.Assert;
-import org.junit.Test;
-import com.sun.org.apache.xml.internal.security.utils.JavaUtils;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
-
-import javax.sound.sampled.ReverbType;
-import java.util.ArrayList;
+import java.util.*;
+import java.lang.reflect.Array;
+import javax.management.openmbean.ArrayType;
+import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by leon on 1/29/18.
@@ -62,25 +57,40 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        for (int i = 0; i < array.length / 2; i++) {
-            String temp = array[i];
-            array[i] = array[array.length - i - 1];
-            array[array.length - i - 1] = temp;
-            System.out.println(temp);
+        String[] reverseArray = new String[array.length];
+
+        int reverseArrayIndexPosition = 0;
+        for (int i = array.length -1; i >= 0; i--){
+            reverseArray[reverseArrayIndexPosition] = array[i];
+            reverseArrayIndexPosition++;
         }
 
-        return array;
-
-
-        //StringBuilder;
+        return reverseArray;
     }
+
+
+
+
+
+
+
+
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return reverse(array).equals(array);
+        // creating a temp array to reverse array using the .reverse method above.
+        String[] temp = reverse(array);
+        // Taking my array's and turning them into strings and then comparing them.
+        if (Arrays.toString(temp).equals(Arrays.toString(array))){
+            return true;
+        }else {
+            return false;
+        }
+
+
     }
 
 
@@ -92,8 +102,20 @@ public class StringArrayUtils {
          * @param array array of String objects
          * @return true if each letter in the alphabet has been used in the array
          */ // TODO
-        public static boolean isPangramic (String[]array) {
-            return false;
+        public static boolean isPangramic (String[] array) {
+            StringBuilder newString = new StringBuilder();
+            for (int i =0; i <array.length; i++){
+                newString.append(array[i]);
+
+            }
+            String temp = newString.toString().toLowerCase();
+            for (char letter ='a'; letter <='z'; letter++){
+                if (temp.indexOf(letter) < 0){
+                    return false;
+                }
+
+            }
+            return true;
         }
 
         /**
@@ -102,7 +124,14 @@ public class StringArrayUtils {
          * @return number of occurrences the specified `value` has occurred
          */ // TODO
         public static int getNumberOfOccurrences (String[]array, String value){
-            return 4;
+            int counter = 0;
+            for (int i =0; i < array.length;i++){
+                if(array[i].equals(value)){
+                    counter++;
+                }
+
+            }
+            return counter;
         }
 
         /**
