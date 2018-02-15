@@ -1,6 +1,7 @@
 package com.zipcodewilmington;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -44,13 +45,14 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        boolean flick = false;
-        for (String i : array ){
-            if(i.equals(value)){
-                flick = true;
-            }
-        }
-        return flick;
+//        boolean flick = false;
+//        for (String i : array ){
+//            if(i.equals(value)){
+//                flick = true;
+//            }
+//        }
+//        return flick;
+        return getNumberOfOccurrences(array, value) > 0;
     }
 
     /**
@@ -71,14 +73,8 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        String[] revArray = reverse(array);
-        boolean result = true;
-        for (int i = 0; i < array.length; i++) {
-            if (!(array[i].equals(revArray[i]))) {
-                result = false;
-            }
-        }
-        return result;
+        String[] revArray = array;
+        return Arrays.equals(revArray, reverse(array));
     }
 
     /**
