@@ -51,13 +51,8 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
 
-        for (int i = 0; i <= array.length; i++) {
-            String tempString = array[i];
-            if (value.equals(tempString)) {
-                return true;
-            }
-        }
-        return false;
+        return getNumberOfOccurrences(array, value) > 0;
+
     }
 
     /**
@@ -65,6 +60,7 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
+
 
         String[] reversedArray = new String[array.length];
 
@@ -75,25 +71,12 @@ public class StringArrayUtils {
         return reversedArray;
     }
 
+
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-
-        /*
-        String[] reversedArray = new String[array.length];
-
-        for (int i = array.length - 1; i >= 0; i--) {
-            reversedArray[array.length - 1 - i] = array[i];
-        }
-
-        if (Arrays.toString(reversedArray).equals(Arrays.toString(array))) {
-            return true;
-        }
-
-        return false;
-        */
 
         return Arrays.equals(reverse(array), array);
     }
@@ -110,8 +93,6 @@ public class StringArrayUtils {
         for (int i = 0; i < array.length; i++) {
             lower += array[i].toLowerCase();
         }
-
-        //System.out.println(lower);
 
         for (char letter = 'a'; letter <= 'z'; letter++) {
             if (lower.indexOf(letter) < 0) {
@@ -146,16 +127,10 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
 
-        int matchCount = 0;
         int cleanIndex = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(valueToRemove)) {
-                matchCount += 1;
-            }
-        }
+        String[] clean = new String[array.length - getNumberOfOccurrences(array, valueToRemove)];
 
-        String[] clean = new String[array.length - matchCount];
 
         for (int i = 0; i < array.length; i++) {
 
@@ -164,8 +139,6 @@ public class StringArrayUtils {
                 cleanIndex++;
             }
         }
-
-        System.out.println(Arrays.toString(clean));
 
         return clean;
     }

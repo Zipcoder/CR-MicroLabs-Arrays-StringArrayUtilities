@@ -34,18 +34,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -70,15 +58,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
 
 
     @Test
@@ -107,25 +86,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondToLastElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -152,21 +112,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testContains() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -175,17 +120,6 @@ public class StringArrayUtilsTest {
             Assert.assertTrue(outcome);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Test
@@ -199,7 +133,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testReverse2() {
-        String[] array  = {"dog", "lazy", "the", "over", "jumps", "fox", "brown", "quick", "the"};
+        String[] array = {"dog", "lazy", "the", "over", "jumps", "fox", "brown", "quick", "the"};
         String[] expected = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.reverse(array);
         Assert.assertEquals(expected, actual);
@@ -214,21 +148,12 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
     @Test
     public void testIsPalindromic1() {
         String[] array = {"a", "b", "c", "b", "a"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
-
 
 
     @Test
@@ -245,13 +170,6 @@ public class StringArrayUtilsTest {
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertFalse(outcome);
     }
-
-
-
-
-
-
-
 
 
     @Test
@@ -284,17 +202,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetNumberOfOccurrences1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -320,18 +227,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemoveConsecutiveDuplicates1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -339,7 +234,6 @@ public class StringArrayUtilsTest {
         String[] expected = {"aba", "baa", "bab", "bba", "bbb"};
         Assert.assertEquals(actual, expected);
     }
-
 
 
     @Test
@@ -360,15 +254,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemovePackDuplicates1() {
         String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
@@ -387,7 +272,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
     @Test
     public void testRemovePackDuplicates3() {
         String[] array = {"m", "o", "o", "n", "m", "a", "n"};
@@ -395,12 +279,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
 
 
     @Test
@@ -426,16 +304,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.removeValue(array, "brown");
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }
