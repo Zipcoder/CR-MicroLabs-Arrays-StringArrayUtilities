@@ -241,7 +241,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testIsPalindromic3() {
-        String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
+        String[] array = {"Is this a palindrome?", "This is not a palindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertFalse(outcome);
     }

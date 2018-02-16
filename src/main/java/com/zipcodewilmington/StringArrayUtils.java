@@ -70,7 +70,7 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return Arrays.equals(reverse(array), array);
+        return Arrays.equals(array, reverse(array));
 
     }
 
@@ -80,11 +80,14 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         List<String> alphabet = Arrays.asList("abcdefghijklmnopqrstuvwxyz".split(""));
-        List<String> inputStringAsList = Arrays.asList(array);
-        return inputStringAsList.spliterator().equals(alphabet);
-
-
-
+        String stringAsList = Arrays.toString(array);
+        char[] ch = stringAsList.toCharArray();
+        if(array == null || array.length < 26) {
+            return false;
+        }else if(ch.equals(alphabet)) {
+            return true;
+        }
+        return false;
     }
 
 
