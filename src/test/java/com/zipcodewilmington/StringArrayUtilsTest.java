@@ -390,7 +390,7 @@ public class StringArrayUtilsTest {
 
 
 
-    @Test
+   @Test
     public void testRemovePackDuplicates3() {
         String[] array = {"m", "o", "o", "n", "m", "a", "n"};
         String[] expected = {"m", "oo", "n", "m", "a", "n"};

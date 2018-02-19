@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -11,7 +13,7 @@ public class StringArrayUtils {
     public static String getFirstElement(String[] array) {
 
         return array[0];
-    }
+   }
 
     /**
      * @param array array of String objects
@@ -92,13 +94,10 @@ public class StringArrayUtils {
         for (int i = 0; i < array.length; i++) {
             builder.append(array[i]);
         }
-        //String concatStr = builder.toString();
-        System.out.println(builder.toString());
         for (char charCounter ='a'; charCounter <= 'z'; charCounter++) {
             if (builder.toString().toLowerCase().indexOf(charCounter) < 0) {
                 return false;
             }
-
         }
         return true;
     }
@@ -124,27 +123,17 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        int counter =getNumberOfOccurrences(array, valueToRemove);
-        String[] myArray = new String[array.length];
+        String[] resultArray = new String[0];
+        int resultArrayIndex=0;
             for(int i=0;i<array.length;i++){
                     if(!(array[i].equals(valueToRemove)))
                     {
-                        myArray[i]=array[i];
-
-                    }
-            }
-            String[] resultArray = new String[array.length-counter];
-            int resultArrayIndex=0;
-
-            for(int k=0;k<myArray.length;k++){
-
-                    if(myArray[k]!=null){
-                        resultArray[resultArrayIndex]=myArray[k];
+                        resultArray= Arrays.copyOf(resultArray,resultArray.length+1);
+                        resultArray[resultArrayIndex]=array[i];
                         resultArrayIndex++;
                     }
-
-
             }
+
 
         return resultArray;
     }
@@ -154,28 +143,17 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        int counter = 0;
-        String[] consecutiveDuplicatesRemoved = new String[array.length];
-        for(int i=0;i<array.length-1;i++){
-                if(!(array[i].equals(array[i+1]))){
-                    consecutiveDuplicatesRemoved[i]=array[i];
-                }else{
-                    counter++;
-                }
-        }
-        consecutiveDuplicatesRemoved[consecutiveDuplicatesRemoved.length-1]=array[array.length-1];
-        System.out.println(counter);
-        for (String s:consecutiveDuplicatesRemoved) {
-        }
-        String[] nonConsecutiveDuplicates = new String[array.length-counter];
-        int nonConsecutiveDuplicatesIndex =0;
-        for(int k=0;k<consecutiveDuplicatesRemoved.length;k++){
-            if(consecutiveDuplicatesRemoved[k]!=null){
-                nonConsecutiveDuplicates[nonConsecutiveDuplicatesIndex]=consecutiveDuplicatesRemoved[k];
-                nonConsecutiveDuplicatesIndex++;
-            }
 
+        String[] nonConsecutiveDuplicates = new String[0];
+        for(int i=0;i<array.length-1;i++){
+            if(!array[i].equals(array[i+1])){
+                nonConsecutiveDuplicates = Arrays.copyOf(nonConsecutiveDuplicates,nonConsecutiveDuplicates.length+1);
+                nonConsecutiveDuplicates[nonConsecutiveDuplicates.length-1]=array[i];
+            }
         }
+        nonConsecutiveDuplicates = Arrays.copyOf(nonConsecutiveDuplicates,nonConsecutiveDuplicates.length+1);
+        nonConsecutiveDuplicates[nonConsecutiveDuplicates.length-1]=array[array.length-1];
+
         return nonConsecutiveDuplicates;
     }
 
