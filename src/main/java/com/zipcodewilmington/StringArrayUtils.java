@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -32,18 +34,20 @@ public class StringArrayUtils {
         return includes;
     }
 
-    public static String[] reverse(String[] array) {
-        String[] reverseOrder = new String[array.length];
-        for(int i = 0; i < array.length; i++) {
-            reverseOrder[i] = array[array.length-1-i];
+
+    public static String[] reverse(String[] array){
+        for(int i = 0; i<(array.length/2); i++){
+            String holder = array[i];
+            array[i] = array[array.length-1-i];
+            array[array.length-1-i] = holder;
         }
-        return reverseOrder;
+        return array;
     }
 
 
     public static boolean isPalindromic(String[] array) {
         boolean backAndForward = false;
-        for(int i = 0; i < array.length; i++){
+        for(int i = 0; i <= array.length/2; i++){
             if(array[i].equals(array[array.length-1-i])){
                 backAndForward = true;
             }
@@ -77,33 +81,32 @@ public class StringArrayUtils {
 
 
     public static String[] removeValue(String[] array, String valueToRemove) {
-       StringBuilder rem = new StringBuilder();
-
-       for(String item: array) {
-           if(!item.equals(valueToRemove)) {
-            rem.append(item).append("/");
-           }
-       }
-       return rem.toString().split("/");
+        int value = getNumberOfOccurrences(array, valueToRemove);
+        String[] removed = Arrays.copyOf(array, array.length-value);
+        int count = 0;
+        for(String item: array){
+            if(!item.equals(valueToRemove)){
+                removed[count]= item;
+                count++;
+            }
+        }
+        return removed;
     }
 
 
 
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        StringBuilder removed = new StringBuilder();
-
+        String[] removeDup = Arrays.copyOf(array, array.length);
+        int count = 0;
         for(int i = 1; i<array.length; i++) {
-            if (!array[i].equalsIgnoreCase(array[i - 1])) {
-                removed.append(array[i-1]).append("/");
+            if (!array[i - 1].equalsIgnoreCase(array[i])) {
+                removeDup[count] = array[i - 1];
+                count++;
             }
         }
-
-        if(!array[array.length-1].equalsIgnoreCase(array[array.length-2])) {
-            removed.append(array[array.length-1]);
-        } else {
-            removed.append(array[array.length-2]);
-        }
-        return removed.toString().split("/");
+        removeDup[count] = array[array.length-1];
+        count++;
+        return Arrays.copyOf(removeDup,count);
     }
 
 

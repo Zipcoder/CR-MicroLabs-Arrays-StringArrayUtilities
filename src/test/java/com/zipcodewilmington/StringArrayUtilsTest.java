@@ -278,10 +278,10 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testRemoveConsecutiveDuplicates2() {
-        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "bbb"};
+        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba","bbb","bbb", "bbb", "bbb", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb"};
-        Assert.assertArrayEquals(actual, expected);
+        Assert.assertArrayEquals(expected, actual);
     }
 
 
@@ -291,7 +291,7 @@ public class StringArrayUtilsTest {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba","bbb", "aba", "bbb"};
-        Assert.assertArrayEquals(actual, expected);
+        Assert.assertArrayEquals(expected, actual);
     }
 
 
