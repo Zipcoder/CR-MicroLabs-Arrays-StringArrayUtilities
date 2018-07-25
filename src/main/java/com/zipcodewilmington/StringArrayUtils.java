@@ -1,107 +1,172 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
 /**
- * Created by leon on 1/29/18.
+ * @TODO
+ * Implement different methods to exploit and manipulate strings & arrays
  */
 public class StringArrayUtils {
-    /**
-     * @param array array of String objects
-     * @return first element of specified array
-     */ // TODO
+
     public static String getFirstElement(String[] array) {
-        return null;
+//assigning my string "first" to the first index of the array which is always zero
+        return array[0];
     }
 
-    /**
-     * @param array array of String objects
-     * @return second element in specified array
-     */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
-    /**
-     * @param array array of String objects
-     * @return last element in specified array
-     */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        int result = array.length - 1;
+        return array[result];
     }
 
-    /**
-     * @param array array of String objects
-     * @return second to last element in specified array
-     */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        int result = array.length - 2;
+        return array[result];
     }
 
-    /**
-     * @param array array of String objects
-     * @param value value to check array for
-     * @return true if the array contains the specified `value`
-     */ // TODO
     public static boolean contains(String[] array, String value) {
+        for (String strArray : array) {
+            if (strArray.equals(value)) {
+                return true;
+            }
+        }
+
         return false;
     }
 
-    /**
-     * @param array of String objects
-     * @return an array with identical contents in reverse order
-     */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String[] newReverse = new String[array.length];
+        for (int i = 0; i < newReverse.length; i++) {
+            newReverse[i] = array[array.length - 1 - i];
+        }
+
+        return newReverse;
     }
 
-    /**
-     * @param array array of String objects
-     * @return true if the order of the array is the same backwards and forwards
-     */ // TODO
     public static boolean isPalindromic(String[] array) {
+        /*
+          @Palindrome:
+         * Its when a sequence of characters or numbers are the same in reverse order
+         */
+
+        //String builder version
+//        public class StringBuilderDemo {
+//            public static void main(String[] args) {
+//                String palindrome = "He must be dumb since his name is bmud";
+//                StringBuilder sb = new StringBuilder(palindrome);
+//                sb.reverse();  // reverse it
+//                System.out.println(sb);
+        int range = array.length;
+        for (int i = 0; i < array.length; i++) {
+            String beginning = array[i];
+            System.out.println("Here is the beginning: " + beginning);
+            String ending = array[--range];
+            System.out.println("Here is the ending: " + ending);
+            if (range < i) {
+                System.out.println("");
+                return true;
+            }
+
+            if (!(beginning.equals(ending))) {
+                System.out.println("");
+            }
+        }
+
         return false;
     }
 
-    /**
-     * @param array array of String objects
-     * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
     public static boolean isPangramic(String[] array) {
+        StringBuilder upperCase = new StringBuilder();
+        for (String strArray : array) {
+            upperCase.append(strArray.toUpperCase());
+        }
+
+        for(char letter = 'a'; letter <= 'z'; letter++){
+            if(upperCase.toString().indexOf(letter) < 0) {
+                return true;
+            }
+        }
+
         return false;
     }
 
-    /**
-     * @param array array of String objects
-     * @param value value to check array for
-     * @return number of occurrences the specified `value` has occurred
-     */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int valCount = 0;
+        for (String arrayElement : array) {
+            if (arrayElement.equalsIgnoreCase(value)) {
+                valCount++;
+            }
+        }
+
+        return valCount;
     }
 
-    /**
-     * @param array         array of String objects
-     * @param valueToRemove value to remove from array
-     * @return array with identical contents excluding values of `value`
-     */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        int removeValue = getNumberOfOccurrences(array, valueToRemove);
+            String[] valsRemoved = new String[array.length - removeValue];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equalsIgnoreCase(valueToRemove)) {
+                valsRemoved[counter] = array[i];
+                counter++;
+            }
+        }
+
+        return valsRemoved;
     }
 
-    /**
-     * @param array array of chars
-     * @return array of Strings with consecutive duplicates removes
-     */ // TODO
-    public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+    public static String[] removeConsecutiveDuplicates (String[]array) {
+        int indexOne = 0;
+        int dubCount = 0;
+        for (int count = 1; count < array.length; count++) {
+            if (array[indexOne].equalsIgnoreCase(array[count])) {
+                dubCount++;
+            }
+
+            indexOne++;
+        }
+
+        int newCount = 1;
+        String newArray[] = new String[array.length - dubCount];
+        newArray[0] = array[0];
+        indexOne = 0;
+        for (int count = 1; count < array.length; count++) {
+            if (array[indexOne].equalsIgnoreCase(array[count])) {
+                indexOne++;
+                continue;
+            }
+
+            newArray[newCount] = array[count];
+            indexOne++;
+            newCount++;
+        }
+
+        return newArray;
     }
 
-    /**
-     * @param array array of chars
-     * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
-    public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+    public static String[] packConsecutiveDuplicates (String[]array){
+        int dubCount = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(array[i - 1])) {
+                dubCount++;
+            }
+        }
+
+        String[] zeroCopies = new String[array.length - dubCount];
+        zeroCopies[0] = array[0];
+        int originals = 1;
+        for (int i = 1; i < array.length; i++) {
+            if (!array[i].equals(array[i - 1])) {
+                zeroCopies[originals] = array[i];
+                originals++;
+            }
+        }
+
+        return zeroCopies;
     }
-
-
 }
