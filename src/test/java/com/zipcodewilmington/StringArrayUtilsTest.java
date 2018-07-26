@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -241,7 +242,7 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testIsPalindromic3() {
-        String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
+        String[] array = {"Is this a palindrome?", "This is not a palindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertFalse(outcome);
     }
@@ -337,6 +338,7 @@ public class StringArrayUtilsTest {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "bbb"};
+        System.out.println(Arrays.toString(actual));
         Assert.assertEquals(actual, expected);
     }
 
