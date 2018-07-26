@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.*;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -7,9 +9,9 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return first element of specified array
-     */ // TODO
+     */
     public static String getFirstElement(String[] array) {
-        return null;
+        return array[0];
     }
 
     /**
@@ -17,91 +19,168 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
      * @param array array of String objects
      * @return last element in specified array
-     */ // TODO
+     */
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length-1];
     }
 
     /**
      * @param array array of String objects
      * @return second to last element in specified array
-     */ // TODO
+     */
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
      * @param array array of String objects
      * @param value value to check array for
      * @return true if the array contains the specified `value`
-     */ // TODO
-    public static boolean contains(String[] array, String value) {
-        return false;
+     */
+    public static boolean contains(String[] array, String value) { // TODO: maybe good chance to practice lambdas
+        boolean res = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value))
+                res = true;
+        }
+        return res;
     }
 
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
-     */ // TODO
+     */
     public static String[] reverse(String[] array) {
-        return null;
+        String tmp;
+        int n;
+        for (int i=0; i <= Math.floor((array.length - 2)/2); i++) { // only have to move through half the string
+            n = array.length - i - 1; // n tracks the current index's "mirror"
+            tmp = array[i]; // save this String
+            array[i] = array[n]; // copy 'mirror' to this index
+            array[n] = tmp; // write the saved String to the 'mirror's place
+        }
+        return array;
     }
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
-     */ // TODO
+     */
     public static boolean isPalindromic(String[] array) {
-        return false;
+        return array.equals(reverse(array));
     }
 
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
+     */
     public static boolean isPangramic(String[] array) {
-        return false;
+        //TODO i want my regex to remove spaces with or without a preceding comma. i feel like ',? ' should work but nope
+        String pile = Arrays.toString(array).replace(", ", "").trim().toLowerCase();
+        for (char letter = 'a'; letter <= 'z'; letter++) { // 97 - 122
+            if (pile.indexOf(letter) < 0) // as soon as a letter isn't found we're done
+                return false;
+        }
+        return true;
     }
 
     /**
      * @param array array of String objects
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
-     */ // TODO
+     */
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int total = 0;
+        for (int i=0;i<array.length;i++) {
+            if (array[i].equals(value))
+                total++;
+        }
+        return total;
     }
 
     /**
-     * @param array         array of String objects
-     * @param valueToRemove value to remove from array
-     * @return array with identical contents excluding values of `value`
-     */ // TODO
-    public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+     * @param array array of String objects
+     * @param value value stored at the desired index
+     * @return the first index of specified 'value' if it exists in 'array'
+     */
+    private static int getIndexOfValue(String[] array, String value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value))
+                return i;
+        }
+        return -1;
     }
+
+    /**
+     * handoff to removeValue(String[] array, int index)
+     * @param array array of String objects
+     * @param valueToRemove value to remove from array
+     * @return array with identical contents excluding first occurrence of 'value'
+     */
+    public static String[] removeValue(String[] array, String valueToRemove) {
+        return removeValue(array, getIndexOfValue(array, valueToRemove));
+    }
+
+    /**
+     * @param array array of String objects
+     * @param index index of the value to remove
+     * @return array with identical contents excluding first occurrence of `value`
+     */
+      private static String[] removeValue(String[] array, int index) {
+          String[] result = new String[array.length - 1];
+          System.arraycopy(array, 0, result, 0, index); // copy the objects before the removed item
+
+          if (index < array.length - 1) // if last/only item, don't need a second copy
+              System.arraycopy(array, index + 1, result, index, array.length - index - 1); // copy the objects after the removed index
+
+          return result;
+      }
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
-     */ // TODO
+     */
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> list = new ArrayList<>();
+        String last = "";
+        for (String s : array) {
+            if (!s.equals(last))
+                list.add(s);
+            last = s;
+        }
+        array = list.toArray(new String[0]);
+        return array;
     }
 
     /**
-     * @param array array of chars
+     * What a wonderful way to spend every day, you should thank your lucky stars
+     * @param array array of char
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
+     */
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> jars = new ArrayList<>();
+        String last = "";
+        StringBuilder jar = new StringBuilder();
+        for (String pickle : array) {
+            if (pickle.equals(last)) {
+                jar.append(pickle); // pull on the pull'em
+            } else {
+                if (jar.length() > 0) {
+                    jars.add(jar.toString()); // pickles go into the jar
+                    jar.setLength(0);
+                }
+                jar.append(pickle); // push on the push'em
+            }
+            last = pickle;
+        }
+        jars.add(jar.toString()); // no troll left behind
+        array = jars.toArray(new String[0]);
+        return array;
     }
-
-
 }
