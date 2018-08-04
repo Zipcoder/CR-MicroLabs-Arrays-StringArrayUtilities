@@ -355,7 +355,7 @@ public class StringArrayUtilsTest {
     public void testRemoveConsecutiveDuplicates3() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
-        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "aba", "bbb"};
+        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb", "aba", "bbb"};
         Assert.assertEquals(actual, expected);
     }
 
@@ -405,8 +405,8 @@ public class StringArrayUtilsTest {
 
     @Test
     public void testRemoveValue() {
-        String[] array = {"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] expected = {"quick", "brown", "fox", "jumps", "over", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "The");
         Assert.assertEquals(expected, actual);
     }

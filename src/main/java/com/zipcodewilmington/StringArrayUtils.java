@@ -1,5 +1,10 @@
 package com.zipcodewilmington;
 
+import com.sun.tools.javac.util.ArrayUtils;
+
+import java.util.Arrays;
+import java.util.regex.Pattern;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,7 +14,9 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return null;
+
+
+        return array[0];
     }
 
     /**
@@ -17,7 +24,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return null;
+        return array[1];
     }
 
     /**
@@ -25,7 +32,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length - 1];
     }
 
     /**
@@ -33,7 +40,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length - 2];
     }
 
     /**
@@ -42,6 +49,12 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+
+        for (int i = 0; i < array.length; i++) {
+            if (value.equals(array[i])) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,7 +63,20 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (String s : array) {
+            sb.append(s + " ");
+        }
+        //      String []  reversedArray =  sb.reverse().toString().trim().split(" ");
+        for (int i = 0; i < array.length / 2; i++) {
+
+            String temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
+
+
+        return array;
     }
 
     /**
@@ -58,7 +84,15 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        String[] temp = array;
+        reverse(array);
+        for (int i = 0; i < array.length; i++) {
+            // check to see if reverse index is equal to normal array.
+            if (temp[i].equals(array[i]) == false) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -66,7 +100,28 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+
+        StringBuilder giantString = new StringBuilder();
+
+        // convert array to giant string
+        for (String a : array) {
+            giantString.append(a);
+        }
+        String s = giantString.toString();
+        //char[] alphbet = s.toCharArray();
+        s = s.toLowerCase();
+
+        //alphbet.matches("*[a-zA-Z]*");
+        for (char i = 'a'; i < 'z'; i++) {
+
+            if (s.indexOf(i) == -1) {
+                return false;
+            }
+
+        }
+
+
+        return true;
     }
 
     /**
@@ -75,7 +130,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+
+            if (contains(array, value)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -84,7 +146,24 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        String s = valueToRemove.toLowerCase();
+        String value;
+        int j = 0;
+        String[] smallerArray = new String[0];
+        for (int i = 0; i < array.length; i++) {
+            if (!s.equals(array[i])) {
+
+                // increase the size the array dynamically
+                //System.arraycopy(smallerArray, 0, smallerArray, 0, 1);
+                smallerArray = Arrays.copyOf(smallerArray, j + 1);
+                value = array[i];
+                smallerArray[j] = value;
+                //smallerArray [j] = array[i];
+                //System.out.println(smallerArray.toString());
+                j++;
+            }
+        }
+        return smallerArray;
     }
 
     /**
@@ -92,16 +171,49 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String previousValue = array[0];
+        String[] resultArray = new String[1];
+        resultArray[0] = array[0];
+        int indexOfResult = 0;
+
+        for (int i = 1; i < array.length; i++) {
+
+            if (!array[i].equals(previousValue)) {
+
+                resultArray = Arrays.copyOf(resultArray, indexOfResult + 2);
+                indexOfResult++;
+
+                resultArray[indexOfResult] = array[i];
+                previousValue = array[i];
+            }
+        }
+        return resultArray;
     }
+
 
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
-    }
+        String previousValue = array[0];
+        String[] result = new String[1];
+        result[0] = array[0];
+        int indexOfResult = 0;
+        // int prev = -1;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(previousValue)) {
+                result[indexOfResult] += previousValue;
+            } else {
+                previousValue = array[i];
+                result = Arrays.copyOf(result, indexOfResult + 2); // index = size - 1. We want to get size +1,
+                // so we use index+1 to get size, then size+1 to get the new size.
+                indexOfResult++;
+                result[indexOfResult] = array[i];
+            }
+        }
 
+        return result;
+    }
 
 }
