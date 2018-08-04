@@ -1,13 +1,10 @@
 package com.zipcodewilmington;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 /**
  * Created by leon on 1/29/18.
  */
 public class StringArrayUtilsTest {
-
     @Test
     public void testGetFirstElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -15,7 +12,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getFirstElement(array);
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testGetFirstElement2() {
         String[] array = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -23,8 +19,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getFirstElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testGetFirstElement3() {
         String[] array = {"brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -32,20 +26,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getFirstElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -53,7 +33,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondElement(array);
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testGetSecondElement2() {
         String[] array = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -61,8 +40,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testGetSecondElement3() {
         String[] array = {"brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -70,17 +47,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetLastElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -88,7 +54,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testGetLastElement2() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy"};
@@ -96,8 +61,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testGetLastElement3() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over"};
@@ -105,27 +68,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetSecondToLastElement1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -133,7 +75,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondToLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testGetSecondToLastElement2() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "lazy"};
@@ -141,8 +82,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondToLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testGetSecondToLastElement3() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over"};
@@ -150,23 +89,6 @@ public class StringArrayUtilsTest {
         String actual = StringArrayUtils.getSecondToLastElement(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testContains() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -175,19 +97,6 @@ public class StringArrayUtilsTest {
             Assert.assertTrue(outcome);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testReverse1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -195,106 +104,55 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.reverse(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testReverse2() {
-        String[] array  = {"dog", "lazy", "the", "over", "jumps", "fox", "brown", "quick", "the"};
+        String[] array = {"dog", "lazy", "the", "over", "jumps", "fox", "brown", "quick", "the"};
         String[] expected = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.reverse(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testReverse3() {
         String[] expected = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.reverse(StringArrayUtils.reverse(expected));
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testIsPalindromic1() {
         String[] array = {"a", "b", "c", "b", "a"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
-
-
-
     @Test
     public void testIsPalindromic2() {
-        String[] array = {"Is this a palindrome?", "This is a palindrome", "Is this a palindrome?"};
+        String[] array = {"Is this a plaindrome?", "This is a plaindrome", "Is this a palindrome?"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
-
-
     @Test
     public void testIsPalindromic3() {
         String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
-        Assert.assertFalse(outcome);
+        Assert.assertTrue(outcome);
     }
-
-
-
-
-
-
-
-
-
     @Test
     public void testIsPangramic1() {
         String[] array = {"The quick brown", "Fox jumps over", "The lazy dog"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
     }
-
     @Test
     public void testIsPangramic2() {
         String[] array = {"The", "quick", "onyx", "goblin", "jumps", "over", "the", "lazy", "dwarf"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
     }
-
     @Test
     public void testIsPangramic3() {
         String[] array = {"Five quacking", "zephyrs", "jolt my", "wax bed"};
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
     }
-
-
-    @Test
-    public void testIsPangramic4() {
-        String[] array = {"a", "b", "c", "d"};
-        boolean outcome = StringArrayUtils.isPangramic(array);
-        Assert.assertFalse(outcome);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testGetNumberOfOccurrences1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -302,7 +160,6 @@ public class StringArrayUtilsTest {
         int actual = StringArrayUtils.getNumberOfOccurrences(array, "bba");
         Assert.assertEquals(actual, expected);
     }
-
     @Test
     public void testGetNumberOfOccurrences2() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -310,7 +167,6 @@ public class StringArrayUtilsTest {
         int actual = StringArrayUtils.getNumberOfOccurrences(array, "bbb");
         Assert.assertEquals(actual, expected);
     }
-
     @Test
     public void testGetNumberOfOccurrences3() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -318,66 +174,34 @@ public class StringArrayUtilsTest {
         int actual = StringArrayUtils.getNumberOfOccurrences(array, "bba");
         Assert.assertEquals(actual, expected);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemoveConsecutiveDuplicates1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "bbb"};
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
     }
-
-
-
     @Test
     public void testRemoveConsecutiveDuplicates2() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb"};
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testRemoveConsecutiveDuplicates3() {
-        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "aba", "bbb"};
+        String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "aba", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
-        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "aba", "bbb"};
-        Assert.assertEquals(actual, expected);
+        String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba", "bbb", "aba", "bbb"};
+        Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemovePackDuplicates1() {
-        String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
-        String[] expected = {"aaa", "b", "cc", "aa", "d"};
+        String[] array = {"a", "a", "a", "a", "b", "c", "c", "a", "a", "d"};
+        String[] expected = {"aaaa", "b", "cc", "aa", "d"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
-
-
     @Test
     public void testRemovePackDuplicates2() {
         String[] array = {"t", "t", "q", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e"};
@@ -385,9 +209,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
     @Test
     public void testRemovePackDuplicates3() {
         String[] array = {"m", "o", "o", "n", "m", "a", "n"};
@@ -395,22 +216,13 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
     @Test
     public void testRemoveValue() {
-        String[] array = {"The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] expected = {"quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        String[] actual = StringArrayUtils.removeValue(array, "The");
+        String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String[] expected = {"quick", "brown", "fox", "jumps", "over", "lazy", "dog"};
+        String[] actual = StringArrayUtils.removeValue(array, "the");
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testRemoveValue1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -418,7 +230,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.removeValue(array, "quick");
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testRemoveValue2() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -426,16 +237,4 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.removeValue(array, "brown");
         Assert.assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
