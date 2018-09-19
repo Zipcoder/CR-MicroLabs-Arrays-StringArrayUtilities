@@ -1,6 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * Created by leon on 1/29/18.
@@ -27,12 +29,12 @@ public class StringArrayUtils {
     }
 
     public static boolean contains(String[] array, String value) {
-        boolean includes = false;
         for(String isIn: array) {
-            if(value.equals(isIn)) includes = true;
+            if(value.equals(isIn)) return true;
         }
-        return includes;
+        return false;
     }
+
 
 
     public static String[] reverse(String[] array){
@@ -46,28 +48,26 @@ public class StringArrayUtils {
 
 
     public static boolean isPalindromic(String[] array) {
-        boolean backAndForward = false;
         for(int i = 0; i <= array.length/2; i++){
             if(array[i].equals(array[array.length-1-i])){
-                backAndForward = true;
+                return true;
             }
         }
-        return backAndForward;
+        return false;
     }
 
 
     public static boolean isPangramic(String[] array) {
-        StringBuilder alpha = new StringBuilder();
-        boolean it = true;
-        for(String item: array) {
-            alpha.append(item);
+        String id = "";
+        for(String item: array){
+            id += item.toLowerCase();
         }
         for(char ch = 'a'; ch <= 'z'; ch++) {
-            if(alpha.toString().toLowerCase().indexOf(ch)<0) {
-                it = false;
+            if(id.indexOf(ch)<0) {
+                return false;
             }
         }
-        return it;
+        return true;
     }
 
 
@@ -82,7 +82,7 @@ public class StringArrayUtils {
 
     public static String[] removeValue(String[] array, String valueToRemove) {
         int value = getNumberOfOccurrences(array, valueToRemove);
-        String[] removed = Arrays.copyOf(array, array.length-value);
+        String[] removed = new String[array.length-value];
         int count = 0;
         for(String item: array){
             if(!item.equals(valueToRemove)){
@@ -96,7 +96,7 @@ public class StringArrayUtils {
 
 
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        String[] removeDup = Arrays.copyOf(array, array.length);
+        String[] removeDup = new String[array.length];
         int count = 0;
         for(int i = 1; i<array.length; i++) {
             if (!array[i - 1].equalsIgnoreCase(array[i])) {
@@ -112,7 +112,6 @@ public class StringArrayUtils {
 
     public static String[] packConsecutiveDuplicates(String[] array) {
        StringBuilder pack = new StringBuilder();
-
        for(int i = 1; i<array.length; i++) {
            if(array[i].equals(array[i-1])) {
                pack.append(array[i-1]);
@@ -120,13 +119,15 @@ public class StringArrayUtils {
                pack.append(array[i-1] + "/");
            }
        }
-
        if(array[array.length-1].equals(array[array.length-2])) {
             pack.append(array[array.length-1]);
        } else {
             pack.append(array[array.length-1] + "/");
         }
         return pack.toString().split("/");
+
     }
+
+
 
 }

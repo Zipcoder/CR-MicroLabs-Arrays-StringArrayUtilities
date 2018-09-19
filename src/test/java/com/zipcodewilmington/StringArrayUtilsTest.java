@@ -3,6 +3,9 @@ package com.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -113,9 +116,6 @@ public class StringArrayUtilsTest {
 
 
 
-
-
-
     @Test
     public void testContains() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -127,10 +127,6 @@ public class StringArrayUtilsTest {
 
 
 
-
-
-
-
     @Test
     public void testReverse1() {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
@@ -139,7 +135,6 @@ public class StringArrayUtilsTest {
         Assert.assertEquals(expected, actual);
     }
 
-
     @Test
     public void testReverse2() {
         String[] array  = {"dog", "lazy", "the", "over", "jumps", "fox", "brown", "quick", "the"};
@@ -147,7 +142,6 @@ public class StringArrayUtilsTest {
         String[] actual = StringArrayUtils.reverse(array);
         Assert.assertArrayEquals(expected, actual);
     }
-
 
     @Test
     public void testReverse3() {
@@ -158,21 +152,12 @@ public class StringArrayUtilsTest {
 
 
 
-
-
-
-
-
-
-
     @Test
     public void testIsPalindromic1() {
         String[] array = {"a", "b", "c", "b", "a"};
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertTrue(outcome);
     }
-
-
 
     @Test
     public void testIsPalindromic2() {
@@ -187,12 +172,6 @@ public class StringArrayUtilsTest {
         boolean outcome = StringArrayUtils.isPalindromic(array);
         Assert.assertFalse(outcome);
     }
-
-
-
-
-
-
 
 
 
@@ -216,16 +195,6 @@ public class StringArrayUtilsTest {
         boolean outcome = StringArrayUtils.isPangramic(array);
         Assert.assertTrue(outcome);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -255,17 +224,6 @@ public class StringArrayUtilsTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemoveConsecutiveDuplicates1() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
@@ -273,8 +231,6 @@ public class StringArrayUtilsTest {
         String[] expected = {"aba", "baa", "bab", "bba", "bbb"};
         Assert.assertArrayEquals(expected,actual);
     }
-
-
 
     @Test
     public void testRemoveConsecutiveDuplicates2() {
@@ -285,7 +241,6 @@ public class StringArrayUtilsTest {
     }
 
 
-
     @Test
     public void testRemoveConsecutiveDuplicates3() {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "zzz", "bba", "bba", "bba", "bbb", "bbb", "aba", "bbb"};
@@ -293,10 +248,6 @@ public class StringArrayUtilsTest {
         String[] expected = {"aba", "baa", "bab", "bba", "zzz", "bba","bbb", "aba", "bbb"};
         Assert.assertArrayEquals(expected, actual);
     }
-
-
-
-
 
 
 
@@ -348,7 +299,7 @@ public class StringArrayUtilsTest {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"the", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "quick");
-        Assert.assertEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -356,56 +307,10 @@ public class StringArrayUtilsTest {
         String[] array = {"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] expected = {"the", "quick", "fox", "jumps", "over", "the", "lazy", "dog"};
         String[] actual = StringArrayUtils.removeValue(array, "brown");
-        Assert.assertEquals(expected, actual);
+        Assert.assertArrayEquals(expected, actual);
     }
 
 
 
-    @Test
-    public void getFirstElement() {
-    }
 
-    @Test
-    public void getSecondElement() {
-    }
-
-    @Test
-    public void getLastElement() {
-    }
-
-    @Test
-    public void getSecondToLastElement() {
-    }
-
-    @Test
-    public void contains() {
-    }
-
-    @Test
-    public void reverse() {
-    }
-
-    @Test
-    public void isPalindromic() {
-    }
-
-    @Test
-    public void isPangramic() {
-    }
-
-    @Test
-    public void getNumberOfOccurrences() {
-    }
-
-    @Test
-    public void removeValue() {
-    }
-
-    @Test
-    public void removeConsecutiveDuplicates() {
-    }
-
-    @Test
-    public void packConsecutiveDuplicates() {
-    }
 }
