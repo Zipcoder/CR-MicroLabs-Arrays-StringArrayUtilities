@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -116,10 +117,18 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
 
-        String arrayToString = Arrays.toString(array);
-        arrayToString.replace(valueToRemove,"");
-        String[] returnArray = arrayToString.split(" ");
-        return returnArray;
+        ArrayList<String> cleanedArrayList = new ArrayList<String>();
+        for(int i =0; i < array.length; i++){
+            if(array[i]!= valueToRemove){
+                cleanedArrayList.add(array[i]);
+            }
+        }
+        String [] cleanedArray = new String[cleanedArrayList.size()];
+        for(int i = 0; i < cleanedArray.length;i++){
+            cleanedArray[i] = cleanedArrayList.get(i);
+            System.out.println(cleanedArray[i]);
+        }
+      return cleanedArray;
     }
 
     /**
