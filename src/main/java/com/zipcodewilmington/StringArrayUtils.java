@@ -25,7 +25,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length - 1];
     }
 
     /**
@@ -58,6 +58,7 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
+
         return false;
     }
 
