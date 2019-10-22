@@ -42,7 +42,13 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        boolean hasValue = false;
+        for (String word: array) {
+            if (word.equals(value)) {
+                hasValue = true;
+            }
+        }
+        return hasValue;
     }
 
     /**
