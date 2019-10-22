@@ -24,7 +24,9 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @return last element in specified array
      */ // TODO
-    public static String getLastElement(String[] array) { return array[array.length - 1];}
+    public static String getLastElement(String[] array) {
+        return array[array.length - 1];
+    }
 
     /**
      * @param array array of String objects
@@ -42,8 +44,8 @@ public class StringArrayUtils {
     public static boolean contains(String[] array, String value) {
         boolean result = false;
 
-        for(String i : array){
-            if(i == value) {
+        for (String i : array) {
+            if (i == value) {
                 result = true;
                 break;
             }
@@ -58,8 +60,8 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] reverse(String[] array) {
         String[] result = new String[array.length];
-        for (int i = array.length - 1; i >= 0; i--){
-            result[array.length-1-i] = array[i];
+        for (int i = array.length - 1; i >= 0; i--) {
+            result[array.length - 1 - i] = array[i];
         }
         return result;
     }
@@ -69,8 +71,19 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        String[] result = new String[array.length];
+        for (int i = array.length - 1; i >= 0; i--) {
+            result[array.length - 1 - i] = array[i];
+
+        if (array) {
+            return false;
+        }
+        if (result == array) {
+           return false; return true;
+        }
+        return true;
     }
+
 
     /**
      * @param array array of String objects
