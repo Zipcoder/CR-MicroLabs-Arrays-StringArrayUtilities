@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -58,7 +60,13 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null; 
+       String [] reverseArray = new String[array.length];
+       int count =array.length -1;
+       for (int i = 0; i< array.length; i++){
+           reverseArray[count] = array[i];
+           count--;
+       }
+       return reverseArray;
     }
 
     /**
@@ -66,7 +74,14 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        int count = array.length -1;
+        for(int i =0; i < array.length /2;i++){
+            if(array[i] != array[count]){
+            return false;
+            }
+            count--;
+        }
+        return true;
     }
 
     /**
@@ -74,6 +89,8 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+        String arrString = array.toString();
+
         return false;
     }
 
@@ -83,7 +100,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count =0;
+        for(int i =0; i<array.length;i++){
+            if (value.equals(array[i])){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -92,7 +115,11 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+
+        String arrayToString = Arrays.toString(array);
+        arrayToString.replace(valueToRemove,"");
+        String[] returnArray = arrayToString.split(" ");
+        return returnArray;
     }
 
     /**
