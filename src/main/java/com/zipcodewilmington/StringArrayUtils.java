@@ -160,11 +160,6 @@ public class StringArrayUtils {
         }
         String word = acc.toString();
         String[] packed = word.split("-");
-//        for (int i = 0; i < word.length(); i++) {
-//            if (word.charAt(i) == word.charAt(i-1)) {
-//
-//            }
-//        }
         return packed;
     }
 
