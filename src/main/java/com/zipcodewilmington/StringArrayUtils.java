@@ -93,9 +93,25 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        String arrString = array.toString();
+        String inputArrayString = Arrays.toString(array);
+        String correctedInputArrayString = inputArrayString.toUpperCase();
 
+        boolean []letterCheck = new boolean[26];
+        Arrays.fill(letterCheck,false);
+
+        int indexAlph = 0;
+        for(int i =0 ; i < correctedInputArrayString.length(); i++){
+            if ('A' <= correctedInputArrayString.charAt(i) && correctedInputArrayString.charAt(i) <= 'Z') {
+                indexAlph = correctedInputArrayString.charAt(i) - 'A';
+                letterCheck[indexAlph] = true;
+            }
+        }
+        for(int i =0; i < letterCheck.length;i++){
+            if(!letterCheck[i]){
         return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -158,6 +174,7 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+        //Why did I do this?????????
         String newString = Arrays.toString(array);
         String commaRemovedString = Arrays.toString(ArrayUtil.arrayToString(array).split(","));
         String commaSpaceRemovedString = commaRemovedString.replace(" ","");
