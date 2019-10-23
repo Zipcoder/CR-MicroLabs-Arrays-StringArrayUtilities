@@ -103,7 +103,22 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        boolean isPali = true;
+        int counter = array.length-1;
+
+        String [] newArray = new String[array.length];
+
+        // store the reversed array in a new array and compare
+        for (String sValue : array){
+            newArray[counter] = sValue;
+            counter--;
+        }
+
+        for (int i = 0; i < newArray.length; i++){
+            if (newArray[i] != array[i]) isPali = false;
+        }
+        //isPali = array.equals(newArray);
+        return isPali;
     }
 
     /**
