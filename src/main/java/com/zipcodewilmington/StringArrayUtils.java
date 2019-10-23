@@ -39,7 +39,15 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+
+        String response = "";
+
+        if (array != null && array.length > 0){
+            response = String.valueOf(array[array.length - 1]);
+        } else {
+            response = "Not a valid array!";
+        }
+        return response;
     }
 
     /**
@@ -47,7 +55,14 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        String response = "";
+
+        if (array != null && array.length > 1){
+            response = String.valueOf(array[array.length - 2]);
+        } else {
+            response = "Not a valid array!";
+        }
+        return response;
     }
 
     /**
