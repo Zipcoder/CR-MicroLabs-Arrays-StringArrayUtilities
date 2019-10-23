@@ -91,11 +91,8 @@ public class StringArrayUtils {
         String [] newArray = new String[array.length];
         int arrayCounter = 0;
 
-        String arrayValue = "";
-
         for (int i = array.length; i>=1; i--){
             newArray[arrayCounter] = array[i-1];
-            arrayValue = newArray[arrayCounter];
             arrayCounter ++ ;
         }
         return newArray;
@@ -123,7 +120,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int nrOccurances = 0;
+
+        for (String sName : array) {
+            if (sName.equals(value)) nrOccurances++;
+        }
+        return nrOccurances;
     }
 
     /**
