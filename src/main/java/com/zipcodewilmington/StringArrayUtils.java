@@ -9,7 +9,14 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-        return array[0];
+        String response = "";
+
+        if (array != null && array.length > 0){
+            response = String.valueOf(array[0]);
+        } else {
+            response = "Not a valid array!";
+        }
+        return response;
     }
 
     /**
@@ -17,7 +24,14 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return array[1];
+        String response = "";
+
+        if (array != null && array.length > 0){
+            response = String.valueOf(array[1]);
+        } else {
+            response = "Not a valid array!";
+        }
+        return response;
     }
 
     /**
