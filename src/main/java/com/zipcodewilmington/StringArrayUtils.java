@@ -71,7 +71,14 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        boolean answer = false;
+
+        for (String sName : array) {
+            answer = sName.equals(value);
+            if (answer = true) break;
+        }
+
+        return answer;
     }
 
     /**
