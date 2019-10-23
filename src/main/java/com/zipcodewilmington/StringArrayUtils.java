@@ -72,16 +72,18 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
         String[] result = new String[array.length];
+        int length = array.length;
         for (int i = array.length - 1; i >= 0; i--) {
             result[array.length - 1 - i] = array[i];
+            if (length == i) {
+                return true;
+            }
+            else {
+                return false;
+            }
 
-        if (array) {
-            return false;
         }
-        if (result == array) {
-           return false; return true;
-        }
-        return true;
+       return false;
     }
 
 
