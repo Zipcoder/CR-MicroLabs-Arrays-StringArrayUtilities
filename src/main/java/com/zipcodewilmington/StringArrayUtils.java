@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -86,7 +88,17 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String [] newArray = new String[array.length];
+        int arrayCounter = 0;
+
+        String arrayValue = "";
+
+        for (int i = array.length; i>=1; i--){
+            newArray[arrayCounter] = array[i-1];
+            arrayValue = newArray[arrayCounter];
+            arrayCounter ++ ;
+        }
+        return newArray;
     }
 
     /**
