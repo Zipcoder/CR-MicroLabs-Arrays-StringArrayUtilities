@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.deploy.util.ArrayUtil;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -156,9 +158,27 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+        String newString = Arrays.toString(array);
+        String commaRemovedString = Arrays.toString(ArrayUtil.arrayToString(array).split(","));
+        String commaSpaceRemovedString = commaRemovedString.replace(" ","");
+        String newCommaSpaceRemovedString = commaSpaceRemovedString.substring(1,commaSpaceRemovedString.length()-1);
+        StringBuffer sb = new StringBuffer(newCommaSpaceRemovedString);
+        String space = " ";
 
- 
-        return null;
+        for(int i =0; i < sb.length()-1;i++){
+            if (sb.charAt(i) != sb.charAt(i+1)){
+                if(!(sb.charAt(i) == ' ')){
+                    sb.insert(i+1,space);
+                }
+                System.out.println("Current char " +sb.charAt(i));
+                System.out.println(sb.toString());
+                System.out.println("i equals : " +i);
+                System.out.println();
+            }
+        }
+        String returnString = sb.toString();
+        String[] returnArray = returnString.split(" ");
+        return returnArray;
     }
 
 
