@@ -1,6 +1,7 @@
 package com.zipcodewilmington;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -103,8 +104,50 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+
+       /* String alpha = "abcdefghijklmnopqrstuvwxyz";
+
+        String[] alphaArr = alpha.split("");
+        Integer count = 0;
+        for (Integer i = 0; i < alphaArr.length; i++) {
+
+            for (Integer j = 0; j < array.length; j++) {
+                array[j] = array[j].toLowerCase();
+               // System.out.println(Arrays.toString(array));
+                if (array[i == alphaArr[i]) {
+                    alphaArr[i] = "4";
+                }
+            }
+        } for(Integer k = 0; k < alphaArr.length; k++)  {
+            if(alphaArr[k] != "4")  {
+                System.out.println(Arrays.toString(array));
+                return false;
+            }
+        }
+
+
+        return true;
+    }*/
+
+
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
+        String[] alphaArr = alpha.split("");
+        String arrToStr = array.toString().trim();
+        for (Integer i = 0; i < alpha.length(); i++) {
+            for (Integer j = 0; j < arrToStr.length(); j++) {
+                if (arrToStr.charAt(j) == alpha.charAt(i)) {
+                    alpha.replace(alphaArr[i], "5");
+                }
+
+            }
+
+        } for(Integer k = 0; k < alphaArr.length; k++) {
+            if(alphaArr[k] != "5")
+                return false;
+        }
+        return true;
     }
+
 
     /**
      * @param array array of String objects
@@ -129,6 +172,10 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+
+
+
+
         return null;
     }
 
