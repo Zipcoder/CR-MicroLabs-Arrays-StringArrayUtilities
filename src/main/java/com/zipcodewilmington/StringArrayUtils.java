@@ -1,6 +1,7 @@
 package com.zipcodewilmington;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -104,49 +105,57 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-
-       /* String alpha = "abcdefghijklmnopqrstuvwxyz";
-
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
         String[] alphaArr = alpha.split("");
-        Integer count = 0;
-        for (Integer i = 0; i < alphaArr.length; i++) {
+        String arr2Str2 = Arrays.toString(array).toLowerCase();
+        //ArrayList<String> arr2Str = new ArrayList<>();
+        //String arr2Str2 = arr2Str.toString();
 
-            for (Integer j = 0; j < array.length; j++) {
-                array[j] = array[j].toLowerCase();
-               // System.out.println(Arrays.toString(array));
-                if (array[i == alphaArr[i]) {
-                    alphaArr[i] = "4";
+
+        System.out.println(arr2Str2);
+        boolean contains = true;
+        System.out.println("alpha " + Arrays.toString(alphaArr));
+        System.out.println("String " + arr2Str2);
+
+        for(int i = 0; i < alphaArr.length; i++)    {
+          contains =  arr2Str2.contains(alphaArr[i]);
+            System.out.println();
+          if(!contains) {
+              break;
+          }
+        }
+        return contains;
+
+
+
+    }
+
+
+        /*String alpha = "abcdefghijklmnopqrstuvwxyz";    // created sting of alphabet
+        String arrToStr1 = "";
+        for(int i = 0; i < array.length; i++)   {
+            arrToStr1 += array[i];
+
+        } arrToStr1 = arrToStr1.toLowerCase();
+        arrToStr1 = arrToStr1.replace(" ", "");
+
+        for(int i = 0; i < alpha.length(); i++) {
+            for(int j = 0; j < arrToStr1.length(); j++) {
+                if(arrToStr1.charAt(j) == alpha.charAt(i))  {
+                    alpha = alpha.replace(alpha.charAt(i), '4');
+                    }
+
                 }
-            }
-        } for(Integer k = 0; k < alphaArr.length; k++)  {
-            if(alphaArr[k] != "4")  {
-                System.out.println(Arrays.toString(array));
+            }   System.out.println(alpha);
+        for(int i = 0; i < alpha.length(); i++) {
+            if(alpha.charAt(i) != '4')  {
                 return false;
             }
-        }
+        }   return true;
 
-
-        return true;
     }*/
 
 
-        String alpha = "abcdefghijklmnopqrstuvwxyz";
-        String[] alphaArr = alpha.split("");
-        String arrToStr = array.toString().trim();
-        for (Integer i = 0; i < alpha.length(); i++) {
-            for (Integer j = 0; j < arrToStr.length(); j++) {
-                if (arrToStr.charAt(j) == alpha.charAt(i)) {
-                    alpha.replace(alphaArr[i], "5");
-                }
-
-            }
-
-        } for(Integer k = 0; k < alphaArr.length; k++) {
-            if(alphaArr[k] != "5")
-                return false;
-        }
-        return true;
-    }
 
 
     /**
