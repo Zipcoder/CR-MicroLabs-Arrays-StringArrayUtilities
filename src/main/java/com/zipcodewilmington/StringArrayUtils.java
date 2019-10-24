@@ -3,10 +3,7 @@ package com.zipcodewilmington;
 import com.sun.tools.javac.util.ArrayUtils;
 import com.sun.xml.internal.xsom.util.DeferedCollection;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -60,7 +57,7 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        List<String> arrList = Arrays.asList(array);
+        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
         Collections.reverse(arrList);
 
 
@@ -107,9 +104,12 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
 
-        List<String> arrList = Arrays.asList(array);
-
-        return array;
+        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
+        for (int i = 0; i < arrList.size(); i++)
+            if(arrList.get(i).equals(valueToRemove)) {
+                arrList.remove(arrList.get(i));
+            }
+        return arrList.toArray(new String[arrList.size()]);
     }
 
     /**
@@ -117,7 +117,18 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+
+        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
+
+        for (int i = 1; i < arrList.size(); i++) {
+
+            if (arrList.get(i).equals(arrList.get(i-1))) {
+                arrList.remove(arrList.get(i-1));
+            }
+
+        }
+        return arrList.toArray(new String[arrList.size()]);
     }
 
     /**
@@ -125,9 +136,15 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
+
+        /*for (int i = 1; i < arrList.size(); i++){
+            if(arrList.get(i-1).equals(arrList.get(i))){
+                arrList.get(i-1} arrList.get(i); */
         return null;
     }
 
 
 }
+
 
