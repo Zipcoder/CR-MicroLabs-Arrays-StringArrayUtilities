@@ -95,15 +95,20 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        String lower = Arrays.toString(array).toLowerCase();
+        String lower = "";
+        for (String s : array){
+            lower += s.toLowerCase();
+        }
+
         StringBuilder alphabet = new StringBuilder();
         for (char i = 'a'; i <= 'z'; i++){
-            alphabet.append(i);
+                if (!lower.contains(  "" + i )){
+                    return false;
+                }
         }
-        alphabet.toString();
-        String[] answer = alphabet.toString().split("");
+        return true;
 
-        return Arrays.asList(array).containsAll(Arrays.asList(answer));
+
 
     }
 
@@ -113,6 +118,8 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
+
+
         return 0;
     }
 
