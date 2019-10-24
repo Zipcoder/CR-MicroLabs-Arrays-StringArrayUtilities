@@ -1,6 +1,11 @@
 package com.zipcodewilmington;
 
 import com.sun.media.jfxmedia.logging.Logger;
+import com.sun.org.apache.xpath.internal.objects.XString;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/29/18.
@@ -117,7 +122,7 @@ public class StringArrayUtils {
         for (int i = 0; i < newArray.length; i++){
             if (newArray[i] != array[i]) isPali = false;
         }
-        //isPali = array.equals(newArray);
+        // Arrays.toString(newArray).equals(Arrays.toString(array));
         return isPali;
     }
 
@@ -126,7 +131,28 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        int counter = 0;
+        String strPhrase = "";
+        boolean result = true;
+        boolean [] foundValues = new boolean[26];
+
+        // store passed array in a string (lower case)
+        for (String sValue : array){
+            strPhrase += sValue.toLowerCase();
+        }
+
+        // compare with each character between a and z and add to a specific place in array
+        for (int i = 0; i < strPhrase.length(); i++) {
+            if ('a' <= strPhrase.charAt(i) && strPhrase.charAt(i) <= 'z') {
+                foundValues[strPhrase.charAt(i) - 'a'] = true;
+            }
+        }
+
+        // check all values are true (found all letters in expression)
+        for (boolean bValue : foundValues){
+            if (bValue != true) result = false;
+        }
+        return result;
     }
 
     /**
@@ -134,7 +160,7 @@ public class StringArrayUtils {
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
-    public static int getNumberOfOccurrences(String[] array, String value) {
+    public static int getNumberOfOccurrences (String[] array, String value) {
         int nrOccurances = 0;
 
         for (String sName : array) {
@@ -170,3 +196,4 @@ public class StringArrayUtils {
 
 
 }
+
