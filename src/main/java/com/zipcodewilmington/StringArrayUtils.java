@@ -152,7 +152,20 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        ArrayList<String> newArrayList = new ArrayList<String>(); //arraylist
+
+        int count =0;
+        for (String str : array)
+        {
+            if (!str.equals(valueToRemove))
+            {
+                newArrayList.add(str);
+                count += 1;
+            }
+        }
+        String[] newArray =  newArrayList.toArray(new String[newArrayList.size()]); //arraylist to array
+
+        return newArray;
     }
 
     /**
