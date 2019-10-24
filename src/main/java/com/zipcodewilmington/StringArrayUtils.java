@@ -175,7 +175,25 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        ArrayList<String> strValues = new ArrayList<String>(0);
+        String [] result = new String[array.length - 1];
+
+        for (String sValue : array){
+            strValues.add(sValue);
+        }
+
+        for (int i = 0; i < strValues.size(); i++){
+            if (valueToRemove.equals(strValues.get(i))){
+                strValues.remove(i);
+            }
+        }
+
+        for (int i = 0; i < strValues.size(); i++){
+            result[i] = strValues.get(i);
+        }
+
+
+        return result;
     }
 
     /**
