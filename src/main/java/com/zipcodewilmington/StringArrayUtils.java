@@ -1,5 +1,12 @@
 package com.zipcodewilmington;
 
+import javax.print.DocFlavor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -25,7 +32,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length - 1];
     }
 
     /**
@@ -33,7 +40,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length - 2];
     }
 
     /**
@@ -42,6 +49,11 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+        for(String i : array){
+            if (i.equals(value)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,7 +62,15 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        ArrayList<String> s = new ArrayList<>();
+
+        for (int i = array.length -1; i >= 0; i--){
+            s.add(array[i]);
+        }
+        String[] answer = s.toArray(new String[0]);
+
+        return answer;
+
     }
 
     /**
@@ -58,7 +78,16 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        ArrayList<String> t = new ArrayList<>();
+
+        for (int i = array.length -1; i >= 0; i--){
+            t.add(array[i]);
+        }
+        String[] answer = t.toArray(new String[0]);
+
+        return Arrays.equals(array, answer) ;
+
+
     }
 
     /**
@@ -66,7 +95,16 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String lower = Arrays.toString(array).toLowerCase();
+        StringBuilder alphabet = new StringBuilder();
+        for (char i = 'a'; i <= 'z'; i++){
+            alphabet.append(i);
+        }
+        alphabet.toString();
+        String[] answer = alphabet.toString().split("");
+
+        return Arrays.asList(array).containsAll(Arrays.asList(answer));
+
     }
 
     /**
