@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -62,8 +65,19 @@ public class StringArrayUtils {
      * @param array of String objects
      * @return an array with identical contents in reverse order
      */ // TODO
-    public static String[] reverse(String[] array) {
-        return null;
+    public static String[] reverse(String[] array)
+    {
+        int arraylength = array.length;
+        String[] newArray = new String[arraylength];
+
+        int j = 0;
+        for ( int i= arraylength-1 ; i>=0 ; i--)
+        {
+            newArray[j] = array[i];
+        j++;
+        }
+
+        return newArray;
     }
 
     /**
@@ -71,15 +85,50 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+        boolean isPalindrome = true;
+
+        int arraylength = array.length;
+        String[] newArray = new String[arraylength];
+        newArray = reverse(array);
+
+        //int j = 0;
+        for ( int i= 0 ; i< arraylength ; i++)
+        {
+            if (! array[i].equalsIgnoreCase(newArray[i]) )
+            {
+                isPalindrome = false;
+            }
+        }
+
+        return isPalindrome;
+
+
     }
 
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
-    public static boolean isPangramic(String[] array) {
-        return false;
+    public static boolean isPangramic(String[] array)
+    {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        boolean pan = true;
+
+        String arrayString = "";
+        for (String str : array)
+        {
+            arrayString += str ;
+        }
+        arrayString = arrayString.toLowerCase();
+        for ( int i=0 ; i<26 ; i++)
+        {
+                if (!arrayString.contains(Character.toString(alphabet.charAt(i))))
+                {
+                    pan = false;
+                }
+        }
+        return pan;
     }
 
     /**
@@ -87,8 +136,14 @@ public class StringArrayUtils {
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
-    public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+    public static int getNumberOfOccurrences(String[] array, String value)
+    {
+        int count = 0;
+        for (String str : array)
+        {
+            if (str.equalsIgnoreCase(value)) count +=1;
+        }
+        return count;
     }
 
     /**
