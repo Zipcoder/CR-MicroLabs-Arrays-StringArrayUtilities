@@ -2,10 +2,12 @@ package com.zipcodewilmington;
 
 import com.sun.media.jfxmedia.logging.Logger;
 import com.sun.org.apache.xpath.internal.objects.XString;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by leon on 1/29/18.
@@ -201,7 +203,40 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> alistArray = new ArrayList<String>(0);
+        String [] result;
+        String strTemp = "";
+        int [] intToRemove = new int [array.length];
+        Iterator<String> intIterator = alistArray.iterator();
+
+        // add array elements to a list
+        for (String sValue : array){
+            alistArray.add(sValue);
+        }
+
+        // store the indexes of the duplicates
+        for (int i = 0; i < alistArray.size(); i++){
+            strTemp = alistArray.get(i);
+            if (i != alistArray.size() - 1) {
+                for (int x = 0; x < alistArray.size(); x++) {
+                    if (strTemp.equals(alistArray.get(x)) && (x > i && x == i+1)) {
+                        intToRemove[x] = x;
+                    }
+                }
+            }
+        }
+
+       for (int i = intToRemove.length -1; i > 0; i--){
+            if (intToRemove[i] != 0){
+                alistArray.remove(intToRemove[i]);
+            }
+        }
+
+        // add remaining values to the array
+        result = new String[alistArray.size()];
+        result = alistArray.toArray(result);
+
+        return result;
     }
 
     /**
