@@ -164,7 +164,20 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        //String Arr2Str = Arrays.toString(array);
+
+        int count = 0;
+
+        for(int i = 0; i < array.length; i++)   {
+            if(value.contains(array[i]))    {
+                count++;
+            }
+        }
+
+
+
+
+        return count;
     }
 
     /**
