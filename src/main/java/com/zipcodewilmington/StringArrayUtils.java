@@ -211,12 +211,17 @@ public class StringArrayUtils {
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
 String arr2Str = "";
-        for(int i = 0; i < array.length; i++) {
-            arr2Str = arr2Str.concat(array[i]);
-        }
-        System.out.println(arr2Str);
+        String str = "";
 
-        return null;
+        for(int i = 0; i < array.length; i++) {
+            if (str.contains(array[i])) {
+                if (str.contains(array[i + 1]) || (str.contains(array[i - 1]))) {
+                }
+                str = str + array[i] + "4";
+            }
+        }   String arr2[] = str.split("4");
+
+        return arr2;
     }
 
     /**
