@@ -119,8 +119,14 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        
-        return null;
+        String[] result = new String[array.length - 1];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++){
+            if (valueToRemove == array[i])
+                counter++;
+            result += result[counter];
+        }
+        return result;
     }
 
     /**
