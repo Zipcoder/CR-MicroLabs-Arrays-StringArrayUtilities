@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -60,8 +62,9 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] reverse(String[] array) {
         String[] result = new String[array.length];
-        for (int i = array.length - 1; i >= 0; i--) {
-            result[array.length - 1 - i] = array[i];
+        int lastIndex = array.length-1;
+        for (int currentIndex = lastIndex; currentIndex >= 0; currentIndex--) {
+            result[lastIndex - currentIndex] = array[currentIndex];
         }
         return result;
     }
@@ -71,19 +74,9 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        String[] result = new String[array.length];
-        int length = array.length;
-        for (int i = array.length - 1; i >= 0; i--) {
-            result[array.length - 1 - i] = array[i];
-            if (length == i) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        }
-       return false;
+        String stringRepresentationOfArray =  Arrays.toString(array);
+        String stringRepresentationOfReversedArray =  Arrays.toString(reverse(array));
+        return stringRepresentationOfArray.equals(stringRepresentationOfReversedArray);
     }
 
 
@@ -92,8 +85,19 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String result = "";
+        for (String str : array)
+            result += str.toUpperCase();
+        for (int i = 'A'; i <= 'Z'; i++) {
+            for (int j = 0; j < result.length(); j++) {
+                if (i == result.charAt(j)) {
+                    break;
+                } else if (j == result.length() - 1) {
+                    return false;
+                } } }
+            return true;
     }
+
 
     /**
      * @param array array of String objects
@@ -101,7 +105,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(value == array[i])
+                count++;
+        }
+        return count;
     }
 
     /**
@@ -110,6 +119,7 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+        
         return null;
     }
 
