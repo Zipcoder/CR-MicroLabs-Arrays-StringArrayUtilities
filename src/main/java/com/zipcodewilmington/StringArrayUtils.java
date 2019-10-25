@@ -31,7 +31,6 @@ public class StringArrayUtils {
     public static String getLastElement(String[] array) {
 
 
-
         return array[array.length - 1];
     }
 
@@ -52,8 +51,8 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
 
-        for(Integer i = 0; i < array.length; i++)   {
-            if(array[i] == value)   {
+        for (Integer i = 0; i < array.length; i++) {
+            if (array[i] == value) {
                 return true;
             }
         }
@@ -68,15 +67,13 @@ public class StringArrayUtils {
         String[] arr2 = new String[array.length];
         Integer counter = 0;
 
-        for(Integer i = array.length - 1; i >= 0; i--)   {
+        for (Integer i = array.length - 1; i >= 0; i--) {
             arr2[counter] = array[i];
             counter++;
-            }
+        }
         return arr2;
 
-        }
-
-
+    }
 
 
     /**
@@ -87,17 +84,16 @@ public class StringArrayUtils {
         String[] arr2 = new String[array.length];
         Integer counter = 0;
 
-        for(Integer i = array.length - 1; i >= 0; i--) {
+        for (Integer i = array.length - 1; i >= 0; i--) {
             arr2[counter] = array[i];
-            if(arr2[counter] == array[counter]) {
+            if (arr2[counter] == array[counter]) {
                 return true;
             }
             counter++;
         }
 
         return false;
-        }
-
+    }
 
 
     /**
@@ -107,25 +103,21 @@ public class StringArrayUtils {
     public static boolean isPangramic(String[] array) {
         String alpha = "abcdefghijklmnopqrstuvwxyz";
         String[] alphaArr = alpha.split("");
-        String arr2Str2 = String.join(" ",array).toLowerCase();
-
-
-
+        String arr2Str2 = String.join(" ", array).toLowerCase();
 
 
         System.out.println(arr2Str2);
         boolean contains = true;
 
 
-        for(int i = 0; i < alphaArr.length; i++)    {
-          contains =  arr2Str2.contains(alphaArr[i]);
+        for (int i = 0; i < alphaArr.length; i++) {
+            contains = arr2Str2.contains(alphaArr[i]);
             System.out.println();
-          if(!contains) {
-              break;
-          }
+            if (!contains) {
+                break;
+            }
         }
         return contains;
-
 
 
     }
@@ -156,8 +148,6 @@ public class StringArrayUtils {
     }*/
 
 
-
-
     /**
      * @param array array of String objects
      * @param value value to check array for
@@ -168,13 +158,11 @@ public class StringArrayUtils {
 
         int count = 0;
 
-        for(int i = 0; i < array.length; i++)   {
-            if(value.contains(array[i]))    {
+        for (int i = 0; i < array.length; i++) {
+            if (value.contains(array[i])) {
                 count++;
             }
         }
-
-
 
 
         return count;
@@ -188,17 +176,13 @@ public class StringArrayUtils {
     public static String[] removeValue(String[] array, String valueToRemove) {
         String str = "";
 
-        for(int i = 0; i < array.length; i++)   {
-            if(valueToRemove.contains(array[i]))    {
+        for (int i = 0; i < array.length; i++) {
+            if (valueToRemove.contains(array[i])) {
                 str = str + array[i] + "4";
 
             }
         }
         String arr2[] = str.split("4");
-
-
-
-
 
 
         return arr2;
@@ -210,16 +194,17 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
-String arr2Str = "";
+
         String str = "";
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (str.contains(array[i])) {
                 if (str.contains(array[i + 1]) || (str.contains(array[i - 1]))) {
                 }
                 str = str + array[i] + "4";
             }
-        }   String arr2[] = str.split("4");
+        }
+        String arr2[] = str.split("4");
 
         return arr2;
     }
@@ -229,8 +214,28 @@ String arr2Str = "";
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+
+        String str;
+        String str1 = "";
+        //str = String.join("", array);
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] == array[i + 1]) {
+                str1 = str1 + array[i];
+            }   else    {
+
+                str1 = str1 + array[i] + " ";
+
+            }
+        }   str1 = str1 + (array[array.length - 1]);
+       /* if (array.length - 1 == array.length - 2) {
+            str1 = str1 + (array.length - 1);
+        }   else    {
+            str1 = str1 + " " + (array.length - 1);
+        }*/
+
+        String[] arr1 = str1.split(" ");
+
+        return arr1;
+    }
     }
 
-
-}
