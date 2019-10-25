@@ -152,25 +152,39 @@ public class StringArrayUtils {
     }*/
 
     /**
-     * @param holdArray array of chars
+     * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-            String holdArray = "x" + array + "x";
-            String arrayValues = "";
-            for (int i = 0; i <= array.length -3; i++){
-                if(!(array[i].equals(array[i+1]))) {
-                    arrayValues += array[i] + "/";
-                }else if (array[i].equals(array[i + 1]) && !array[i].equals(array[i + 2]))
-                         {
-                    arrayValues += array[i] + array[i] + "/";
-                }else {
-                    arrayValues += array[i] + array[i] + array[i] + "/";
-                }
-
+        int size = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                size++;
             }
-        String[] answer = arrayValues.split("/");
+            else if (array[i].equals(array[i - 1])){
+
+            }else{
+                size++;
+            }
+        }
+        String[] answer = new String[size];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                answer[counter] = array[i];
+                counter++;
+            }
+            else if (array[i] == array[i - 1]){
+
+                ;
+            }else if (array[i] != array[i - 1]){
+                answer[counter] = array[i];
+                counter++;
+            }
+        }
+
         return answer;
+
     }
 
 
@@ -180,7 +194,55 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        int size = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                size++;
+            }
+            else if (array[i].equals(array[i - 1])){
+
+            }else{
+                size++;
+            }
+        }
+        String[] answer = new String[size];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                answer[counter] = array[i];
+                counter++;
+            }
+            else if (array[i] == array[i - 1]){
+
+                ;
+            }else if (array[i] != array[i - 1]){
+                answer[counter] = array[i];
+                counter++;
+            }
+        }
+
+        /*String holdArray = "x" + Arrays.toString(array) + "x";
+        String arrayValues = "";
+        for (int i = 1; i <= array.length -3; i++){
+            if(!(holdArray.charAt(i) == holdArray.charAt(i + 1))) {
+                arrayValues += holdArray.charAt(i) + "/";
+            }else if (holdArray.charAt(i) == holdArray.charAt(i) &&
+                    !(holdArray.charAt(i) == holdArray.charAt(i +2)) && !(holdArray.charAt(i) == (holdArray.charAt(i - 1))))
+            {
+                arrayValues += holdArray.charAt(i) + holdArray.charAt(i) + "/";
+            }else if(holdArray.charAt(i) == holdArray.charAt(i + 1) &&
+                    !(holdArray.charAt(i) == holdArray.charAt(i + 2)) && holdArray.charAt(i) == holdArray.charAt(i - 1)){
+
+                arrayValues += holdArray.charAt(i) + "/";
+            }
+            else {
+                arrayValues += holdArray.charAt(i) + holdArray.charAt(i) + holdArray.charAt(i) + "/";
+            }
+
+        }
+        String[] answer = arrayValues.split("/");
+        return answer;*/
+return null;
     }
 
 
