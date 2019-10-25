@@ -186,14 +186,22 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+        String str = "";
+
+        for(int i = 0; i < array.length; i++)   {
+            if(valueToRemove.contains(array[i]))    {
+                str = str + array[i] + "4";
+
+            }
+        }
+        String arr2[] = str.split("4");
 
 
 
 
 
 
-
-        return null;
+        return arr2;
     }
 
     /**
