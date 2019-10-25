@@ -107,15 +107,15 @@ public class StringArrayUtils {
     public static boolean isPangramic(String[] array) {
         String alpha = "abcdefghijklmnopqrstuvwxyz";
         String[] alphaArr = alpha.split("");
-        String arr2Str2 = Arrays.toString(array).toLowerCase();
-        //ArrayList<String> arr2Str = new ArrayList<>();
-        //String arr2Str2 = arr2Str.toString();
+        String arr2Str2 = String.join(" ",array).toLowerCase();
+
+
+
 
 
         System.out.println(arr2Str2);
         boolean contains = true;
-        System.out.println("alpha " + Arrays.toString(alphaArr));
-        System.out.println("String " + arr2Str2);
+
 
         for(int i = 0; i < alphaArr.length; i++)    {
           contains =  arr2Str2.contains(alphaArr[i]);
@@ -186,6 +186,13 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+
+
+
+
+
+
+
         return null;
     }
 
@@ -195,8 +202,11 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
-
-
+String arr2Str = "";
+        for(int i = 0; i < array.length; i++) {
+            arr2Str = arr2Str.concat(array[i]);
+        }
+        System.out.println(arr2Str);
 
         return null;
     }
