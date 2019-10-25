@@ -140,7 +140,6 @@ public class StringArrayUtils {
     public static String[] removeConsecutiveDuplicates(String[] array) {
         List<String> removeString = new ArrayList<String>();
         removeString.add(array[0]);
-        String[] newArray = new String[array.length - 1];
         for (int i = 1; i < array.length; i++){
             if (array[i] != array[i - 1]) {
                 removeString.add(array[i]);
