@@ -1,11 +1,7 @@
 package com.zipcodewilmington;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by leon on 1/29/18.
@@ -133,17 +129,51 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        
-        return null;
+        String arrayValues = "";
+        for (int i = 0; i <= array.length -1; i++){
+            if(!(array[i].equals(valueToRemove))){
+                arrayValues += array[i] + ",";
+        }
+        }
+        String[] answer = arrayValues.split(",");
+        return answer;
     }
 
+        /*ArrayList<String> stringsArrayList = new ArrayList<>(Arrays.asList(array));
+
+        stringsArrayList.remove(valueToRemove);
+        String[] answer = new String[array.length -1];
+        for (String s : stringsArrayList){
+            answer[s] += (stringsArrayList.indexOf(s));
+        }
+        String[] answer = stringsArrayList.toArray();
+        return answer;
+
+    }*/
+
     /**
-     * @param array array of chars
+     * @param holdArray array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+            String holdArray = "x" + array + "x";
+            String arrayValues = "";
+            for (int i = 0; i <= array.length -3; i++){
+                if(!(array[i].equals(array[i+1]))) {
+                    arrayValues += array[i] + "/";
+                }else if (array[i].equals(array[i + 1]) && !array[i].equals(array[i + 2]))
+                         {
+                    arrayValues += array[i] + array[i] + "/";
+                }else {
+                    arrayValues += array[i] + array[i] + array[i] + "/";
+                }
+
+            }
+        String[] answer = arrayValues.split("/");
+        return answer;
     }
+
+
 
     /**
      * @param array array of chars
@@ -155,3 +185,4 @@ public class StringArrayUtils {
 
 
 }
+
