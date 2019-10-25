@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -25,7 +28,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length - 1];
     }
 
     /**
@@ -33,7 +36,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length - 2];
     }
 
     /**
@@ -42,6 +45,11 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+        for(String i : array){
+            if (i.equals(value)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -50,7 +58,15 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        ArrayList<String> s = new ArrayList<>();
+
+        for (int i = array.length -1; i >= 0; i--){
+            s.add(array[i]);
+        }
+        String[] answer = s.toArray(new String[0]);
+
+        return answer;
+
     }
 
     /**
@@ -58,7 +74,16 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        ArrayList<String> t = new ArrayList<>();
+
+        for (int i = array.length -1; i >= 0; i--){
+            t.add(array[i]);
+        }
+        String[] answer = t.toArray(new String[0]);
+
+        return Arrays.equals(array, answer) ;
+
+
     }
 
     /**
@@ -66,7 +91,21 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String lower = "";
+        for (String s : array){
+            lower += s.toLowerCase();
+        }
+
+        StringBuilder alphabet = new StringBuilder();
+        for (char i = 'a'; i <= 'z'; i++){
+                if (!lower.contains(  "" + i )){
+                    return false;
+                }
+        }
+        return true;
+
+
+
     }
 
     /**
@@ -75,7 +114,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int counter = 0;
+        for (String s : array){
+            if (s == value){
+                counter += 1;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -84,24 +129,122 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        String arrayValues = "";
+        for (int i = 0; i <= array.length -1; i++){
+            if(!(array[i].equals(valueToRemove))){
+                arrayValues += array[i] + ",";
+        }
+        }
+        String[] answer = arrayValues.split(",");
+        return answer;
     }
+
+        /*ArrayList<String> stringsArrayList = new ArrayList<>(Arrays.asList(array));
+
+        stringsArrayList.remove(valueToRemove);
+        String[] answer = new String[array.length -1];
+        for (String s : stringsArrayList){
+            answer[s] += (stringsArrayList.indexOf(s));
+        }
+        String[] answer = stringsArrayList.toArray();
+        return answer;
+
+    }*/
 
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        int size = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                size++;
+            }
+            else if (array[i].equals(array[i - 1])){
+
+            }else{
+                size++;
+            }
+        }
+        String[] answer = new String[size];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                answer[counter] = array[i];
+                counter++;
+            }
+            else if (array[i] == array[i - 1]){
+
+                ;
+            }else if (array[i] != array[i - 1]){
+                answer[counter] = array[i];
+                counter++;
+            }
+        }
+
+        return answer;
+
     }
+
+
 
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        int size = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                size++;
+            }
+            else if (array[i].equals(array[i - 1])){
+
+            }else{
+                size++;
+            }
+        }
+        String[] answer = new String[size];
+        int counter = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i == 0){
+                answer[counter] = array[i];
+                counter++;
+            }
+            else if (array[i] == array[i - 1]){
+
+                ;
+            }else if (array[i] != array[i - 1]){
+                answer[counter] = array[i];
+                counter++;
+            }
+        }
+
+        /*String holdArray = "x" + Arrays.toString(array) + "x";
+        String arrayValues = "";
+        for (int i = 1; i <= array.length -3; i++){
+            if(!(holdArray.charAt(i) == holdArray.charAt(i + 1))) {
+                arrayValues += holdArray.charAt(i) + "/";
+            }else if (holdArray.charAt(i) == holdArray.charAt(i) &&
+                    !(holdArray.charAt(i) == holdArray.charAt(i +2)) && !(holdArray.charAt(i) == (holdArray.charAt(i - 1))))
+            {
+                arrayValues += holdArray.charAt(i) + holdArray.charAt(i) + "/";
+            }else if(holdArray.charAt(i) == holdArray.charAt(i + 1) &&
+                    !(holdArray.charAt(i) == holdArray.charAt(i + 2)) && holdArray.charAt(i) == holdArray.charAt(i - 1)){
+
+                arrayValues += holdArray.charAt(i) + "/";
+            }
+            else {
+                arrayValues += holdArray.charAt(i) + holdArray.charAt(i) + holdArray.charAt(i) + "/";
+            }
+
+        }
+        String[] answer = arrayValues.split("/");
+        return answer;*/
+return null;
     }
 
 
 }
+
