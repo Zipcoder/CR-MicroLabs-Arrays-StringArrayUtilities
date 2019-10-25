@@ -244,7 +244,36 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> slistArray = new ArrayList<String>(0);
+        String [] result;
+        String sTemp = "";
+        int counter = 0;
+        int i = 0;
+        boolean bTrigger = false;
+
+        while (i < array.length){
+            if (i != (array.length - 1) && array[i].equals(array[i+1])){
+                sTemp += array[i];
+                counter ++;
+                bTrigger = true;
+            } else if (counter !=0){
+                if (bTrigger && counter >= 1){
+                    sTemp += array[i-1];
+                }
+                slistArray.add(sTemp);
+                sTemp = "";
+                counter = 0;
+                bTrigger = false;
+            } else {
+                slistArray.add(array[i]);
+            }
+            i++;
+        }
+
+        result = new String[slistArray.size()];
+        result = slistArray.toArray(result);
+
+        return result;
     }
 
 
