@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -25,7 +27,9 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+    String lastElement = array[array.length-1];
+
+        return lastElement;
     }
 
     /**
@@ -33,7 +37,9 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        String secondLastElement = array[array.length-2];
+
+        return secondLastElement;
     }
 
     /**
@@ -42,6 +48,12 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+        for(int x = 0; x < array.length; x++){
+            if(array[x] == value){
+            return true;
+            }
+        }
+
         return false;
     }
 
@@ -50,7 +62,12 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String[] array2 = new String [array.length];
+
+        for (int i = array.length-1; i>=0; i--){
+            array2[array.length-1-i] = array[i];
+        }
+        return array2;
     }
 
     /**
@@ -58,7 +75,17 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        int i1 = 0;
+        int i2 = array.length - 1;
+        while (i1 > i2) {
+            if (array[i1] != array[i2]) {
+                return false;
+            }
+            ++i1;
+            --i2;
+        }
+            return true;
+
     }
 
     /**
