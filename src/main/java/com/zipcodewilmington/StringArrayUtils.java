@@ -128,12 +128,17 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
         ArrayList<String> arrayListed = new ArrayList<String>(Arrays.asList(array));
+        //System.out.println(array);
+        //System.out.println(arrayListed);
         for (int i = 0; i < arrayListed.size()-1; i++) {
             if (arrayListed.get(i) == arrayListed.get(i + 1)) {
                 arrayListed.remove(i + 1);
+                i--;
             }
         }
+       // System.out.println(arrayListed);
         String[] ans = arrayListed.toArray(new String[0]);
+        //System.out.println(ans);
         return ans;
     }
 
@@ -142,14 +147,15 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        ArrayList<String> arrayListed = new ArrayList<String>(Arrays.asList(array));
-        for (int i = 0; i < arrayListed.size()-1; i++) {
-            if (arrayListed.get(i) == arrayListed.get(i + 1)) {
-                arrayListed.set(i, arrayListed.get(i)+arrayListed.get(i+1));
-                arrayListed.remove(i + 1);
+        String joinerLucas = array[0];
+        for (int i = 1; i < array.length; i++){
+            if (array[i]==array[i-1]){
+                joinerLucas += array[i];
+            } else {
+                joinerLucas = joinerLucas + "%%%" + array[i];
             }
         }
-        String[] ans = arrayListed.toArray(new String[0]);
+        String[] ans = joinerLucas.split("%%%");
         return ans;
     }
 
