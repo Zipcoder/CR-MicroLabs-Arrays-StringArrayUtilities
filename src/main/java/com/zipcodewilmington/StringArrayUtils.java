@@ -48,9 +48,17 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
+        boolean hasString = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                hasString = true;
 
-        return false;
+            }
+
+        }
+        return hasString;
     }
+
 
     /**
      * @param array of String objects
@@ -70,7 +78,14 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        boolean isPal = true;
+        for (int i = 0; i < array.length / 2; i++) {
+            if (array[i] == array[array.length - (i + 1)]) {
+            } else {
+                isPal = false;
+            }
+        }
+        return isPal;
     }
 
     /**
@@ -78,8 +93,29 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
-    }
+        String str = Arrays.toString(array);
+        boolean[] alphabetList = new boolean[26];
+
+
+        int index = 0;
+        int verifier = 1;
+        String str2 = str.toUpperCase();
+        for (int i = 0; i < str2.length(); i++) {
+            if (str2.charAt(i) >= 'A' && str2.charAt(i) <= 'Z') {
+                index = str2.charAt(i) - 'A';
+            }
+            alphabetList[index] = true;
+        }
+        for (int i = 0; i <= 25; i++) {
+            if (alphabetList[i] == false) {
+                verifier = 0;}
+            }
+            return verifier == 1;
+        }
+
+
+
+
 
     /**
      * @param array array of String objects
@@ -96,7 +132,6 @@ public class StringArrayUtils {
     }
 
 
-
     /**
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
@@ -106,7 +141,7 @@ public class StringArrayUtils {
 
         ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
         for (int i = 0; i < arrList.size(); i++)
-            if(arrList.get(i).equals(valueToRemove)) {
+            if (arrList.get(i).equals(valueToRemove)) {
                 arrList.remove(arrList.get(i));
             }
         return arrList.toArray(new String[arrList.size()]);
@@ -119,15 +154,13 @@ public class StringArrayUtils {
     public static String[] removeConsecutiveDuplicates(String[] array) {
 
 
-        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
+        ArrayList<String> arrList = new ArrayList<String>();
+        arrList.add(array[0]);
 
-        for (int i = 1; i < arrList.size(); i++) {
-
-            if (arrList.get(i).equals(arrList.get(i-1))) {
-                arrList.remove(arrList.get(i-1));
+        for (int i = 1; i < array.length; i++)
+            if (array[i] != array[i-1]) {
+                arrList.add(array[i]);
             }
-
-        }
         return arrList.toArray(new String[arrList.size()]);
     }
 
@@ -136,15 +169,21 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        ArrayList<String> arrList = new ArrayList<String>(Arrays.asList(array));
+        String catt = "";
+        String temp = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (temp == array[i]) {
+                catt += array[i];
+            } else {
+                temp = array[i];
+                catt += " " + temp;
+            }
+        }
+        String[] arr = catt.split(" ");
 
-        /*for (int i = 1; i < arrList.size(); i++){
-            if(arrList.get(i-1).equals(arrList.get(i))){
-                arrList.get(i-1} arrList.get(i); */
-        return null;
+        return arr;
+
     }
-
-
 }
 
 
