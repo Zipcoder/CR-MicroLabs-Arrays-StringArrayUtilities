@@ -63,7 +63,12 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String[] reverseArray = new String[array.length];
+        int j = array.length;
+        for (int i = 0; i < array.length; i++) {
+            reverseArray[j - 1] = array[i];
+            j = j - 1;
+        } return reverseArray;
     }
 
     /**
