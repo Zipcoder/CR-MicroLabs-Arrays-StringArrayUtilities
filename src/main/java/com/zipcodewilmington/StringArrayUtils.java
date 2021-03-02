@@ -1,5 +1,12 @@
 package com.zipcodewilmington;
 
+import jdk.nashorn.internal.ir.BlockLexicalContext;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -7,7 +14,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return first element of specified array
-     */ // TODO
+     */ // WORKING
     public static String getFirstElement(String[] array) {
         return array[0];
     }
@@ -15,7 +22,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return second element in specified array
-     */
+     */ //WORKING
     public static String getSecondElement(String[] array) {
         return array[1];
     }
@@ -23,17 +30,20 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return last element in specified array
-     */ // TODO
+     */
+    //WORKING
     public static String getLastElement(String[] array) {
-        return null;
+        return array[array.length - 1];
     }
 
     /**
      * @param array array of String objects
      * @return second to last element in specified array
-     */ // TODO
+     */
+    //WORKING
     public static String getSecondToLastElement(String[] array) {
-        return null;
+
+        return array[array.length - 2];
     }
 
     /**
@@ -48,9 +58,12 @@ public class StringArrayUtils {
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
-     */ // TODO
+     */ // WORKING
     public static String[] reverse(String[] array) {
-        return null;
+        List<String> list = Arrays.asList(array);
+        Collections.reverse(list);
+        String[] revArr = list.toArray(array);
+        return  revArr;
     }
 
     /**
