@@ -2,10 +2,7 @@ package com.zipcodewilmington;
 
 import jdk.nashorn.internal.ir.BlockLexicalContext;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -94,18 +91,35 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
-     */ // TODO
+     */ // WORKING
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int numOfTimes = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equalsIgnoreCase(value)) {
+                numOfTimes++;
+            }
+        }
+        return numOfTimes;
     }
 
     /**
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
      * @return array with identical contents excluding values of `value`
-     */ // TODO
+     */ // WORKING
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        ArrayList<String> output = new ArrayList<String>();
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(valueToRemove)) {
+                continue;
+            } else {
+                output.add(array[i]);
+                counter++;
+            }
+        }
+        String[] outArr = output.toArray(new String[counter]);
+        return outArr;
     }
 
     /**
