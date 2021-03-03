@@ -52,10 +52,7 @@ public class StringArrayUtils {
             if (array[i].equals(value)) {
                 result = true;
             }
-        }
-
-
-        return result;
+        }   return result;
     }
 
     /**
@@ -94,7 +91,23 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        boolean tester = false;
+        String arrayToString = "";
+        for (int j= 0; j < array.length; j++) {
+            arrayToString = arrayToString.concat(array[j]);
+        }
+        arrayToString = arrayToString.toLowerCase();
+           for(char letters = 'a';letters <= 'z'; letters++) {
+                for (int i = 0; i < arrayToString.length(); i ++ ){
+                    if (letters == arrayToString.charAt(i)) {
+                        tester = true;
+                    }
+                }
+                if (tester == false) {
+                    return tester;
+                } tester = false;
+            }
+            return true;
     }
 
     /**
