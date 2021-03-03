@@ -49,9 +49,17 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return true if the array contains the specified `value`
-     */ // TODO
+     */ // WORKING
     public static boolean contains(String[] array, String value) {
-        return false;
+        boolean presentOrNot = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                return true;
+            } else {
+                presentOrNot = false;
+            }
+        }
+        return presentOrNot;
     }
 
     /**
