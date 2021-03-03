@@ -1,7 +1,9 @@
 package com.zipcodewilmington;
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import jdk.nashorn.internal.ir.BlockLexicalContext;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -125,9 +127,17 @@ public class StringArrayUtils {
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
-     */ // TODO
+     */ // WORKING
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> strList = new ArrayList<String>();
+        strList.add(array[0]);
+        for (int i = 1; i < array.length; i++) {
+            if (!array[i - 1].equals(array[i])) {
+                strList.add(array[i]);
+            }
+        }
+        String[] outStrArr = strList.toArray(new String[0]);
+        return  outStrArr;
     }
 
     /**
