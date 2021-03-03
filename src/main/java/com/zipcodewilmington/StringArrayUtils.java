@@ -1,10 +1,9 @@
 package com.zipcodewilmington;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
-import jdk.nashorn.internal.ir.BlockLexicalContext;
-
-import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.IntStream;
+
+import static java.lang.System.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -70,7 +69,7 @@ public class StringArrayUtils {
         List<String> list = Arrays.asList(array);
         Collections.reverse(list);
         String[] revArr = list.toArray(array);
-        return  revArr;
+        return revArr;
     }
 
     /**
@@ -92,11 +91,33 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
+     */ // WORKING
     public static boolean isPangramic(String[] array) {
-        return false;
+        boolean isOrIsnt = false;
+        boolean[] mark = new boolean[26];
+        String concatStr = "";
+        for (int i = 0; i < array.length; i++) {
+            concatStr = concatStr.concat(array[i]);
+        }
+        concatStr = concatStr.toUpperCase();
+        int index = 0;
+        for (int i = 0; i < concatStr.length(); i++) {
+            if ('A' <= concatStr.charAt(i) && concatStr.charAt(i) <= 'Z') {
+                index = concatStr.charAt(i) - 'A';
+            } else {
+                continue;
+            }
+            mark[index] = true;
+        }
+        for (int i = 0; i <= 25; i++) {
+            if (mark[i] == false) {
+                isOrIsnt = false;
+            } else {
+                isOrIsnt = true;
+            }
+        }
+    return isOrIsnt;
     }
-
     /**
      * @param array array of String objects
      * @param value value to check array for
@@ -145,7 +166,7 @@ public class StringArrayUtils {
             }
         }
         String[] outStrArr = strList.toArray(new String[0]);
-        return  outStrArr;
+        return outStrArr;
     }
 
     /**
@@ -155,6 +176,4 @@ public class StringArrayUtils {
     public static String[] packConsecutiveDuplicates(String[] array) {
         return null;
     }
-
-
 }
