@@ -139,7 +139,7 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // WORKING
     public static String[] removeValue(String[] array, String valueToRemove) {
-        ArrayList<String> output = new ArrayList<String>();
+        ArrayList<String> output = new ArrayList<>();
         int counter = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(valueToRemove)) {
@@ -158,7 +158,7 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // WORKING
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        ArrayList<String> strList = new ArrayList<String>();
+        ArrayList<String> strList = new ArrayList<>();
         strList.add(array[0]);
         for (int i = 1; i < array.length; i++) {
             if (!array[i - 1].equals(array[i])) {
@@ -172,8 +172,24 @@ public class StringArrayUtils {
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
+     */ // WORKING
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        ArrayList<String> midList = new ArrayList<>();
+        String strHolder = "";
+        int counter = 0;
+        int compare = counter + 1;
+        while (counter < array.length) {
+            strHolder = strHolder.concat(array[counter]);
+            while (compare != array.length && array[counter].equals(array[compare])) {
+                strHolder = strHolder.concat(array[compare]);
+                compare++;
+            }
+            midList.add(strHolder);
+            strHolder = "";
+            counter = compare;
+            compare++;
+        }
+        String[] outArr = midList.toArray(new String[0]);
+        return outArr;
     }
 }
