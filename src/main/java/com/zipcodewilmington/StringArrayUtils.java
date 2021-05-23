@@ -1,8 +1,6 @@
 package com.zipcodewilmington;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 
 /**
  * Created by leon on 1/29/18.
@@ -119,12 +117,8 @@ public class StringArrayUtils {
                pack.append(array[i-1] + "/");
            }
        }
-       if(array[array.length-1].equals(array[array.length-2])) {
-            pack.append(array[array.length-1]);
-       } else {
-            pack.append(array[array.length-1] + "/");
-        }
-        return pack.toString().split("/");
+       pack.append(array[array.length-1]);
+       return pack.toString().split("/");
 
     }
 
