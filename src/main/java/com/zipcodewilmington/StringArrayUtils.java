@@ -17,6 +17,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
+
         return array[1];
     }
 
@@ -25,7 +26,11 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        String result="";
+
+          result = array[array.length-1];
+
+        return result;
     }
 
     /**
@@ -33,7 +38,9 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        String result="";
+        result=array[array.length-2];
+        return result;
     }
 
     /**
@@ -42,15 +49,24 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        Boolean result=false;
+        for (String word : array) {
+            if (word == value) {
+                result = true;
+            }
+        }
+        return result;
     }
-
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String result[]={};
+        for(int i=array.length-1;i>=0;i--){
+            result+= array[i];
+        }
+        return result;
     }
 
     /**
@@ -58,7 +74,17 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        Boolean result=false;
+//        for(int i=0;i<array.length-1;i++){
+//
+//        }
+//        for(int j=array.length-1;i>=0;i--){
+//
+//        }
+//        if(==){
+//
+//        }
+        return result;
     }
 
     /**
