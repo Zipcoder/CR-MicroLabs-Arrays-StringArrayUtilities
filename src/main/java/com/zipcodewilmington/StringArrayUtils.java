@@ -1,5 +1,10 @@
 package com.zipcodewilmington;
 
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -9,6 +14,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
+
         return array[0];
     }
 
@@ -17,6 +23,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
+
         return array[1];
     }
 
@@ -25,7 +32,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+        String lastElement = array[array.length - 1];
+        return lastElement;
     }
 
     /**
@@ -33,7 +41,8 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        String secondToLastElement = array[array.length - 2];
+        return secondToLastElement;
     }
 
     /**
@@ -41,8 +50,11 @@ public class StringArrayUtils {
      * @param value value to check array for
      * @return true if the array contains the specified `value`
      */ // TODO
-    public static boolean contains(String[] array, String value) {
-        return false;
+    public   static boolean contains(String[] array, String value) {
+        for (int i = 0; i < value.length(); i++){
+        if(array[i] == value);
+        }
+        return true;
     }
 
     /**
@@ -50,16 +62,37 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        List<String> list = Arrays.asList(array);
+        Collections.reverse(list);
+        String[] reverseList = list.toArray(array);
+        return reverseList;
     }
 
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
+
+    //identify midpoint of an array
+    //identify last index
+    //for loop
+
     public static boolean isPalindromic(String[] array) {
-        return false;
+        List<String> list = Arrays.asList(array);
+      //  System.out.println(list);
+        Collections.reverse(list);
+       // System.out.println(list);
+        String[] reverseArray = list.toArray(new String[array.length]);
+        for (int i = 0; i < reverseArray.length; i++) {
+            String thisString = reverseArray[i];
+            String thisOtherString = array[i];
+            if (!thisString.equals(thisOtherString)) {
+                return false;
+            }
+        }
+        return true;
     }
+
 
     /**
      * @param array array of String objects
