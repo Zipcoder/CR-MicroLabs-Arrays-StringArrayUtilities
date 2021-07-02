@@ -140,8 +140,9 @@ public class StringArrayUtils {
      */ // TODO
 
     /*
-     String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
+     String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"}; arrayList has 1 position, and it's an a.
      String[] expected = {"aaa", "b", "cc", "aa", "d"};
+
      */
     public static String[] packConsecutiveDuplicates(String[] array) {
         int length = array.length;
@@ -150,11 +151,10 @@ public class StringArrayUtils {
         arrayList.add(array[0]);
 
         for(int i = 1; i < length; i++){
-            System.out.println(arrayList.get(lastIndex));
-            if(arrayList.get(lastIndex).contains(array[i])){//array[i] == arrayList.get(lastIndex)){
-                arrayList.set(lastIndex, arrayList.get(lastIndex) + array[i]);
-            } else {
-                lastIndex++;
+            if(arrayList.get(lastIndex).contains(array[i])){ //does my arrayList, at the last examined index contain what the array current shows
+                arrayList.set(lastIndex, (arrayList.get(lastIndex) + array[i])); //arrayList.set(index, value)
+            } else { //no longer looking at a consecutive
+                lastIndex++; //I'm looking at a new 0R non-duplicate character
                 arrayList.add(array[i]);
             }
         }
