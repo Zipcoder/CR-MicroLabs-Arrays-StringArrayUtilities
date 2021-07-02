@@ -70,9 +70,9 @@ public class StringArrayUtils {
         int index = 0;
         for (int i = reverseArray.length - 1; i >= 0; i--) {
             reverseArray[index++] = array[i];
-       }
+        }
         return reverseArray;
-      }
+    }
     // List<String> arrayList = Arrays.asList(array);
     // Collections.reverse(arrayList);
     // String[] reverseArrayList = arrayList.toArray(array);
@@ -88,9 +88,12 @@ public class StringArrayUtils {
         int index = 0;
         for (int i = array.length - 1; i >= 0; i--) {
             reverseArray[index++] = array[i];
-        } if(!Arrays.equals(reverseArray, array)) {
+        }
+        if (!Arrays.equals(reverseArray, array)) {
             return false;
-        } else { return true;}
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -100,12 +103,12 @@ public class StringArrayUtils {
     public static boolean isPangramic(String[] array) {
         String stringArray = Arrays.toString(array); //change array to string
 
-        if(stringArray.toLowerCase().length() < 26) {  //check to see if array length is less than number of alphabets
+        if (stringArray.toLowerCase().length() < 26) {  //check to see if array length is less than number of alphabets
             return false;  // if so return false and no further action
         } else {
             for (char index = 'a'; index <= 'z'; index++) {  // iterate through characters from a - z
                 if (stringArray.toLowerCase().indexOf(index) < 0) { //if the index of character is less than 0 return false
-                                                                    // and it will fail the conditons of a panagram.
+                    // and it will fail the conditons of a panagram.
                     return false;                                   //toLowerCase to make all characters even.
                 }
             }
@@ -132,7 +135,7 @@ public class StringArrayUtils {
     public static int getNumberOfOccurrences(String[] array, String value) {
         int tracker = 0;
         for (int i = 0; i < array.length; i++) {
-            if(value.equals(array[i])){
+            if (value.equals(array[i])) {
                 tracker++;
             }
         }
@@ -163,7 +166,7 @@ public class StringArrayUtils {
         List<String> arrayList = new ArrayList<String>();
         arrayList.add(array[0]); //adds first value of array to newArray
         for (int i = 1; i < array.length; i++) { //iterates through array starting at index 1
-            if(!array[i].equals(array[i -1])) { //checks if current value is equal to previous value
+            if (!array[i].equals(array[i - 1])) { //checks if current value is equal to previous value
                 arrayList.add(array[i]);         //if not add that to the new arrayLst
             }
         }
@@ -175,16 +178,21 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        Arrays.sort(array);
-        List<String> arrayList = new ArrayList<String>(Arrays.asList(array));
-        for (int i = 0; i < array.length - 1; i++) {
-            if(array[i].equals(array[i+1])) {
+        //Arrays.sort(array);
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(array[0]);
+        int tracker = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (arrayList.get(tracker).contains(array[i])) {
+                arrayList.set(tracker, (arrayList.get(tracker) + array[i]));
+            } else {
+                tracker++;
                 arrayList.add(array[i]);
             }
         }
         return arrayList.toArray(new String[0]);
     }
-
+}
 
 //        for (int i = 0; i < array.length - 1; i++) {
 //            for (int j = i+1; j < array.length; j++) {
@@ -195,4 +203,4 @@ public class StringArrayUtils {
 //        }
 
 
-}
+
