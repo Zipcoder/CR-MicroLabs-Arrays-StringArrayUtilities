@@ -1,9 +1,8 @@
 package com.zipcodewilmington;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -78,10 +77,8 @@ public class StringArrayUtils {
     //for loop
 
     public static boolean isPalindromic(String[] array) {
-        List<String> list = Arrays.asList(array);
-      //  System.out.println(list);
+        List<String> list = Arrays.asList(array.clone());
         Collections.reverse(list);
-       // System.out.println(list);
         String[] reverseArray = list.toArray(new String[array.length]);
         for (int i = 0; i < reverseArray.length; i++) {
             String thisString = reverseArray[i];
@@ -99,7 +96,26 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        /* convert array of string to one string
+        nested for loop with original string on outside and alphabet on inside
+        every time they match copy that to a new array
+        remove duplicates
+        if that array matches array of the alphabet
+        return true
+         */
+        ArrayList<String> stringOfArrays = new ArrayList<String>(Arrays.asList(array));
+        String newString = stringOfArrays.toString().toLowerCase();
+      String aBCS = "abcdefghijklmnopqrstuvwxyz";
+      for (int i = 0; i < aBCS.length(); i++){
+               if (newString.indexOf(aBCS.charAt(i)) == -1 ){
+                   return false;
+               }
+                    }
+
+
+
+
+    return true;
     }
 
     /**
@@ -108,7 +124,12 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+         if (value.equals(array[i]))
+             counter++;
+        }
+        return counter;
     }
 
     /**
@@ -117,7 +138,10 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        List<String> list = new ArrayList<String>(Arrays.asList(array));
+        list.remove(valueToRemove);
+        array = list.toArray(new String[0]);
+        return array;
     }
 
     /**
@@ -125,16 +149,51 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+      ArrayList<String> newArrayList = new ArrayList<String>();
+      newArrayList.add(array[0]);
+        for (int i = 1; i < array.length; i++){
+            if(array[i] != array[i - 1]){
+                newArrayList.add(array[i]);
+            }
+
+        }
+
+
+    return newArrayList.toArray(new String[newArrayList.size()]);
+
     }
+
+
 
     /**
      * @param array array of chars
-     * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
+     * @return array of Strings with each consecutive duplicate
+     * occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+// iterate through array with for loop counter
+// identify if character in string is the same as the next character
+// if they are same, concatenate
+//add concatenation to new string array
+
+        /*   StringBuilder stringBuilder = new StringBuilder(arrayToString.charAt(i)).append(arrayToString.charAt(i+1));
+                if(stringBuilder.lastIndexOf())
+               String newString = stringBuilder.toString();
+             String[] stringWithSpaces =  newString.split(" ");
+             array = stringWithSpaces;*/
+        ArrayList<String> list = new ArrayList<String>();
+        list.add(array[0]);
+        int counter = 0;
+        for (int i = 1; i < array.length; i++) {
+        if(list.get(counter).contains(array[i])){
+            list.set(counter, list.get(counter) + array[i]);
+
+        }else{
+            counter++;
+            list.add(array[i]);
+        }
+            }
+        return list.toArray(new String[0]);
     }
-
-
 }
