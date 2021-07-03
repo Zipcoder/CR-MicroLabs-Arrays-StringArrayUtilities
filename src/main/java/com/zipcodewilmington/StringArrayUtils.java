@@ -1,5 +1,9 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -42,14 +46,13 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        String arrayToString = array.toString();
-        if (arrayToString.contains(value)) {
+        ArrayList<String> arrayToList = new ArrayList<String>(Arrays.asList(array));
+        if (arrayToList.contains(value)) {
             return true;
         }
         else {
             return false;
         }
-
     }
 
     /**
@@ -57,12 +60,12 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        String arrayAsString = "";
-        for (int i = array.length; i >= 0; i--) {
-            arrayAsString += (array[i] + " ");
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for (int i = array.length - 1; i >= 0; i--) {
+            arrayList.add(array[i]);
         }
-        String[] newArray = arrayAsString.split(" ");
-        return newArray;
+        String[] backToArray = arrayList.toArray(new String[0]);
+        return backToArray;
     }
 
     /**
@@ -70,12 +73,12 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        String arrayBackwards = "";
-        for (int i = array.length; i >= 0; i--) {
-            arrayBackwards += (array[i]);
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for (int i = array.length - 1; i >= 0; i--) {
+            arrayList.add(array[i]);
         }
-        String arrayFowards = array.toString().trim();
-        if (arrayFowards.equals(arrayBackwards)) {
+        String[] backToArray = arrayList.toArray(new String[0]);
+        if (Arrays.equals(backToArray,array)) {
             return true;
         }
         else {
@@ -88,20 +91,16 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-        String arrayAsString = array.toString();
-        int amountOfLettersInAlphabet = 0;
-        for (int i = 0; i < arrayAsString.length(); i++) {
-            if (arrayAsString.contains(alphabet[i])) {
-                amountOfLettersInAlphabet += 1;
+        String[] alphabet = new String[] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        List<String> arrayToList = new ArrayList<String>(Arrays.asList(array));
+        String arrayToString = arrayToList.toString();
+        arrayToString = arrayToString.replaceAll(",", "").replaceAll(" ","").toLowerCase();
+        for (int i = 0; i < alphabet.length; i++) {
+            if (!arrayToString.contains(alphabet[i])) {
+                return false;
             }
         }
-        if (amountOfLettersInAlphabet == 26) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -110,14 +109,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        String arrayAsString = array.toString().trim();
-        arrayAsString.replaceAll(value, " ");
-        int index = 0;
-        int numberOfOccurrences = 0;
-        while ((index = arrayAsString.indexOf(" ", index)) != -1) {
-            numberOfOccurrences += 1;
+        int occurrences = 0;
+        for (String word : array) {
+            if (word.equals(value)) {
+                occurrences++;
+            }
         }
-        return numberOfOccurrences;
+        return occurrences;
     }
 
     /**
@@ -126,9 +124,10 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        String arrayAsString = array.toString();
-        arrayAsString.replaceAll(valueToRemove, "");
-        String[] backToArray = arrayAsString.split(",");
+        ArrayList<String> arrayToList = new ArrayList<String>(Arrays.asList(array));
+        arrayToList.remove(valueToRemove);
+        String[] backToArray = new String[arrayToList.size()];
+        backToArray = arrayToList.toArray(backToArray);
         return backToArray;
     }
 
@@ -137,16 +136,16 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        String arrayAsString = array.toString();
-        String[] newArray;
-        String stringWithNoDuplicates = "";
-        for (int i = 0; i < array.length; i++) {
-            if (arrayAsString.charAt(i) == arrayAsString.charAt(i + 1)) {
-                stringWithNoDuplicates = arrayAsString.replaceFirst(String.format("%s", arrayAsString.charAt(i)), "");
+        List<String> arrayList = new ArrayList<String>();
+        arrayList.add(array[0]);
+        int indexForList = 0; // Have to create an index for the list b/c when it removes a dup, the size of the list doesn't increase
+        for (int i = 1; i < array.length; i++) {
+            if (!arrayList.get(indexForList).contains(array[i])) {
+                arrayList.add(array[i]);
+                indexForList++;
             }
         }
-        newArray = stringWithNoDuplicates.split(",");
-        return newArray;
+        return arrayList.toArray(new String[0]);
     }
 
     /**
@@ -154,8 +153,19 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        
-        return null;
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(array[0]);
+        int indexForList = 0; // Have to create an index for the list b/c when it concats a dup, the size of the list doesn't increase
+        for (int i = 1; i < array.length; i++) {
+            if (arrayList.get(indexForList).contains(array[i])) {
+                arrayList.set(indexForList, (arrayList.get(indexForList) + array[i]));
+            }
+            else {
+                arrayList.add(array[i]);
+                indexForList++;
+            }
+        }
+        return arrayList.toArray(new String[0]);
     }
 
 
