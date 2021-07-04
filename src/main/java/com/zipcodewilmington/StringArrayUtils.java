@@ -91,12 +91,13 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
         String stringArray = Arrays.toString(array); //change array to string
+        stringArray = stringArray.toLowerCase();
 
-        if(stringArray.toLowerCase().length() < 26 ){ //does the sentence have 26 characters? if less, does not contain every letter
+        if(stringArray.length() < 26 ){ //does the sentence have 26 characters? if less, does not contain every letter
             return false;
         } else {
-            for (char index = 'a'; index <= 'z'; index++) {
-                if (stringArray.toLowerCase().indexOf(index) < 0) {
+            for (char letters = 'a'; letters <= 'z'; letters++) {
+                if (stringArray.indexOf(letters) < 0) {
                     return false;
                 }
             }
