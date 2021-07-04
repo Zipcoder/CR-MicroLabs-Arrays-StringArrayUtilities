@@ -50,7 +50,13 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        String [] revArray = new String[array.length];
+        int newArray = 0;
+        for (int i = array.length - 1; i >= 0; i--) {
+            revArray[newArray] = array[i];
+            newArray++;
+        }
+        return revArray;
     }
 
     /**
