@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.*;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -17,7 +19,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-        return array[1];
+       return array[1];
     }
 
     /**
@@ -25,7 +27,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+
+      return array[array.length-1];
     }
 
     /**
@@ -33,7 +36,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length-2];
     }
 
     /**
@@ -42,7 +45,8 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        List <String> arrayList = new ArrayList<String>(Arrays.asList(array));
+        return arrayList.contains(value);
     }
 
     /**
@@ -64,7 +68,8 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        String[] revArray = reverse(array);
+        return Arrays.equals(revArray, array);
     }
 
     /**
@@ -72,7 +77,16 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String pangramic = Arrays.toString(array);
+        pangramic = pangramic.toLowerCase(Locale.ROOT);
+        if (pangramic.length() < 26) {
+            return false;
+        } else
+                for (char i = 'a'; i <= 'z'; i++) {
+                if (pangramic.indexOf(i) == -1)
+                    return false;
+        }
+        return true;
     }
 
     /**
@@ -81,7 +95,9 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        List <String> arrayList = new ArrayList<String>(Arrays.asList(array));
+        return Collections.frequency(arrayList,value); //collections holds different methods I can use
+
     }
 
     /**
@@ -90,7 +106,11 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        List <String> arrayList = new ArrayList<String>(Arrays.asList(array));
+        while (arrayList.contains(valueToRemove)) {
+            arrayList.remove(valueToRemove);
+        }
+        return arrayList.toArray(new String [0]);
     }
 
     /**
@@ -98,7 +118,21 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+//        List <String> arrayList = new ArrayList<String>(Arrays.asList(array));
+//
+//        arrayList.add(array.(0));
+
+
+
+
+//        String consecutive = Arrays.toString(array);
+//        if (consecutive.length() <= 1)
+//            return array;
+//        if (consecutive.charAt(0) == consecutive.charAt(1))
+//            return removeConsecutiveDuplicates(consecutive.substring(1));
+//        else
+//            return con
+       return null;
     }
 
     /**
