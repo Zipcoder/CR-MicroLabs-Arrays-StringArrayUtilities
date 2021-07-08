@@ -118,21 +118,18 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-//        List <String> arrayList = new ArrayList<String>(Arrays.asList(array));
-//
-//        arrayList.add(array.(0));
+
+          List <String> arrayList = new ArrayList<String>();
+          String previousElement = "";
+          for (String element : array) {
+              if (element != previousElement) { //if the current element is not equal to the previous then add the element, this will pass over the elemets that are the same
+                  arrayList.add(element);
+              }
+              previousElement = element;
+              }
 
 
-
-
-//        String consecutive = Arrays.toString(array);
-//        if (consecutive.length() <= 1)
-//            return array;
-//        if (consecutive.charAt(0) == consecutive.charAt(1))
-//            return removeConsecutiveDuplicates(consecutive.substring(1));
-//        else
-//            return con
-       return null;
+     return arrayList.toArray(new String[0]);
     }
 
     /**
@@ -140,7 +137,19 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        int lastIndex = 0;
+        List <String> arrayList = new ArrayList <String>();
+        arrayList.add(array[0]); //start at index 0
+        for (int i = 1; i < array.length; i++) { // this will start looping at the 1st index that does not have the same character
+            if (arrayList.get(lastIndex).contains(array[i])) { // this is saying if the last index has the current character
+                arrayList.set(lastIndex, (arrayList.get(lastIndex) + array[i])); // will add the duplicate letter to the previous letter
+            }
+            else {                          // if they are not the same, nothing with be packed together because we are missing duplicates
+                lastIndex++;                // go to the next index and have that non duplicate letter start here
+                arrayList.add(array[i]);
+            }
+        }
+        return arrayList.toArray(new String[0]); // return string array
     }
 
 
